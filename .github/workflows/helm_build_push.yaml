@@ -1,0 +1,17 @@
+name: 'Helm Build and Push'
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    uses: mars-office/.github/.github/workflows/helm_build_push.yaml@main
+    secrets: inherit
