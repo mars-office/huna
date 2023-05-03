@@ -1,0 +1,22 @@
+nginx:
+  enabled: true
+  image:
+    tag: latest
+  podAnnotations:
+    linkerd.io/inject: enabled
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hostname: huna.marsconceptor.local
+    tls: true
+    path: '/'
+    extraTls:
+      - secretName: huna-ingress-tls
+        hosts:
+          - huna.marsconceptor.local
