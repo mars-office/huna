@@ -12,6 +12,6 @@ on:
       - main
 
 jobs:
-  helm_build_push:
-    uses: mars-office/.github/.github/workflows/helm_build_push.yaml@main
+  helm:
+    uses: mars-office/.github/.github/workflows/helm.yaml@main
     secrets: inherit
