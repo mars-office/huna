@@ -12,6 +12,6 @@ on:
       - main
 
 jobs:
-  terraform:
+  helm_build_push:
     uses: mars-office/.github/.github/workflows/helm_build_push.yaml@main
     secrets: inherit
