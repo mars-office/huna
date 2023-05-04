@@ -1,6 +1,6 @@
 name: 'Helm build and push'
 
-run-name: 'huna - 0.0.${{ github.run_number }} - Helm build and push'
+run-name: '0.0.${{ github.run_number }} - ${{ github.workflow }}'
 
 on:
   workflow_dispatch:
