@@ -1,5 +1,7 @@
 name: 'Helm Build and Push'
 
+run-name: 'Helm Build and Push - 0.0.${{ github.run_number }}'
+
 on:
   workflow_dispatch:
 
@@ -15,3 +17,5 @@ jobs:
   helm_build_push:
     uses: mars-office/.github/.github/workflows/helm.yaml@main
     secrets: inherit
+    with:
+      version: '0.0.${{ github.run_number }}'
