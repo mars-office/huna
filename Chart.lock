@@ -2,8 +2,8 @@ dependencies:
 - name: regcred
   repository: https://colearendt.github.io/helm
   version: 0.1.0
-- name: nginx
-  repository: https://charts.bitnami.com/bitnami
-  version: 14.1.0
-digest: sha256:3b29d0a7d0b38a9e6dad3f524854573438394e2b49f5414ed8c7f3061540dc73
-generated: "2023-05-04T16:36:01.361962481+03:00"
+- name: template-deployable
+  repository: oci://ghcr.io/mars-office
+  version: 0.0.1
+digest: sha256:bb477eb835739ed54378efc6d5f6d9e4018fa63fc95f6feb58569843e39b1dca
+generated: "2023-05-04T17:04:52.74073643+03:00"
