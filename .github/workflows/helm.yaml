@@ -1,4 +1,4 @@
-name: 'Helm Build and Push'
+name: 'Helm build and push'
 
 run-name: '${{ github.repository.name }} - 0.0.${{ github.run_number }} - Helm build and push'
 
