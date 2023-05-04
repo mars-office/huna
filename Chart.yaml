@@ -25,7 +25,7 @@ appVersion: "latest"
 
 dependencies:
   - name: regcred
-    version: "~0.1.0"
+    version: "0.1.0"
     repository: "https://colearendt.github.io/helm"
     condition: regcred.enabled
   - name: template-deployable

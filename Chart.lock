@@ -5,5 +5,5 @@ dependencies:
 - name: template-deployable
   repository: oci://ghcr.io/mars-office
   version: 0.0.1
-digest: sha256:bb477eb835739ed54378efc6d5f6d9e4018fa63fc95f6feb58569843e39b1dca
-generated: "2023-05-04T17:04:52.74073643+03:00"
+digest: sha256:f6325d26eb366ed284a25b5807730b958736a12f1fec92861144090d0dc71ee6
+generated: "2023-05-04T23:02:07.829057225+03:00"
