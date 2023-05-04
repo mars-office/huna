@@ -1,6 +1,9 @@
 dependencies:
+- name: regcred
+  repository: https://colearendt.github.io/helm
+  version: 0.1.0
 - name: nginx
   repository: https://charts.bitnami.com/bitnami
   version: 14.1.0
-digest: sha256:9816aa8a39a4b9516eb8ae77db72563bdffc0e0c12524ef536feaf0a7599538b
-generated: "2023-05-03T17:31:06.823378962+03:00"
+digest: sha256:3b29d0a7d0b38a9e6dad3f524854573438394e2b49f5414ed8c7f3061540dc73
+generated: "2023-05-04T16:36:01.361962481+03:00"

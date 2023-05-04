@@ -1,3 +1,10 @@
+regcred:
+  enabled: true
+  registryCredentials:
+    - url: ghcr.io
+      username: ''
+      password: ''
+
 nginx:
   enabled: true
   image:
