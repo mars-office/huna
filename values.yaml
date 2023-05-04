@@ -1,5 +1,3 @@
-global:
-  appVersion: '{{ .Chart.appVersion }}'
 regcred:
   enabled: true
   nameOverride: 'regcred'
