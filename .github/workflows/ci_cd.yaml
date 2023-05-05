@@ -19,13 +19,16 @@ jobs:
     secrets: inherit
     with:
       version: '0.0.${{ github.run_number }}'
-  deploy_dev:
+  deploy:
     needs: [helm_build_push]
     uses: mars-office/.github/.github/workflows/deploy.yaml@main
     secrets: inherit
+    strategy:
+      matrix:
+        env: ['dev', 'uat', 'prod']
     with:
       version: '0.0.${{ github.run_number }}'
-      env: 'dev'
+      env: '${{ matrix.env }}'
       namespace: 'huna'
       operation: 'upgrade'
       chartName: 'huna'
