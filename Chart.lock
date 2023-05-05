@@ -2,8 +2,5 @@ dependencies:
 - name: regcred
   repository: https://colearendt.github.io/helm
   version: 0.1.0
-- name: template-deployable
-  repository: oci://ghcr.io/mars-office
-  version: 0.0.3
-digest: sha256:a53bd8fd6c06d21a22083adc63d89c7a73915271a0b89562961d129c775c68cc
-generated: "2023-05-05T20:17:11.044673122Z"
+digest: sha256:dfabb19fb052d6ad978f7b10916ee343d61f9896e87a74a6b2f81024b1ffcae1
+generated: "2023-05-05T23:19:28.054659069+03:00"
