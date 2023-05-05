@@ -1,5 +1,4 @@
 regcred:
-  enabled: true
   nameOverride: 'regcred'
   fullnameOverride: 'regcred'
   registryCredentials:

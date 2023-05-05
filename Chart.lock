@@ -2,5 +2,5 @@ dependencies:
 - name: regcred
   repository: https://colearendt.github.io/helm
   version: 0.1.0
-digest: sha256:dfabb19fb052d6ad978f7b10916ee343d61f9896e87a74a6b2f81024b1ffcae1
-generated: "2023-05-05T23:19:28.054659069+03:00"
+digest: sha256:4c59772d976b5f62515b29f20e7c36c690d4ebc869bfa8eb0da8d889c8b85096
+generated: "2023-05-05T23:36:43.886779264+03:00"
