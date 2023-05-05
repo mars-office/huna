@@ -1,0 +1,30 @@
+name: 'Manual Deploy'
+
+run-name: '${{ github.event.inputs.version}} - ${{ github.workflow }}'
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: number
+        required: true
+      operation:
+        type: choice
+        options:
+          - upgrade
+          - uninstall
+        default: 'upgrade'
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        env: ['dev', 'uat', 'prod']
+    uses: mars-office/.github/.github/workflows/deploy.yaml@main
+    secrets: inherit
+    with:
+      version: '${{ github.event.inputs.version }}'
+      env: ${{ matrix.env }}
+      chartName: 'huna'
+      namespace: 'huna'
+      operation: '${{ github.event.inputs.operation }}'
