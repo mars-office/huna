@@ -7,6 +7,8 @@ on:
     workflows: [Helm build and push]
     types:
       - completed
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -16,7 +18,7 @@ jobs:
     uses: mars-office/.github/.github/workflows/deploy.yaml@main
     secrets: inherit
     with:
-      version: 'xxxxx'
+      version: '0.0.${{ github.event.workflow_run.run_number }}'
       env: ${{ matrix.env }}
       chartName: 'huna'
       namespace: 'huna'
