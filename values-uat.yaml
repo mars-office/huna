@@ -1,0 +1,5 @@
+regcred:
+  registryCredentials:
+    - url: ghcr.io
+      username: 'mars-office'
+      password: '${GH_TOKEN}'
