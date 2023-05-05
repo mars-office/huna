@@ -25,6 +25,6 @@ dependencies:
     repository: "https://colearendt.github.io/helm"
     condition: regcred.enabled
   - name: template-deployable
-    version: "0.0.6"
+    version: "0.0.10"
     repository: "oci://ghcr.io/mars-office"
     condition: template-deployable.enabled
