@@ -7,7 +7,7 @@ on:
     inputs:
       version:
         type: number
-        required: true
+        required: false
       operation:
         type: choice
         options:
