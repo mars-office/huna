@@ -1,9 +1,13 @@
 name: 'Deploy'
 
-run-name: '0.0.${{ github.event.workflow_run.run_number }} - ${{ github.workflow }}'
+run-name: '0.0.${{ github.event.workflow_run.run_number || github.event.inputs.version }} - ${{ github.workflow }}'
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        type: number
+        required: true
 
   workflow_run:
     workflows: [Helm build and push]
