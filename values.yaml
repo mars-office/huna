@@ -5,6 +5,3 @@ regcred:
     - url: ghcr.io
       username: ''
       password: ''
-
-template-deployable:
-  enabled: true
