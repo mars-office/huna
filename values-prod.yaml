@@ -30,3 +30,20 @@ rabbitmq:
 mongo-express:
   mongodbAdminPassword: '${MONGODB_PASSWORD}'
   basicAuthPassword: '${MONGO_EXPRESS_PASSWORD}'
+  siteCookieSecret: '${MONGO_EXPRESS_SECRET}'
+  siteSessionSecret: '${MONGO_EXPRESS_SECRET}'
+
+redis-commander:
+  redis:
+    password: '${REDIS_PASSWORD}'
+  httpAuth:
+    password: '${REDIS_COMMANDER_PASSWORD}'
+  ingress:
+    hosts:
+      - host: redis.huna2.com
+        paths:
+          - '/'
+    tls:
+      - secretName: redis-ingress-tls
+        hosts:
+          - redis.huna2.com
