@@ -1,6 +1,6 @@
 name: 'Manual Deploy'
 
-run-name: '${{ github.event.inputs.version}} - ${{ github.workflow }}'
+run-name: '${{ github.event.inputs.operation}} ${{ github.event.inputs.env}} - ${{ github.event.inputs.version}} - ${{ github.workflow }}'
 
 on:
   workflow_dispatch:
