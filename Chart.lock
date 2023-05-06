@@ -11,5 +11,8 @@ dependencies:
 - name: rabbitmq
   repository: https://groundhog2k.github.io/helm-charts/
   version: 0.6.16
-digest: sha256:a45dcbdc868e3061a3396707225d1f4a2fb0534ef63c7ad0bc9ca937beffe49e
-generated: "2023-05-06T14:33:38.049577327+03:00"
+- name: mongo-express
+  repository: https://cowboysysop.github.io/charts/
+  version: 3.1.1
+digest: sha256:84037d56518609f62375ebd3ae139ecb186cfe64832fedb464ffaab14051c60c
+generated: "2023-05-06T15:10:45.498152735+03:00"
