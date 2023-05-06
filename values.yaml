@@ -14,3 +14,21 @@ mongodb:
   settings:
     rootUsername: 'root'
     rootPassword: ''
+
+redis:
+  password: ''
+  haMode:
+    enabled: false
+  podAnnotations:
+    linkerd.io/inject: enabled
+  storage:
+    requestedSize: 1Gi
+  env:
+    - name: REDISPASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: redisPassword
+  args:
+    - '--requirepass $(REDISPASSWORD)'
+    - '--protected-mode yes'

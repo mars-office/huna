@@ -5,5 +5,8 @@ dependencies:
 - name: mongodb
   repository: https://groundhog2k.github.io/helm-charts/
   version: 0.5.13
-digest: sha256:6efb0efd7e7c92d661ceecc0cdd71bc51b2629e4d0cd9360a6382b31b2c9a7fb
-generated: "2023-05-06T12:05:13.588584484+03:00"
+- name: redis
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.6.11
+digest: sha256:7715c26c397b7a79f20a146eb82bcda529ffe807094e7373e798817d6b3d9cbd
+generated: "2023-05-06T13:53:20.205380164+03:00"
