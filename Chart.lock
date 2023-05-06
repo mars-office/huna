@@ -2,5 +2,20 @@ dependencies:
 - name: regcred
   repository: https://colearendt.github.io/helm
   version: 0.1.0
-digest: sha256:4c59772d976b5f62515b29f20e7c36c690d4ebc869bfa8eb0da8d889c8b85096
-generated: "2023-05-05T23:36:43.886779264+03:00"
+- name: mongodb
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.5.13
+- name: redis
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.6.11
+- name: rabbitmq
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.6.16
+- name: mongo-express
+  repository: https://cowboysysop.github.io/charts/
+  version: 3.1.1
+- name: redis-commander
+  repository: https://kfirfer.github.io/helm/
+  version: 0.1.12
+digest: sha256:646b92ea09e06419fd9d6264f6833e2f13f91cda8ecc00b129e2073b8768dc9b
+generated: "2023-05-06T15:22:15.805924795+03:00"

@@ -5,3 +5,111 @@ regcred:
     - url: ghcr.io
       username: ''
       password: ''
+
+mongodb:
+  podAnnotations:
+    linkerd.io/inject: enabled
+  storage:
+    requestedSize: 10Gi
+  settings:
+    rootUsername: 'root'
+    rootPassword: ''
+
+redis:
+  useDeploymentWhenNonHA: false
+  password: ''
+  haMode:
+    enabled: false
+  podAnnotations:
+    linkerd.io/inject: enabled
+  storage:
+    requestedSize: 1Gi
+  env:
+    - name: REDISPASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: redisPassword
+  args:
+    - '--requirepass $(REDISPASSWORD)'
+    - '--protected-mode yes'
+
+rabbitmq:
+  ingress:
+    enabled: true
+    hosts:
+      - host: rabbitmq.huna2.local
+        paths:
+          - '/'
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - secretName: rabbitmq-ingress-tls
+        hosts:
+          - rabbitmq.huna2.local
+  podAnnotations:
+    linkerd.io/inject: enabled
+  storage:
+    requestedSize: 1Gi
+  authentication:
+    user: 'root'
+    password: ''
+    erlangCookie: ''
+
+mongo-express:
+  image:
+    tag: "latest"
+  siteCookieSecret: ''
+  siteSessionSecret: ''
+  mongodbServer: 'huna-mongodb'
+  basicAuthUsername: 'admin'
+  basicAuthPassword: ''
+  mongodbEnableAdmin: true
+  mongodbAuthDatabase: 'admin'
+  mongodbAdminPassword: ''
+  mongodbAdminUsername: 'root'
+  podAnnotations:
+    linkerd.io/inject: enabled
+  ingress:
+    enabled: true
+    hosts:
+      - host: mongodb.huna2.local
+        paths:
+          - '/'
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - secretName: mongodb-ingress-tls
+        hosts:
+          - mongodb.huna2.local
+
+redis-commander:
+  redis:
+    host: 'huna-redis'
+    password: ''
+  podAnnotations:
+    linkerd.io/inject: enabled
+  httpAuth:
+    username: "admin"
+    password: ""
+  ingress:
+    enabled: true
+    hosts:
+      - host: redis.huna2.local
+        paths:
+          - '/'
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - secretName: redis-ingress-tls
+        hosts:
+          - redis.huna2.local
