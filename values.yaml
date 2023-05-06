@@ -32,3 +32,15 @@ redis:
   args:
     - '--requirepass $(REDISPASSWORD)'
     - '--protected-mode yes'
+
+rabbitmq:
+  managementPlugin:
+    enabled: false
+  podAnnotations:
+    linkerd.io/inject: enabled
+  storage:
+    requestedSize: 1Gi
+  authentication:
+    user: 'root'
+    password: ''
+    erlangCookie: ''

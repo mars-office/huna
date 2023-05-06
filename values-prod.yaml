@@ -10,3 +10,8 @@ mongodb:
 
 redis:
   password: '${REDIS_PASSWORD}'
+
+rabbitmq:
+  authentication:
+    password: '${RABBITMQ_PASSWORD}'
+    erlangCookie: '${RABBITMQ_ERLANG_COOKIE}'

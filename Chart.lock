@@ -8,5 +8,8 @@ dependencies:
 - name: redis
   repository: https://groundhog2k.github.io/helm-charts/
   version: 0.6.11
-digest: sha256:7715c26c397b7a79f20a146eb82bcda529ffe807094e7373e798817d6b3d9cbd
-generated: "2023-05-06T13:53:20.205380164+03:00"
+- name: rabbitmq
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.6.16
+digest: sha256:a45dcbdc868e3061a3396707225d1f4a2fb0534ef63c7ad0bc9ca937beffe49e
+generated: "2023-05-06T14:33:38.049577327+03:00"
