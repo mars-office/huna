@@ -32,7 +32,16 @@ mongo-express:
   basicAuthPassword: '${MONGO_EXPRESS_PASSWORD}'
   siteCookieSecret: '${MONGO_EXPRESS_SECRET}'
   siteSessionSecret: '${MONGO_EXPRESS_SECRET}'
-  
+  ingress:
+    hosts:
+      - host: mongodb.uat.huna2.com
+        paths:
+          - '/'
+    tls:
+      - secretName: mongodb-ingress-tls
+        hosts:
+          - mongodb.uat.huna2.com
+
 redis-commander:
   redis:
     password: '${REDIS_PASSWORD}'
