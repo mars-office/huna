@@ -16,6 +16,7 @@ mongodb:
     rootPassword: ''
 
 redis:
+  useDeploymentWhenNonHA: false
   password: ''
   haMode:
     enabled: false
