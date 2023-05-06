@@ -14,17 +14,18 @@ on:
           - upgrade
           - uninstall
         default: 'upgrade'
+      env:
+        type: environment
+        required: true
+        default: 'dev'
 
 jobs:
   deploy:
-    strategy:
-      matrix:
-        env: ['dev', 'uat', 'prod']
     uses: mars-office/.github/.github/workflows/deploy.yaml@main
     secrets: inherit
     with:
       version: '${{ github.event.inputs.version }}'
-      env: ${{ matrix.env }}
+      env: ${{ github.event.inputs.env }}
       chartName: 'huna'
       namespace: 'huna'
       operation: '${{ github.event.inputs.operation }}'
