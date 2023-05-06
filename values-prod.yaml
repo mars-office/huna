@@ -7,11 +7,22 @@ regcred:
 mongodb:
   settings:
     rootPassword: '${MONGODB_PASSWORD}'
+  storage:
+    requestedSize: 10Gi
 
 redis:
   password: '${REDIS_PASSWORD}'
 
 rabbitmq:
+  ingress:
+    hosts:
+      - host: rabbitmq.huna2.com
+        paths:
+          - '/'
+    tls:
+      - secretName: rabbitmq-ingress-tls
+        hosts:
+          - rabbitmq.huna2.com
   authentication:
     password: '${RABBITMQ_PASSWORD}'
     erlangCookie: '${RABBITMQ_ERLANG_COOKIE}'
