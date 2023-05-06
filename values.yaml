@@ -5,3 +5,12 @@ regcred:
     - url: ghcr.io
       username: ''
       password: ''
+
+mongodb:
+  podAnnotations:
+    linkerd.io/inject: enabled
+  storage:
+    requestedSize: 10Gi
+  settings:
+    rootUsername: 'root'
+    rootPassword: ''

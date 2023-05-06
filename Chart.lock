@@ -2,5 +2,8 @@ dependencies:
 - name: regcred
   repository: https://colearendt.github.io/helm
   version: 0.1.0
-digest: sha256:4c59772d976b5f62515b29f20e7c36c690d4ebc869bfa8eb0da8d889c8b85096
-generated: "2023-05-05T23:36:43.886779264+03:00"
+- name: mongodb
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.5.13
+digest: sha256:6efb0efd7e7c92d661ceecc0cdd71bc51b2629e4d0cd9360a6382b31b2c9a7fb
+generated: "2023-05-06T12:05:13.588584484+03:00"

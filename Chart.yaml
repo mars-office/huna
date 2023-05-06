@@ -23,3 +23,6 @@ dependencies:
   - name: regcred
     version: "0.1.0"
     repository: "https://colearendt.github.io/helm"
+  - name: mongodb
+    version: "0.5.13"
+    repository: "https://groundhog2k.github.io/helm-charts/"

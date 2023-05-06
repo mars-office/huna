@@ -3,3 +3,7 @@ regcred:
     - url: ghcr.io
       username: 'mars-office'
       password: '${GH_TOKEN}'
+
+mongodb:
+  settings:
+    rootPassword: '${MONGODB_PASSWORD}'
