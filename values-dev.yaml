@@ -57,7 +57,7 @@ redis-commander:
         hosts:
           - redis.dev.huna2.com
 
-dexidp:
+dex:
   config:
     issuer: "https://dex.dev.huna2.com"
     ingress:
@@ -65,6 +65,7 @@ dexidp:
         - host: dex.dev.huna2.com
           paths:
             - path: /
+              pathType: Prefix
       tls:
         - secretName: dex-ingress-tls
           hosts:
