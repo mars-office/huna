@@ -38,6 +38,6 @@ dependencies:
   - name: redis-commander
     version: "0.1.12"
     repository: "https://kfirfer.github.io/helm/"
-  - name: dexidp
+  - name: dex
     version: "0.14.0"
     repository: "https://charts.dexidp.io"

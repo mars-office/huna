@@ -57,7 +57,7 @@ redis-commander:
         hosts:
           - redis.dev.huna2.com
 
-dexidp:
+dex:
   config:
     issuer: "https://dex.dev.huna2.com"
     ingress:
