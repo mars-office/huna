@@ -119,7 +119,7 @@ dex:
     issuer: "https://dex.local.huna2.com"
     storage:
       type: memory
-    enablePasswordDB: true
+    enablePasswordDB: false
     
   podAnnotations:
     linkerd.io/inject: enabled

@@ -56,3 +56,49 @@ redis-commander:
       - secretName: redis-ingress-tls
         hosts:
           - redis.uat.huna2.com
+
+dex:
+  config:
+    issuer: "https://dex.uat.huna2.com"
+    connectors:
+      - type: google
+        id: google
+        name: Google
+        config:
+          clientID: '${GOOGLE_CLIENT_ID}'
+          clientSecret: '${GOOGLE_CLIENT_SECRET}'
+          redirectURI: https://dex.uat.huna2.com/callback/google
+      - type: microsoft
+        id: microsoft
+        name: Microsoft
+        config:
+          clientID: '${MICROSOFT_CLIENT_ID}'
+          clientSecret: '${MICROSOFT_CLIENT_SECRET}'
+          redirectURI: https://dex.uat.huna2.com/callback/microsoft
+      - type: oauth
+        id: facebook 
+        name: Facebook
+        config:
+          clientID: '${FACEBOOK_CLIENT_ID}'
+          clientSecret: '${FACEBOOK_CLIENT_SECRET}'
+          redirectURI: https://dex.uat.huna2.com/callback/facebook
+          tokenURL: https://graph.facebook.com/v9.0/oauth/access_token
+          authorizationURL: https://facebook.com/dialog/oauth
+          userInfoURL: https://graph.facebook.com/v9.0/me?fields=id,name,email,picture
+          claimMapping:
+            # userNameKey: ''
+            # preferredUsernameKey: ''
+            # groupsKey: ''
+            # emailKey: ''
+            # emailVerifiedKey: ''
+
+  ingress:
+    hosts: 
+      - host: dex.uat.huna2.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: dex-ingress-tls
+        hosts:
+          - dex.uat.huna2.com

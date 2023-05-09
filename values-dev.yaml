@@ -60,6 +60,38 @@ redis-commander:
 dex:
   config:
     issuer: "https://dex.dev.huna2.com"
+    connectors:
+      - type: google
+        id: google
+        name: Google
+        config:
+          clientID: '${GOOGLE_CLIENT_ID}'
+          clientSecret: '${GOOGLE_CLIENT_SECRET}'
+          redirectURI: https://dex.dev.huna2.com/callback/google
+      - type: microsoft
+        id: microsoft
+        name: Microsoft
+        config:
+          clientID: '${MICROSOFT_CLIENT_ID}'
+          clientSecret: '${MICROSOFT_CLIENT_SECRET}'
+          redirectURI: https://dex.dev.huna2.com/callback/microsoft
+      - type: oauth
+        id: facebook 
+        name: Facebook
+        config:
+          clientID: '${FACEBOOK_CLIENT_ID}'
+          clientSecret: '${FACEBOOK_CLIENT_SECRET}'
+          redirectURI: https://dex.dev.huna2.com/callback/facebook
+          tokenURL: https://graph.facebook.com/v9.0/oauth/access_token
+          authorizationURL: https://facebook.com/dialog/oauth
+          userInfoURL: https://graph.facebook.com/v9.0/me?fields=id,name,email,picture
+          claimMapping:
+            # userNameKey: ''
+            # preferredUsernameKey: ''
+            # groupsKey: ''
+            # emailKey: ''
+            # emailVerifiedKey: ''
+
   ingress:
     hosts: 
       - host: dex.dev.huna2.com
