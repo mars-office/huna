@@ -120,19 +120,23 @@ dex:
     storage:
       type: memory
     enablePasswordDB: true
-    ingress:
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
-        nginx.ingress.kubernetes.io/service-upstream: "true"
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      enabled: true
-      hosts: 
-        - host: dex.huna2.local
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - secretName: dex-ingress-tls
-          hosts:
-            - dex.huna2.local
+    
+  podAnnotations:
+    linkerd.io/inject: enabled
+    
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts: 
+      - host: dex.huna2.local
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: dex-ingress-tls
+        hosts:
+          - dex.huna2.local

@@ -60,13 +60,13 @@ redis-commander:
 dex:
   config:
     issuer: "https://dex.dev.huna2.com"
-    ingress:
-      hosts: 
-        - host: dex.dev.huna2.com
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - secretName: dex-ingress-tls
-          hosts:
-            - dex.dev.huna2.com
+  ingress:
+    hosts: 
+      - host: dex.dev.huna2.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: dex-ingress-tls
+        hosts:
+          - dex.dev.huna2.com
