@@ -56,3 +56,16 @@ redis-commander:
       - secretName: redis-ingress-tls
         hosts:
           - redis.dev.huna2.com
+
+dexidp:
+  config:
+    issuer: "https://dex.dev.huna2.com"
+    ingress:
+      hosts: 
+        - host: dex.dev.huna2.com
+          paths:
+            - -path: /
+      tls:
+        - secretName: dex-ingress-tls
+          hosts:
+            - dex.dev.huna2.com

@@ -113,3 +113,25 @@ redis-commander:
       - secretName: redis-ingress-tls
         hosts:
           - redis.huna2.local
+  
+dexidp:
+  config:
+    issuer: "https://dex.huna2.local"
+    storage:
+      type: memory
+    enablePasswordDB: true
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/service-upstream: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      enabled: true
+      hosts: 
+        - host: dex.huna2.local
+          paths:
+            - path: /
+      tls:
+        - secretName: dex-ingress-tls
+          hosts:
+            - dex.huna2.local
