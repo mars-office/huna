@@ -38,7 +38,7 @@ rabbitmq:
   ingress:
     enabled: true
     hosts:
-      - host: rabbitmq.huna2.local
+      - host: rabbitmq.local.huna2.com
         paths:
           - '/'
     annotations:
@@ -49,7 +49,7 @@ rabbitmq:
     tls:
       - secretName: rabbitmq-ingress-tls
         hosts:
-          - rabbitmq.huna2.local
+          - rabbitmq.local.huna2.com
   podAnnotations:
     linkerd.io/inject: enabled
   storage:
@@ -76,7 +76,7 @@ mongo-express:
   ingress:
     enabled: true
     hosts:
-      - host: mongodb.huna2.local
+      - host: mongodb.local.huna2.com
         paths:
           - '/'
     annotations:
@@ -87,7 +87,7 @@ mongo-express:
     tls:
       - secretName: mongodb-ingress-tls
         hosts:
-          - mongodb.huna2.local
+          - mongodb.local.huna2.com
 
 redis-commander:
   redis:
@@ -101,7 +101,7 @@ redis-commander:
   ingress:
     enabled: true
     hosts:
-      - host: redis.huna2.local
+      - host: redis.local.huna2.com
         paths:
           - '/'
     annotations:
@@ -112,11 +112,11 @@ redis-commander:
     tls:
       - secretName: redis-ingress-tls
         hosts:
-          - redis.huna2.local
+          - redis.local.huna2.com
   
 dex:
   config:
-    issuer: "https://dex.huna2.local"
+    issuer: "https://dex.local.huna2.com"
     storage:
       type: memory
     enablePasswordDB: true
@@ -132,11 +132,11 @@ dex:
       nginx.ingress.kubernetes.io/service-upstream: "true"
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts: 
-      - host: dex.huna2.local
+      - host: dex.local.huna2.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: dex-ingress-tls
         hosts:
-          - dex.huna2.local
+          - dex.local.huna2.com
