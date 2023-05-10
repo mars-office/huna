@@ -120,10 +120,42 @@ dex:
     storage:
       type: memory
     enablePasswordDB: true
+    connectors:
+      - type: google
+        id: google
+        name: Google
+        config:
+          # Connector config values starting with a "$" will read from the environment.
+          clientID: $GOOGLE_CLIENT_ID
+          clientSecret: $GOOGLE_CLIENT_SECRET
+          # Dex's issuer URL + "/callback"
+          redirectURI: http://dex.huna2.local/callback/google
+
+      - type: microsoft
+        # Required field for connector id.
+        id: microsoft
+        # Required field for connector name.
+        name: Microsoft
+        config:
+          # Credentials can be string literals or pulled from the environment.
+          clientID: $MICROSOFT_APPLICATION_ID
+          clientSecret: $MICROSOFT_CLIENT_SECRET
+          redirectURI: http://dex.huna2.local/callback/microsoft
+      
+      - type: facebook
+        # Required field for connector id.
+        id: facebook
+        # Required field for connector name.
+        name: Facebook
+        config:
+          # Credentials can be string literals or pulled from the environment.
+          clientID: $FACEBOOK_CLIENT_ID
+          clientSecret: $FACEBOOK_CLIENT_SECRET
+          redirectURI: http://dex.huna2.local/callback/facebook
     
   podAnnotations:
     linkerd.io/inject: enabled
-    
+
   ingress:
     enabled: true
     annotations:
