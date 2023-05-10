@@ -65,34 +65,33 @@ dex:
         id: google
         name: Google
         config:
-          # Connector config values starting with a "$" will read from the environment.
-          clientID: $GOOGLE_CLIENT_ID
-          clientSecret: $GOOGLE_CLIENT_SECRET
-          # Dex's issuer URL + "/callback"
-          redirectURI: http://dex.dev.huna2.com/callback/google
-          
+          clientID: '${GOOGLE_CLIENT_ID}'
+          clientSecret: '${GOOGLE_CLIENT_SECRET}'
+          redirectURI: https://dex.dev.huna2.com/callback/google
       - type: microsoft
-        # Required field for connector id.
         id: microsoft
-        # Required field for connector name.
         name: Microsoft
         config:
-          # Credentials can be string literals or pulled from the environment.
-          clientID: $MICROSOFT_APPLICATION_ID
-          clientSecret: $MICROSOFT_CLIENT_SECRET
-          redirectURI: http://dex.dev.huna2.com/callback/microsoft
-      
-      - type: facebook
-        # Required field for connector id.
-        id: facebook
-        # Required field for connector name.
+          clientID: '${MICROSOFT_CLIENT_ID}'
+          clientSecret: '${MICROSOFT_CLIENT_SECRET}'
+          redirectURI: https://dex.dev.huna2.com/callback/microsoft
+      - type: oauth
+        id: facebook 
         name: Facebook
         config:
-          # Credentials can be string literals or pulled from the environment.
-          clientID: $FACEBOOK_CLIENT_ID
-          clientSecret: $FACEBOOK_CLIENT_SECRET
-          redirectURI: http://dex.dev.huna2.com/callback/facebook
-          
+          clientID: '${FACEBOOK_CLIENT_ID}'
+          clientSecret: '${FACEBOOK_CLIENT_SECRET}'
+          redirectURI: https://dex.dev.huna2.com/callback/facebook
+          tokenURL: https://graph.facebook.com/v9.0/oauth/access_token
+          authorizationURL: https://facebook.com/dialog/oauth
+          userInfoURL: https://graph.facebook.com/v9.0/me?fields=id,name,email,picture
+          claimMapping:
+            # userNameKey: ''
+            # preferredUsernameKey: ''
+            # groupsKey: ''
+            # emailKey: ''
+            # emailVerifiedKey: ''
+
   ingress:
     hosts: 
       - host: dex.dev.huna2.com

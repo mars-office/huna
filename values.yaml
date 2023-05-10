@@ -38,7 +38,7 @@ rabbitmq:
   ingress:
     enabled: true
     hosts:
-      - host: rabbitmq.huna2.local
+      - host: rabbitmq.local.huna2.com
         paths:
           - '/'
     annotations:
@@ -49,7 +49,7 @@ rabbitmq:
     tls:
       - secretName: rabbitmq-ingress-tls
         hosts:
-          - rabbitmq.huna2.local
+          - rabbitmq.local.huna2.com
   podAnnotations:
     linkerd.io/inject: enabled
   storage:
@@ -76,7 +76,7 @@ mongo-express:
   ingress:
     enabled: true
     hosts:
-      - host: mongodb.huna2.local
+      - host: mongodb.local.huna2.com
         paths:
           - '/'
     annotations:
@@ -87,7 +87,7 @@ mongo-express:
     tls:
       - secretName: mongodb-ingress-tls
         hosts:
-          - mongodb.huna2.local
+          - mongodb.local.huna2.com
 
 redis-commander:
   redis:
@@ -101,7 +101,7 @@ redis-commander:
   ingress:
     enabled: true
     hosts:
-      - host: redis.huna2.local
+      - host: redis.local.huna2.com
         paths:
           - '/'
     annotations:
@@ -112,46 +112,14 @@ redis-commander:
     tls:
       - secretName: redis-ingress-tls
         hosts:
-          - redis.huna2.local
+          - redis.local.huna2.com
   
 dex:
   config:
-    issuer: "https://dex.huna2.local"
+    issuer: "https://dex.local.huna2.com"
     storage:
       type: memory
-    enablePasswordDB: true
-    connectors:
-      - type: google
-        id: google
-        name: Google
-        config:
-          # Connector config values starting with a "$" will read from the environment.
-          clientID: $GOOGLE_CLIENT_ID
-          clientSecret: $GOOGLE_CLIENT_SECRET
-          # Dex's issuer URL + "/callback"
-          redirectURI: http://dex.huna2.local/callback/google
-
-      - type: microsoft
-        # Required field for connector id.
-        id: microsoft
-        # Required field for connector name.
-        name: Microsoft
-        config:
-          # Credentials can be string literals or pulled from the environment.
-          clientID: $MICROSOFT_APPLICATION_ID
-          clientSecret: $MICROSOFT_CLIENT_SECRET
-          redirectURI: http://dex.huna2.local/callback/microsoft
-      
-      - type: facebook
-        # Required field for connector id.
-        id: facebook
-        # Required field for connector name.
-        name: Facebook
-        config:
-          # Credentials can be string literals or pulled from the environment.
-          clientID: $FACEBOOK_CLIENT_ID
-          clientSecret: $FACEBOOK_CLIENT_SECRET
-          redirectURI: http://dex.huna2.local/callback/facebook
+    enablePasswordDB: false
     
   podAnnotations:
     linkerd.io/inject: enabled
@@ -164,11 +132,11 @@ dex:
       nginx.ingress.kubernetes.io/service-upstream: "true"
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts: 
-      - host: dex.huna2.local
+      - host: dex.local.huna2.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: dex-ingress-tls
         hosts:
-          - dex.huna2.local
+          - dex.local.huna2.com
