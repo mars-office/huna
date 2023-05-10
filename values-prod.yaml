@@ -61,6 +61,12 @@ redis-commander:
 dex:
   config:
     issuer: "https://dex.huna2.com"
+    staticClients:
+      - id: ui
+        redirectURIs:
+          - 'https://huna2.com/'
+        name: 'UI'
+        secret: '${UI_OAUTH_CLIENT_SECRET}'
     connectors:
       - type: google
         id: google
