@@ -20,5 +20,8 @@ dependencies:
 - name: dex
   repository: https://charts.dexidp.io
   version: 0.14.0
-digest: sha256:cfdf1fe03e72c59d5577ac151b4af928ff19f7bdf2f456446fec892d66b6a667
-generated: "2023-05-09T23:49:55.803873633+03:00"
+- name: huna-ui
+  repository: oci://ghcr.io/mars-office
+  version: 0.0.4
+digest: sha256:69772190c461ec5e08a65f2df27d87e86bcaf0b443d540fa1d296f675b147207
+generated: "2023-05-11T21:39:15.037808731+03:00"

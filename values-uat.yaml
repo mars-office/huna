@@ -112,3 +112,16 @@ dex:
       - secretName: dex-ingress-tls
         hosts:
           - dex.uat.huna2.com
+
+
+huna-ui:
+  ingress:
+    hosts:
+      - host: uat.huna2.com
+        paths:
+          - path: '/'
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: huna-ingress-tls
+        hosts:
+          - uat.huna2.com
