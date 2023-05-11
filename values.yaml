@@ -148,22 +148,4 @@ dex:
           - dex.local.huna2.com
 
 
-huna-ui:
-  podAnnotations:
-    linkerd.io/inject: enabled
-  ingress:
-    enabled: true
-    hosts:
-      - host: local.huna2.com
-        paths:
-          - path: '/'
-            pathType: ImplementationSpecific
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/service-upstream: "true"
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    tls:
-      - secretName: huna-ingress-tls
-        hosts:
-          - local.huna2.com
+# huna-ui: # missing because its defaults are good enough for local dev
