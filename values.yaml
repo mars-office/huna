@@ -120,7 +120,13 @@ dex:
     storage:
       type: memory
     enablePasswordDB: false
-    
+    oauth2:
+      skipApprovalScreen: true
+    frontend:
+      issuer: huna2
+      # logoURL: "transparent"
+      theme: dark
+      alwaysShowLoginScreen: false
   podAnnotations:
     linkerd.io/inject: enabled
 
