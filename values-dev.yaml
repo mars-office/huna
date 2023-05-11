@@ -65,6 +65,7 @@ dex:
         redirectURIs:
           - 'https://dev.huna2.com/'
         name: 'UI'
+        public: true
         secret: '${UI_OAUTH_CLIENT_SECRET}'
     connectors:
       - type: google
@@ -90,12 +91,15 @@ dex:
           redirectURI: https://dex.dev.huna2.com/callback
           tokenURL: https://graph.facebook.com/v9.0/oauth/access_token
           authorizationURL: https://facebook.com/dialog/oauth
-          userInfoURL: https://graph.facebook.com/v9.0/me?fields=id,name,email,picture
+          userInfoURL: https://graph.facebook.com/v9.0/me?fields=id,name,email
+          scopes:
+            - public_profile
+            - email
           claimMapping:
             # userNameKey: ''
             # preferredUsernameKey: ''
             # groupsKey: ''
-            # emailKey: ''
+            emailKey: 'email'
             # emailVerifiedKey: ''
 
   ingress:
