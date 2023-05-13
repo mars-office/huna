@@ -152,6 +152,11 @@ dex:
 
 
 huna-ui:
+  env:
+    - name: HUNA_VERSION
+      configMapKeyRef:
+        name: huna
+        key: version
   imagePullSecrets:
     - name: regcred
   podAnnotations:
