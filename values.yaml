@@ -152,12 +152,13 @@ dex:
 
 
 huna-ui:
-  env:
-    - name: HUNA_VERSION
-      valueFrom:
-        configMapKeyRef:
-          name: huna
-          key: version
+  volumes:
+    - configMap:
+        name: huna-ui
+      name: huna-ui-configmap-volume
+  volumeMounts:
+    - mountPath: /usr/share/nginx/html/config
+      name: huna-configmap-volume
   imagePullSecrets:
     - name: regcred
   podAnnotations:
