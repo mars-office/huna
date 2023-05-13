@@ -158,7 +158,7 @@ huna-ui:
       name: huna-ui-configmap-volume
   volumeMounts:
     - mountPath: /usr/share/nginx/html/config
-      name: huna-configmap-volume
+      name: huna-ui-configmap-volume
   imagePullSecrets:
     - name: regcred
   podAnnotations:

@@ -5,5 +5,4 @@ metadata:
   labels:
     {{- include "huna.labels" . | nindent 4 }}
 data:
-  version: {{ .Chart.Version }}
-  appVersion: {{ .Chart.AppVersion }}
+  'version.js': 'window.hunaVersion = "{{ .Chart.Version }}"'
