@@ -67,7 +67,6 @@ dex:
           - 'https://huna2.com/'
         name: 'UI'
         public: true
-        secret: '${UI_OAUTH_CLIENT_SECRET}'
     connectors:
       - type: google
         id: google
