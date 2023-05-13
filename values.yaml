@@ -137,6 +137,7 @@ dex:
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
       cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/enable-cors: "true"
     hosts: 
       - host: dex.local.huna2.com
         paths:
