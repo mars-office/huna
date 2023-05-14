@@ -42,5 +42,5 @@ dependencies:
     version: "0.14.0"
     repository: "https://charts.dexidp.io"
   - name: huna-ui
-    version: "0.0.27"
+    version: "0.0.28"
     repository: "oci://ghcr.io/mars-office"
