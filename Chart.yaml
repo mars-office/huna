@@ -44,3 +44,6 @@ dependencies:
   - name: huna-ui
     version: "0.0.28"
     repository: "oci://ghcr.io/mars-office"
+  - name: huna-opa-policy
+    version: "0.0.4"
+    repository: "oci://ghcr.io/mars-office"
