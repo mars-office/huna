@@ -160,8 +160,8 @@ huna-ui:
     - name: regcred
   podAnnotations:
     linkerd.io/inject: enabled
-  podLabels:
-    opa: "true"
+  # podLabels:
+  #   opa: "true"
   ingress:
     enabled: true
     annotations:
