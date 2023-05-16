@@ -159,7 +159,6 @@ huna-ui:
     - name: regcred
   podAnnotations:
     linkerd.io/inject: enabled
-    openpolicyagent.com/inject: "true"
   ingress:
     enabled: true
     annotations:
