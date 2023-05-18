@@ -97,7 +97,7 @@ dex:
             - public_profile
             - email
           claimMapping:
-            # userNameKey: ''
+            userNameKey: 'name'
             # preferredUsernameKey: ''
             # groupsKey: ''
             emailKey: 'email'
