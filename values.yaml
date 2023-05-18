@@ -1,3 +1,5 @@
+environment: local
+
 regcred:
   nameOverride: 'regcred'
   fullnameOverride: 'regcred'
@@ -182,3 +184,6 @@ huna-ui:
       - secretName: huna-ingress-tls
         hosts:
           - local.huna2.com
+
+opa:
+  styraDasToken: ''

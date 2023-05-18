@@ -1,3 +1,5 @@
+environment: uat
+
 regcred:
   registryCredentials:
     - url: ghcr.io
@@ -124,3 +126,6 @@ huna-ui:
       - secretName: huna-ingress-tls
         hosts:
           - uat.huna2.com
+
+opa:
+  styraDasToken: '${STYRA_DAS_TOKEN}'

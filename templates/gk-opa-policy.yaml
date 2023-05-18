@@ -28,14 +28,26 @@ spec:
           - "--addr=0.0.0.0:8181"
           - "--ignore=.*"
           - "--server"
+          - "--config-file=/config/config.yaml"
           - "-w"
           - "/policy"
+        env:
+          - name: STYRA_DAS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "huna.fullname" . }}-opa-secret
+                key: styraDasToken
+          - name: HUNA_ENVIRONMENT
+            value: {{ .Values.environment }}
         ports:
           - name: opahttp
             containerPort: 8181
         volumeMounts:
           - mountPath: /policy
-            name: policy
+            name: opa-policy
+            readOnly: true
+          - mountPath: /config
+            name: opa-config
             readOnly: true
         livenessProbe:
           httpGet:
@@ -73,6 +85,9 @@ spec:
   parameters:
     values:
       fromList:
-        - name: policy
+        - name: opa-policy
           configMap:
-            name: huna-huna-opa-policy
+            name: {{ include "huna.fullname" . }}-huna-opa-policy
+        - name: opa-config
+          configMap:
+            name: {{ include "huna.fullname" . }}-opa-config
