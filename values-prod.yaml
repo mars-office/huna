@@ -17,6 +17,8 @@ redis:
 
 rabbitmq:
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
       - host: rabbitmq.huna2.com
         paths:
@@ -35,6 +37,8 @@ mongo-express:
   siteCookieSecret: '${MONGO_EXPRESS_SECRET}'
   siteSessionSecret: '${MONGO_EXPRESS_SECRET}'
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
       - host: mongodb.huna2.com
         paths:
@@ -50,6 +54,8 @@ redis-commander:
   httpAuth:
     password: '${REDIS_COMMANDER_PASSWORD}'
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
       - host: redis.huna2.com
         paths:
@@ -105,6 +111,8 @@ dex:
             # emailVerifiedKey: ''
 
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts: 
       - host: dex.huna2.com
         paths:
@@ -118,6 +126,8 @@ dex:
 
 huna-ui:
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
       - host: huna2.com
         paths:
