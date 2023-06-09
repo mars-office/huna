@@ -28,6 +28,6 @@ dependencies:
   version: 0.0.4
 - name: huna-user-preferences
   repository: oci://ghcr.io/mars-office
-  version: 0.0.11
-digest: sha256:e124db62f7adc071d6fcda91c1801a6506d61df18d4b3e7d3cea572b58668572
-generated: "2023-06-09T18:12:41.847332666Z"
+  version: 0.0.12
+digest: sha256:1926d159fcc0585faeca7f7b01b7c883d0692fb04dff5e9b5e3808ec41d204af
+generated: "2023-06-09T22:16:42.754662321Z"
