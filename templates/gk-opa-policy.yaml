@@ -21,7 +21,7 @@ spec:
     assign:
       value:
         name: "opa"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         image: openpolicyagent/opa:latest-static
         args:
           - "run"
