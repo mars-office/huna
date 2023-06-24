@@ -6,6 +6,10 @@ metadata:
     {{- include "huna.labels" . | nindent 4 }}
 data:
   config.yaml: |-
+    discovery:
+      name: discovery
+      prefix: /systems/faea3ba894454bb3a61952b0059d933b
+      service: styra
     labels:
       system-id: faea3ba894454bb3a61952b0059d933b
       system-type: custom
@@ -18,10 +22,8 @@ data:
             token: ${STYRA_DAS_TOKEN}
         name: styra
         url: https://0e03ik.svc.styra.com/v1
-    decision_logs:
-      service: styra
-      reporting:
-        min_delay_seconds: 300
-        max_delay_seconds: 600
-    status:
-      service: styra
+      - credentials:
+          bearer:
+            token: ${STYRA_DAS_TOKEN}
+        name: styra-bundles
+        url: https://0e03ik.svc.styra.com/v1/bundles
