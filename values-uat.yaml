@@ -137,14 +137,5 @@ huna-ui:
         hosts:
           - uat.huna2.com
 
-
-huna-user-preferences:
-  ingress:
-    hosts:
-      - host: uat.huna2.com
-        paths:
-          - path: /api/user-preferences
-            pathType: ImplementationSpecific
-
 opa:
   styraDasToken: '${STYRA_DAS_TOKEN}'
