@@ -118,12 +118,23 @@ redis-commander:
           - redis.local.huna2.com
   
 dex:
+  persistence:
+    size: 1Gi
+  volumes:
+    - name: dex-data
+      persistentVolumeClaim:
+        claimName: huna-dex-data
+  volumeMounts:
+    - mountPath: "/data"
+      name: dex-data
   config:
     issuer: "https://dex.local.huna2.com"
     web:
       allowedOrigins: ['*']
     storage:
-      type: memory
+      type: sqlite3
+      config:
+        file: /data/dex.db
     enablePasswordDB: false
     oauth2:
       skipApprovalScreen: true
