@@ -170,7 +170,7 @@ huna-ui:
     - name: OTEL_EXPORTER_OTLP_ENDPOINT
       value: http://collector.linkerd-jaeger:4318
     - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-      value: http://collector.linkerd-jaeger:4318/v1/traces
+      value: http://collector.linkerd-jaeger:4318
   volumes:
     - configMap:
         name: huna-ui
