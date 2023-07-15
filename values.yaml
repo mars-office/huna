@@ -169,8 +169,6 @@ huna-ui:
   env:
     - name: OTEL_EXPORTER_ZIPKIN_ENDPOINT
       value: http://collector.linkerd-jaeger:9411
-    - name: OTEL_EXPORTER_OTLP_INSECURE
-      value: 'true'
     - name: OTEL_SERVICE_NAME
       value: 'huna-ui'
     - name: OTEL_PROPAGATORS
