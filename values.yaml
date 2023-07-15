@@ -172,7 +172,7 @@ huna-ui:
     - name: OTEL_SERVICE_NAME
       value: 'huna-ui'
     - name: OTEL_PROPAGATORS
-      value: 'tracecontext,baggage,b3,b3multi'
+      value: 'b3,b3multi,tracecontext,baggage'
     - name: OTEL_TRACES_EXPORTER
       value: zipkin
     - name: OTEL_METRICS_EXPORTER
