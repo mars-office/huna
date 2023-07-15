@@ -174,7 +174,7 @@ huna-ui:
     - name: OTEL_SERVICE_NAME
       value: 'huna-ui'
     - name: OTEL_PROPAGATORS
-      value: 'b3'
+      value: 'b3multi'
   volumes:
     - configMap:
         name: huna-ui
@@ -186,8 +186,6 @@ huna-ui:
     - name: regcred
   podAnnotations:
     linkerd.io/inject: enabled
-  # podLabels:
-  #   opa: "true"
   ingress:
     enabled: true
     annotations:
