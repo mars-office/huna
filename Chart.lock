@@ -25,6 +25,6 @@ dependencies:
   version: 0.0.72
 - name: huna-llm
   repository: oci://ghcr.io/mars-office
-  version: 0.0.2
-digest: sha256:c5f5ded2d3d3247bc00c271f8659841d6e91afad6a3845c496b19790def844b5
-generated: "2023-08-06T20:32:13.3625719+03:00"
+  version: 0.0.4
+digest: sha256:a17500ab9bbafc3702115e56de927fa20dd58eeaf72397deca7986a4447a8a0a
+generated: "2023-08-06T17:36:54.524562225Z"
