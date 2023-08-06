@@ -202,6 +202,8 @@ huna-llm:
     - name: regcred
   podAnnotations:
     linkerd.io/inject: enabled
+  podLabels:
+    opa: "true"
   ingress:
     enabled: true
     annotations:
