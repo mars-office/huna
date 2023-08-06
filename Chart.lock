@@ -15,13 +15,13 @@ dependencies:
   repository: https://cowboysysop.github.io/charts/
   version: 3.1.1
 - name: redis-commander
-  repository: https://kfirfer.github.io/helm/
-  version: 0.1.12
+  repository: https://kfirfer.github.io/charts/
+  version: 0.1.13
 - name: dex
   repository: https://charts.dexidp.io
   version: 0.14.0
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
   version: 0.0.71
-digest: sha256:a4dccd73905211bc389e00afa62c7f8faf18aebacc039385788b6053a531dd11
-generated: "2023-07-15T11:30:12.728508754Z"
+digest: sha256:16c49880e62cec83af8a52532ae925df9044cf5c4c3436dd6242ab6ac44fb549
+generated: "2023-08-06T11:12:55.0434983+03:00"
