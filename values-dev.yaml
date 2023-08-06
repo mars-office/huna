@@ -138,3 +138,12 @@ huna-ui:
 
 opa:
   styraDasToken: '${STYRA_DAS_TOKEN}'
+
+
+huna-llm:
+  ingress:
+    hosts:
+      - host: dev.huna2.com
+        paths:
+          - path: '/api/llm'
+            pathType: ImplementationSpecific
