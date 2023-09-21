@@ -24,22 +24,22 @@ dependencies:
     version: "0.1.0"
     repository: "https://colearendt.github.io/helm"
   - name: mongodb
-    version: "0.5.13"
+    version: "0.5.17"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: redis
-    version: "0.6.11"
+    version: "0.7.2"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: rabbitmq
-    version: "0.6.16"
+    version: "0.7.4"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: mongo-express
-    version: "3.1.1"
+    version: "5.2.0"
     repository: "https://cowboysysop.github.io/charts/"
   - name: redis-commander
-    version: "0.1.13"
+    version: "0.1.14"
     repository: "https://kfirfer.github.io/charts/"
   - name: dex
-    version: "0.14.0"
+    version: "0.15.3"
     repository: "https://charts.dexidp.io"
   - name: huna-ui
     version: "0.0.76"
