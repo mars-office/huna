@@ -19,8 +19,10 @@ jobs:
     secrets: inherit
     with:
       version: '0.0.${{ github.run_number }}'
-  snyk_iac:
-    uses: mars-office/.github/.github/workflows/snyk_iac.yaml@main
+  snyk_iac_helm:
+    uses: mars-office/.github/.github/workflows/snyk_iac_helm.yaml@main
+    with:
+      chartPath: '.'
     permissions:
       contents: read
       security-events: write
