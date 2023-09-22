@@ -45,5 +45,5 @@ dependencies:
     version: "0.0.76"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-llm
-    version: "0.0.20"
+    version: "0.0.25"
     repository: "oci://ghcr.io/mars-office"
