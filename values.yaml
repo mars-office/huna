@@ -192,10 +192,8 @@ huna-ui:
         hosts:
           - local.huna2.com
 
-
 opa:
   styraDasToken: ''
-
 
 huna-llm:
   imagePullSecrets:
