@@ -2,11 +2,26 @@ dependencies:
 - name: regcred
   repository: https://colearendt.github.io/helm
   version: 0.1.0
+- name: mongodb
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.5.17
+- name: redis
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.7.2
+- name: rabbitmq
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.7.4
+- name: mongo-express
+  repository: https://cowboysysop.github.io/charts/
+  version: 5.2.0
+- name: redis-commander
+  repository: https://kfirfer.github.io/charts/
+  version: 0.1.14
 - name: dex
   repository: https://charts.dexidp.io
   version: 0.15.3
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
   version: 0.0.22
-digest: sha256:606819f45777ccd9da3ea7d90efdd63a32c6cf08a2288bad3c741e20494abeac
-generated: "2023-09-29T13:15:03.196764234Z"
+digest: sha256:a388b1923e9c7241c7c3c850eafd52c57108f653e9f6a7081f50c5405ab16550
+generated: "2023-09-29T17:46:43.528552672+03:00"
