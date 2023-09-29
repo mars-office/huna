@@ -6,64 +6,64 @@ regcred:
       username: 'mars-office'
       password: '${GH_TOKEN}'
 
-# mongodb:
-#   settings:
-#     rootPassword: '${MONGODB_PASSWORD}'
-#   storage:
-#     requestedSize: 10Gi
+mongodb:
+  settings:
+    rootPassword: '${MONGODB_PASSWORD}'
+  storage:
+    requestedSize: 10Gi
 
-# redis:
-#   password: '${REDIS_PASSWORD}'
+redis:
+  password: '${REDIS_PASSWORD}'
 
-# rabbitmq:
-#   ingress:
-#     annotations:
-#       cert-manager.io/cluster-issuer: letsencrypt-prod
-#     hosts:
-#       - host: rabbitmq.uat.huna2.com
-#         paths:
-#           - '/'
-#     tls:
-#       - secretName: rabbitmq-ingress-tls
-#         hosts:
-#           - rabbitmq.uat.huna2.com
-#   authentication:
-#     password: '${RABBITMQ_PASSWORD}'
-#     erlangCookie: '${RABBITMQ_ERLANG_COOKIE}'
+rabbitmq:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: rabbitmq.uat.huna2.com
+        paths:
+          - '/'
+    tls:
+      - secretName: rabbitmq-ingress-tls
+        hosts:
+          - rabbitmq.uat.huna2.com
+  authentication:
+    password: '${RABBITMQ_PASSWORD}'
+    erlangCookie: '${RABBITMQ_ERLANG_COOKIE}'
 
-# mongo-express:
-#   mongodbAdminPassword: '${MONGODB_PASSWORD}'
-#   basicAuthPassword: '${MONGO_EXPRESS_PASSWORD}'
-#   siteCookieSecret: '${MONGO_EXPRESS_SECRET}'
-#   siteSessionSecret: '${MONGO_EXPRESS_SECRET}'
-#   ingress:
-#     annotations:
-#       cert-manager.io/cluster-issuer: letsencrypt-prod
-#     hosts:
-#       - host: mongodb.uat.huna2.com
-#         paths:
-#           - '/'
-#     tls:
-#       - secretName: mongodb-ingress-tls
-#         hosts:
-#           - mongodb.uat.huna2.com
+mongo-express:
+  mongodbAdminPassword: '${MONGODB_PASSWORD}'
+  basicAuthPassword: '${MONGO_EXPRESS_PASSWORD}'
+  siteCookieSecret: '${MONGO_EXPRESS_SECRET}'
+  siteSessionSecret: '${MONGO_EXPRESS_SECRET}'
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: mongodb.uat.huna2.com
+        paths:
+          - '/'
+    tls:
+      - secretName: mongodb-ingress-tls
+        hosts:
+          - mongodb.uat.huna2.com
 
-# redis-commander:
-#   redis:
-#     password: '${REDIS_PASSWORD}'
-#   httpAuth:
-#     password: '${REDIS_COMMANDER_PASSWORD}'
-#   ingress:
-#     annotations:
-#       cert-manager.io/cluster-issuer: letsencrypt-prod
-#     hosts:
-#       - host: redis.uat.huna2.com
-#         paths:
-#           - '/'
-#     tls:
-#       - secretName: redis-ingress-tls
-#         hosts:
-#           - redis.uat.huna2.com
+redis-commander:
+  redis:
+    password: '${REDIS_PASSWORD}'
+  httpAuth:
+    password: '${REDIS_COMMANDER_PASSWORD}'
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: redis.uat.huna2.com
+        paths:
+          - '/'
+    tls:
+      - secretName: redis-ingress-tls
+        hosts:
+          - redis.uat.huna2.com
 
 dex:
   config:
