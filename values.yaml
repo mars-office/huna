@@ -169,7 +169,7 @@ huna-ui:
         name: huna-ui
       name: huna-ui-configmap-volume
   volumeMounts:
-    - mountPath: /srv/assets/config
+    - mountPath: /srv/config
       name: huna-ui-configmap-volume
   imagePullSecrets:
     - name: regcred
