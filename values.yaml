@@ -192,5 +192,14 @@ huna-ui:
         hosts:
           - local.huna2.com
 
+huna-gpt:
+  imagePullSecrets:
+    - name: regcred
+  podAnnotations:
+    linkerd.io/inject: enabled
+  podLabels:
+    opa: "true"
+
+
 opa:
   styraDasToken: ''
