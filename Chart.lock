@@ -10,6 +10,6 @@ dependencies:
   version: 0.0.26
 - name: huna-gpt
   repository: oci://ghcr.io/mars-office
-  version: 0.0.4
-digest: sha256:57b711621609ac47f41409917824363b43c6820a2d3d5de52cc8102bf0a926a8
-generated: "2023-10-03T00:32:11.232970617+03:00"
+  version: 0.0.5
+digest: sha256:cd00341ab665a6222c2d8debb45ff5f64e0e2c73a09828a585cdcfcf74b2806a
+generated: "2023-10-02T21:52:18.522719405Z"
