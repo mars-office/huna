@@ -45,5 +45,5 @@ dependencies:
     version: "0.0.26"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-gpt
-    version: "0.0.5"
+    version: "0.0.7"
     repository: "oci://ghcr.io/mars-office"
