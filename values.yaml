@@ -193,6 +193,9 @@ huna-ui:
           - local.huna2.com
 
 huna-gpt:
+  env:
+    - name: NODE_ENV
+      value: local
   imagePullSecrets:
     - name: regcred
   podAnnotations:

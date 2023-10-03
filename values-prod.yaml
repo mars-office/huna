@@ -139,6 +139,9 @@ huna-ui:
           - huna2.com
 
 huna-gpt:
+  env:
+    - name: NODE_ENV
+      value: production
   ingress:
     hosts:
       - host: huna2.com
