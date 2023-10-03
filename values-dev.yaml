@@ -136,6 +136,14 @@ huna-ui:
         hosts:
           - dev.huna2.com
 
+huna-gpt:
+  ingress:
+    hosts:
+      - host: dev.huna2.com
+        paths:
+          - path: /api/gpt
+            pathType: ImplementationSpecific
+
 opa:
   styraDasToken: '${STYRA_DAS_TOKEN}'
 
