@@ -142,6 +142,8 @@ huna-gpt:
   env:
     - name: NODE_ENV
       value: production
+    - name: TRACING_ENABLED
+      value: 'yes'
   ingress:
     hosts:
       - host: huna2.com

@@ -196,6 +196,8 @@ huna-gpt:
   env:
     - name: NODE_ENV
       value: local
+    - name: TRACING_ENABLED
+      value: 'no'
   imagePullSecrets:
     - name: regcred
   podAnnotations:
