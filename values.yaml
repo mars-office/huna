@@ -212,6 +212,11 @@ huna-gpt:
       value: 'true'
     - name: OTEL_NODE_RESOURCE_DETECTORS
       value: 'env,host,os'
+    - name: MONGODB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mongodbPassword
   imagePullSecrets:
     - name: regcred
   podAnnotations:
