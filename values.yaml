@@ -196,8 +196,22 @@ huna-gpt:
   env:
     - name: NODE_ENV
       value: local
-    - name: TRACING_ENABLED
-      value: 'no'
+    - name: OTEL_TRACES_EXPORTER
+      value: 'none'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'none'
+    - name: OTEL_LOGS_EXPORTER
+      value: 'none'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: ''
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-gpt'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'true'
+    - name: OTEL_LOG_LEVEL
+      value: 'info'
   imagePullSecrets:
     - name: regcred
   podAnnotations:
