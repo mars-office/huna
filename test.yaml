@@ -1,0 +1,2520 @@
+---
+# Source: huna/charts/dex/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: huna/charts/huna-gpt/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: release-name-huna-gpt
+  labels:
+    helm.sh/chart: huna-gpt-0.0.21
+    app.kubernetes.io/name: huna-gpt
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.21"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: huna/charts/huna-ui/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: release-name-huna-ui
+  labels:
+    helm.sh/chart: huna-ui-0.0.35
+    app.kubernetes.io/name: huna-ui
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.35"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: huna/charts/mongo-express/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: release-name-mongo-express
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: huna/charts/rabbitmq/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: release-name-rabbitmq
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+secrets:
+  - name: release-name-rabbitmq
+---
+# Source: huna/charts/dex/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  config.yaml: "ZW5hYmxlUGFzc3dvcmREQjogZmFsc2UKZnJvbnRlbmQ6CiAgYWx3YXlzU2hvd0xvZ2luU2NyZWVuOiBmYWxzZQogIGlzc3VlcjogaHVuYTIKICB0aGVtZTogZGFyawppc3N1ZXI6IGh0dHBzOi8vZGV4LmxvY2FsLmh1bmEyLmNvbQpvYXV0aDI6CiAgc2tpcEFwcHJvdmFsU2NyZWVuOiB0cnVlCnN0b3JhZ2U6CiAgY29uZmlnOgogICAgZmlsZTogL2RhdGEvZGV4LmRiCiAgdHlwZTogc3FsaXRlMwp3ZWI6CiAgYWxsb3dlZE9yaWdpbnM6CiAgLSAnKic="
+---
+# Source: huna/charts/mongo-express/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-mongo-express
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  mongodb-admin-password: ""
+  site-cookie-secret: "R1pFemd1M3JQcHhrRjh1TmptT0F1Y00zbDlQVXZPcnE="
+  site-session-secret: "TDFpaVloS3h5eWpKb2N0SDRnRGpvcFR5cWJaNVRUWTI="
+---
+# Source: huna/charts/mongodb/templates/secureconfig.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-mongodb
+  labels:
+    helm.sh/chart: mongodb-0.5.18
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "6.0.10"
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  MONGO_INITDB_ROOT_USERNAME: YWRtaW4=
+---
+# Source: huna/charts/regcred/templates/secret.yaml
+kind: Secret
+type: kubernetes.io/dockerconfigjson
+apiVersion: v1
+metadata:
+  name: regcred
+  labels:
+    helm.sh/chart: regcred-0.1.0
+    app.kubernetes.io/name: regcred
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+data:
+  .dockerconfigjson:
+    eyJhdXRocyI6eyJnaGNyLmlvIjp7ImF1dGgiOiAiT2c9PSJ9fX0=
+---
+# Source: huna/templates/opa-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-huna-opa-secret
+  labels:
+    helm.sh/chart: huna-0.0.1
+    app.kubernetes.io/name: huna
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+data:
+  styraDasToken: ""
+---
+# Source: huna/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-huna
+  labels:
+    helm.sh/chart: huna-0.0.1
+    app.kubernetes.io/name: huna
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+data:
+  redisPassword: ""
+  mongodbPassword: ""
+  rabbitmqPassword: ""
+---
+# Source: huna/charts/mongodb/templates/scripts.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-mongodb-scripts
+  labels:
+    helm.sh/chart: mongodb-0.5.18
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "6.0.10"
+    app.kubernetes.io/managed-by: Helm
+data:
+  01-init-userdb.sh: |-
+    #!/bin/sh
+    # Log a message in extra initialization phase
+    # $1 - the log message
+    log() {
+      echo "***** INIT: $1"
+      echo "$(date) ***** INIT: $1" >>/tmp/init.log
+    }
+
+    set -e
+    log "Start user database initalization"
+    if [ ! -z "$MONGO_INITDB_ROOT_USERNAME" ] && [ ! -z "$MONGO_INITDB_ROOT_PASSWORD" ] && [ ! -z "$MONGO_INITDB_DATABASE" ] && [ ! -z "$USERDB_USER" ] && [ ! -z "$USERDB_PASSWORD" ]; then
+      log "Creating database $MONGO_INITDB_DATABASE"
+      $MONGOSHELL --eval "db.getSiblingDB(\"$MONGO_INITDB_DATABASE\").createUser({user: \"$USERDB_USER\", pwd: \"$USERDB_PASSWORD\", roles: [ \"readWrite\", \"dbAdmin\" ]})"
+    else
+      log "Missing parameters to create database"
+    fi
+    log "Done with user database initialization"
+
+  extra-init.sh: |-
+    #!/bin/sh    
+    # Log a message in extra initialization phase
+    # $1 - the log message
+    log() {
+      echo "***** EXTRA-INIT: $1"
+      echo "$(date) ***** EXTRA-INIT: $1" >>/tmp/extra-init.log
+    }
+
+    # Log error message and exit when errorcode is not 0
+    # $1 - Message to log in case of error
+    # $2 - Exit/Error code
+    logErrorAndExit() {
+      local message=$1
+      local errorcode=$2
+      if [ $errorcode -ne 0 ]; then
+        log "[ERROR] - $message"
+        exit $errorcode
+      fi
+    }
+
+    # Wait until final mongod is fully up and running in background
+    # see "replicaSet.extraInit" in values.yaml
+    # $1 - Number of retries
+    # $2 - Delay between retries
+    # $3 - Time to wait until mongod is initialized
+    wait_ready() {
+      log "Waiting until mongod is fully up and running"
+      local retries=$1
+      local delay=$2
+      local initdelay=$3
+      while true; do
+        mp=$(ps aux | grep "mongod --config /etc/mongo/custom.conf" | grep -v grep)
+        if [ ! -z "$mp" ]; then
+          log "mongod is running giving it time to initialize"
+          sleep $initdelay
+          break;
+        fi
+        retries=$((retries-1))
+        if [ "$retries" -le 0 ]; then
+          log "mongod is not running.. Stopping hard"
+          exit 1
+        fi
+        sleep $delay
+        log "Waiting for mongod..."
+      done
+      log "Done with waiting for mongod"
+    }
+
+    # Try to detect if there are other instances of this ReplicaSet cluster running
+    # $1 - FQDN of the headless service for this MongoDB cluster
+    # returns - 0 when cluster exists otherwise errorcode
+    detect_cluster() {
+      local service=$1
+      $MONGOSHELL --host $service --eval "db.version()"
+      result=$?
+      if [ $result -eq 0 ]; then
+        log "ReplicaSet cluster found"
+      else
+        log "No ReplicaSet cluster detected"
+      fi
+      return $result
+    }
+
+    # Try to find primary instance of ReplicaSet
+    # $1 - FQDN of the headless service for this MongoDB cluster
+    # returns - FQDN of primary instance or empty
+    find_primary() {
+      local service=$1
+      result=$($MONGOSHELL --host $service --eval "rs.status().members.filter(function(rs) { return rs.state==1;})[0].name")
+      returncode=$?
+      if [ $returncode -eq 0 ]; then
+        echo $result
+      else
+        echo
+      fi
+    }
+
+    # Init ReplicaSet primary instance
+    # $1 - FQDN of the new primary instance
+    # $2 - Name of the ReplicaSet
+    init_primary() {
+      local primary=$1
+      local replicaset=$2
+      # Try to find out if there was an initialized replicaset before (using local instance)
+      result=$($MONGOSHELL --eval "rs.status().members.filter(function(rs) { return rs.name===\"$primary\";}).length")
+      if [ "$result" = "1" ]; then
+        log "Instance $primary was in ReplicaSet before - doing nothing"
+      else
+        # Initialize local instance as primary
+        $MONGOSHELL --eval "rs.initiate({_id:\"$replicaset\",members:[{_id:0, host:\"$primary\"}]})"
+        result=$?
+        if [ $result -ne 0 ]; then
+          log "Failed to init PRIMARY - Exiting with errorcode: $result"
+          exit $result
+        else
+          # Wait until instance reaches PRIMARY state
+          wait_for_state $primary $primary 1
+          log "$primary initialized as PRIMARY instance"
+        fi
+      fi
+    }
+
+    # Detects if an instance with given name exists
+    # $1 - FQDN of primary instance for script execution
+    # $2 - FQDN of the instance instance to find
+    # returns - "0" if no instance was found - otherwise "1"
+    detect_instance() {
+      local primary=$1
+      local instance=$2
+      result=$($MONGOSHELL --host $primary --eval "rs.status().members.filter(function(rs) { return rs.name===\"$instance\";}).length")
+      returncode=$?
+      if [ $returncode -eq 0 ]; then
+        echo $result
+      else
+        log "Failed to query for instance $instance in ReplicaSet - PRIMARY not ready? - Exiting with errorcode: $returncode"
+        exit $returncode
+      fi      
+    }
+
+    # Waits until an instance has expected state
+    # $1 - FQDN of primary instance for script execution
+    # $2 - FQDN of the instance to find
+    # $3 - Expected state
+    wait_for_state() {
+      local primary=$1
+      local instance=$2
+      local state=$3
+      local delay=1
+      log "Waiting until $instance reaches state $3"
+      while true; do
+        result=$($MONGOSHELL --host $primary --eval "rs.status().members.filter(function(rs) { return rs.name===\"$instance\" && rs.state==$state;}).length")
+        returncode=$?
+        if [ $returncode -ne 0 ]; then
+          log "Failed to get state of instance $instance in ReplicaSet - PRIMARY not ready? - Exiting with errorcode: $returncode"
+          exit $returncode
+        else
+          if [ "$result" = "1" ]; then
+            break;
+          else
+            sleep $delay
+            log "Waiting..."
+          fi
+        fi
+      done
+      log "Ready - $instance reached state $state"
+    }
+
+    # Adds a secondary instance to the ReplicaSet
+    # $1 - FQDN of primary instance for script execution
+    # $2 - FQDN of the secondary instance which should be added to the ReplicaSet
+    add_secondary() {
+      local primary=$1
+      local secondary=$2
+      local result=$(detect_instance $primary $secondary)
+      if [ "$result" = "0" ]; then
+        log "Add $secondary as SECONDARY instance"
+        if [ "$IS_MONGODB_4" = "true" ]; then
+          log "Using MongoDB 4.x fallback - Add secondary with votes=0 and priority=0"
+          $MONGOSHELL --host $primary --eval "rs.add({host:\"$secondary\", priority:0, votes:0})"
+          result=$?
+          if [ $result -ne 0 ]; then
+            log "Failed to add secondary to ReplicaSet - PRIMARY not ready? - Exiting with errorcode: $result"
+            exit $result
+          fi
+          # Wait until instance reaches SECONDARY state
+          wait_for_state $primary $secondary 2
+          log "Reconfiguring priority and votes for $secondary"
+          $MONGOSHELL --host $primary --eval "var config=rs.config(); var i=config.members.findIndex(m=>{return m.host===\"$secondary\"}); config.members[i].votes=1; config.members[i].priority=1; rs.reconfig(config);"
+          result=$?
+          if [ $result -ne 0 ]; then
+            log "Failed to reconfigure secondary - Please investigate logs and fix manually! - Exiting with errorcode: $result"
+            exit $result
+          fi
+        else
+          $MONGOSHELL --host $primary --eval "rs.add({host:\"$secondary\"})"
+          result=$?
+          if [ $result -ne 0 ]; then
+            log "Failed to add secondary to ReplicaSet - PRIMARY not ready? - Exiting with errorcode: $result"
+            exit $result
+          fi
+          # Wait until instance reaches SECONDARY state
+          wait_for_state $primary $secondary 2
+        fi
+        log "$secondary added to ReplicaSet"
+      else
+        log "SECONDARY instance $secondary already in ReplicaSet - doing nothing"
+      fi
+    }
+
+    # Adds an arbiter instance to the ReplicaSet
+    # $1 - FQDN of primary instance for script execution
+    # $2 - FQDN of the arbiter instance which should be added to the ReplicaSet
+    add_arbiter() {
+      local primary=$1
+      local arbiter=$2
+      local result=$(detect_instance $primary $arbiter)
+      if [ "$result" = "0" ]; then
+        log "Add $arbiter as ARBITER instance"
+        if [ "$IS_MONGODB_4" = "false" ]; then
+          log "Setting default write concern to 1"
+          $MONGOSHELL --host $primary --eval "db.adminCommand({\"setDefaultRWConcern\" : 1,\"defaultWriteConcern\" : {\"w\" : 1}})"
+          result=$?
+          if [ $result -ne 0 ]; then
+            log "Failed to configure write concern - PRIMARY not ready? - Exiting with errorcode: $result"
+            exit $result
+          fi
+        fi
+        result=$($MONGOSHELL --host $primary --eval "rs.addArb(\"$arbiter\").ok")
+        returncode=$?
+        if [ $returncode -ne 0 ]; then
+          log "Failed to add ARBITER - PRIMARY not ready? - Exiting with errorcode: $returncode"
+          exit $returncode
+        else
+          if [ "$result" = "1" ]; then
+            # Wait until instance reaches ARBITER state
+            wait_for_state $primary $arbiter 7
+          else
+            log "Failed to add ARBITER - Quorum check failed? - Exiting for retry"
+            exit 1
+          fi
+        fi
+        log "$arbiter added to ReplicaSet as ARBITER"
+      else
+        log "Arbiter instance $arbiter already in ReplicaSet - doing nothing"
+      fi
+    }
+
+    # Try to initialize a hidden secondary
+    # $1 - FQDN of the headless service for this MongoDB cluster
+    # $2 - FQDN of the headless hidden service for this MongoDB cluster
+    init_hidden() {
+      local service=$1
+      local hidden_service=$2
+      log "Start hidden secondary initialization"
+      detect_cluster $service
+      if [ $? -eq 0 ]; then
+        local primary=$(find_primary $service)
+        if [ ! -z "$primary" ]; then
+          log "Primary $primary found - Adding this instance as HIDDEN SECONDARY"
+          add_secondary $primary "$HOSTNAME.$hidden_service"
+          log "Reconfiguring priority and hidden state for $HOSTNAME.$hidden_service"
+          $MONGOSHELL --host $primary --eval "var config=rs.config(); var i=config.members.findIndex(m=>{return m.host===\"$HOSTNAME.$hidden_service\"}); config.members[i].hidden=true; config.members[i].priority=0; rs.reconfig(config);"
+          result=$?
+          if [ $result -ne 0 ]; then
+            log "Failed to reconfigure HIDDEN SECONDARY - Please investigate logs and fix manually! - Exiting with errorcode: $result"
+            exit $result
+          fi
+        else
+          log "ERROR: Primary not found - Exiting"
+          exit 1
+        fi
+      else
+          log "ERROR: ReplicaSet cluster not running - Exiting"
+          exit 1
+      fi      
+      log "Done with hidden secondary initialization\n-----"
+    }
+
+    # Try to initialize an arbiter for the ReplicaSet
+    # $1 - FQDN of the headless service for this MongoDB cluster
+    # $2 - FQDN of the headless arbiter service for this MongoDB cluster
+    init_arbiter() {
+      local service=$1
+      local arbiter_service=$2
+      log "Start arbiter initialization"
+      detect_cluster $service
+      if [ $? -eq 0 ]; then
+        local primary=$(find_primary $service)
+        if [ ! -z "$primary" ]; then
+          log "Primary $primary found - Adding this instance as ARBITER"
+          add_arbiter $primary "$HOSTNAME.$arbiter_service"
+        else
+          log "ERROR: Primary not found - Exiting"
+          exit 1
+        fi
+      else
+          log "ERROR: ReplicaSet cluster not running - Exiting"
+          exit 1
+      fi
+      log "Done with Arbiter initialization\n-----"
+    }
+
+    # Try to initialize a ReplicaSet
+    # $1 - FQDN of the headless service for this MongoDB cluster
+    # $2 - Name of the ReplicaSet
+    init_replicaset() {
+      local service=$1
+      local replicaset=$2
+      log "Start ReplicaSet initialization"
+      # First try to detect if other instance of this ReplicSet cluster are available
+      detect_cluster $service
+      if [ $? -eq 0 ]; then
+        # Try to find the primary instance
+        local primary=$(find_primary $service)
+        if [ -z "$primary" ]; then
+          log "Primary not found - Trying to detect if this instance was PRIMARY before"
+          result=$(detect_instance $service "$HOSTNAME.$service")
+          # Find out whether the actual instance was the primary before
+          if [ "$result" = "0" ]; then
+            log "Not the PRIMARY - Can't add this instance $HOSTNAME.$service without a running PRIMARY - Exiting"
+            exit 1
+          else
+            log "This instance $HOSTNAME.$service was the PRIMARY before - Continue starting..."
+          fi
+        else
+          log "Primary $primary found"
+          add_secondary $primary "$HOSTNAME.$service"
+        fi
+      else
+        # Assume that this is the first instance in the cluster - initialize it as primary 
+        init_primary "$HOSTNAME.$service" $replicaset
+      fi
+      log "Done with ReplicaSet initialization\n-----"
+    }
+
+    # Terminates a child process
+    # $1 - PID of child process
+    # $2 - Kill signal number
+    # $3 - Delay before terminate (leave empty if no delay desired)
+    _terminate() {
+      local childproc=$1
+      local signal=$2
+      local delay=$3
+      log "Terminating entrypoint"
+      kill -s $signal $childproc
+      if [ ! -z "$delay" ]; then
+        log "Waiting $delay seconds before termination..."
+        sleep $delay
+      fi
+      log "Bye bye"
+    }
+
+    init() {
+      log "Try to detect default mongo shell executable"
+      local mongoshell=$(which mongosh)
+      if [ ! -z "$mongoshell" ]; then
+        log "Using mongosh as default shell"
+        export IS_MONGODB_4="false"
+      else
+        log "Using mongo as default shell"
+        mongoshell=$(which mongo)
+        export IS_MONGODB_4="true"
+      fi
+      if [ ! -f /extrainitscripts/mongoshell ]; then
+        ln -s $mongoshell /extrainitscripts/mongoshell
+      else
+        log "Symbolic link for mongoshell already exists"
+      fi
+      export MONGOSHELL="/extrainitscripts/mongoshell --quiet --username $MONGO_INITDB_ROOT_USERNAME --password $MONGO_INITDB_ROOT_PASSWORD"
+    }
+
+    main() {
+      log "Starting original entrypoint in background"
+      docker-entrypoint.sh $@ &
+      mongoproc=$!
+      log "Entrypoint pid: $mongoproc"
+      trap "_terminate $mongoproc 15 $terminatedelay" 15
+      trap "_terminate $mongoproc 9 $terminatedelay" 9
+      wait $mongoproc
+    }
+
+    init
+    main $@
+
+  init.sh: |
+    #!/bin/sh
+    echo "Start initialization"
+    echo "Copy init scripts"
+    # Copy optional initialization scripts only to first cluster instance (initial primary on a new replicaset)
+    if [ "$HOSTNAME" = "release-name-mongodb-0" ]; then
+      cp /scripts/0*-init-*.sh /initscripts
+      if [ -d /extrascripts ]; then
+        echo "Copy extra scripts"
+        cp /extrascripts/* /initscripts
+      fi
+      if [ -d /customscripts ]; then
+        echo "Copy custom scripts"
+        cp /customscripts/* /initscripts
+      fi
+    fi
+    # Copy extra initialization scripts for ReplicaSet cluster
+    cp /scripts/extra-*.sh /extrainitscripts
+    echo "Copy custom configuration"
+    touch /configs/custom.conf
+    if [ -d /customconfig ]; then
+      echo "Create custom mongodb config"
+      cat /customconfig/* >>/configs/custom.conf
+    fi
+    if [ -d /extraconfigs ]; then
+      echo "Add extra configs to custom mongodb config"
+      cat /extraconfigs/* >>/configs/custom.conf
+    fi    
+    echo "Initialization done."
+---
+# Source: huna/charts/rabbitmq/templates/plugins-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-rabbitmq-plugins
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+data:
+  enabled_plugins: |
+    [rabbitmq_management].
+---
+# Source: huna/charts/rabbitmq/templates/rabbit-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-rabbitmq-config
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+data:
+  rabbitmq.conf: |+
+    ## Initial login user
+    loopback_users.guest = false
+    ## RabbitMQ options
+    listeners.tcp.default = 5672
+    ## Memory options
+    
+    ## Management UI plugin options
+    management.tcp.port = 15672
+---
+# Source: huna/charts/rabbitmq/templates/scripts.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-rabbitmq-scripts
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+data:
+  init.sh: |
+    #!/bin/sh
+    echo "Initializing RabbitMQ instance..."
+    echo "Copy configuration"
+    cp /temp/rabbitmq/* /etc/rabbitmq
+    if [ -d /extraconfigs ]; then
+      echo "Add extra configs to rabbitmq config"
+      cat /extraconfigs/* >>/etc/rabbitmq/rabbitmq.conf
+    fi
+    if [ -d /extraadvancedconfigs ]; then
+      echo "Add extra advanced configs to rabbitmq advanced config"
+      cat /extraadvancedconfigs/* >>/etc/rabbitmq/advanced.conf
+    fi
+    if [ -d /temp/plugins ]; then
+      echo "Copy plugin configuration"
+      cp /temp/plugins/* /etc/rabbitmq
+    else
+      echo "No plugins configured."
+    fi
+    mkdir -p /etc/rabbitmq/conf.d
+    if [ ! -f /var/lib/rabbitmq/.erlang.cookie ]; then
+      echo "Copy erlang cookie"
+      echo $ERLANG_COOKIE >/var/lib/rabbitmq/.erlang.cookie
+    else
+      echo "Erlang cookie already exists."
+    fi
+    chmod 600 /var/lib/rabbitmq/.erlang.cookie
+    echo "Finished."
+  startup.sh: |
+  shutdown.sh: |
+    echo "PreStop: Stopping RabbitMQ" >/proc/1/fd/1
+    rabbitmqctl stop_app
+    echo "PreStop: RabbitMQ stopped" >/proc/1/fd/1
+    sleep 5
+  safeshutdown.sh: |
+    while true; do
+        waiting="false"
+        if ! rabbitmq-diagnostics -q check_if_node_is_mirror_sync_critical >/proc/1/fd/1; then
+            echo "PreStop: check_if_node_is_mirror_sync_critical returns error. Continuing to wait" >/proc/1/fd/1
+            waiting="true"
+        else
+            echo "PreStop: check_if_node_is_mirror_sync_critical returns o.k." >/proc/1/fd/1
+        fi
+        if ! rabbitmq-diagnostics -q check_if_node_is_quorum_critical >/proc/1/fd/1; then
+            echo "PreStop: check_if_node_is_quorum_critical returns error. Continuing to wait" >/proc/1/fd/1
+            waiting="true"
+        else
+            echo "PreStop: check_if_node_is_quorum_critical returns o.k." >/proc/1/fd/1
+        fi
+        if [ $waiting = "true" ]; then
+            sleep 1
+        else
+            break
+        fi
+    done
+---
+# Source: huna/charts/redis/templates/scripts.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-redis-scripts
+  labels:
+    helm.sh/chart: redis-0.7.2
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "7.2.1"
+    app.kubernetes.io/managed-by: Helm
+data:
+  init.sh: |
+    #!/bin/bash
+    REDIS_CONFIG=/data/conf/redis.conf
+    SENTINEL_CONFIG=/data/conf/sentinel.conf
+    if [ -f "/data/init.log" ]; then
+      echo "Detected restart of this instance ($HOSTNAME)"
+      echo "## This was the previous log:"
+      cat /data/init.log
+      echo "## End of previous log"
+    fi
+
+    # Log a message during initialization phase
+    # $1 - the log message
+    log() {
+      echo "$(date) $1"
+      echo "$(date) $1" >>/data/init.log
+    }
+
+    # Creating redis base configuration
+    configure_redis_base() {
+      log "Creating redis base configuration"
+      mkdir -p /data/conf
+      rm -f $REDIS_CONFIG
+
+      log "Setting redis server defaults"
+      echo "port 6379" >>$REDIS_CONFIG
+      echo "protected-mode no" >>$REDIS_CONFIG
+      echo "bind 0.0.0.0" >>$REDIS_CONFIG
+      echo "dir /data" >>$REDIS_CONFIG
+      log "Finished creating base configuration"
+    }
+
+    configure_redis_ext() {
+      if [ -f /usr/local/etc/redis/redis.conf ]; then
+          log "Adding optional redis configuration"
+          cat /usr/local/etc/redis/redis.conf >>$REDIS_CONFIG
+      fi
+      if [ -d /extraredisconfigs ]; then
+        log "Adding extra redis configs to redis configuration"
+        cat /extraredisconfigs/* >>$REDIS_CONFIG
+      fi
+    }
+
+    test_master_alive() {
+      TEST="$(timeout 2s redis-cli -h $MASTER -p 6379 ping)"
+      if [ -z "$TEST" ]; then
+        log "Master is not alive"
+        return 1
+      fi
+      log "Master is alive"
+      return 0
+    }
+
+    test_valid_dns() {
+      KNOWN_HOSTS=($(getent hosts release-name-redis-headless.default.svc.cluster.local | awk '{ print $1 }'))
+      log "## Known hosts for headless service release-name-redis-headless.default.svc.cluster.local:"
+      for AHOSTIP in "${KNOWN_HOSTS[@]}"; do
+        AHOSTNAME=$(getent hosts $AHOSTIP | awk '{print $2}')
+        log "${AHOSTIP} ${AHOSTNAME}"
+      done
+      log "#####"
+      MASTERENTRY="$(getent hosts $MASTER | awk '{ print $1 }')"
+    }
+
+    configure_sentinel() {
+      log "Configuring sentinel server..."
+      rm -f $SENTINEL_CONFIG
+
+      log "Setting sentinel defaults"
+      if [ -z "$MASTER" ]; then
+        MASTER="$(getent hosts $HOSTNAME | awk '{ print $1 }')"
+        log "No master found - Configuring sentinel for master $HOSTNAME with address $MASTER"
+        echo "sentinel monitor redisha $MASTER 6379 2" >>$SENTINEL_CONFIG
+      else
+        log "Redis master was found - Configuring sentinel for master address $MASTER"
+        echo "sentinel monitor redisha $MASTER 6379 2" >>$SENTINEL_CONFIG
+      fi
+      echo "sentinel down-after-milliseconds redisha 30000" >>$SENTINEL_CONFIG
+      echo "sentinel failover-timeout redisha 180000" >>$SENTINEL_CONFIG
+    }
+
+    configure_sentinel_ext() {
+      if [ -f /usr/local/etc/redis/sentinel.conf ]; then
+          log "Adding optional sentinel configuration settings"
+          cat /usr/local/etc/redis/sentinel.conf >>$SENTINEL_CONFIG
+      fi
+      if [ -d /extrasentinelconfigs ]; then
+        log "Adding extra sentinel configs to sentinel configuration"
+        cat /extrasentinelconfigs/* >>$SENTINEL_CONFIG
+      fi
+      log "Configuring sentinel server finished."
+    }
+
+    configure_redis_cluster() {
+      log "Try to resolve cluster service.."
+      SERVICE="$(getent hosts release-name-redis)"
+      if [ -z "$SERVICE" ]; then
+        log "Can't resolve service - Will restart after DNS failure wait"
+        sleep 15
+        log "Restart"
+        exit 1
+      else
+        log "Service resolved: ${SERVICE}"
+      fi
+      log "Try to detect cluster master.."
+      MASTER="$(timeout 2s redis-cli -h release-name-redis -p 26379 sentinel get-master-addr-by-name redisha | head -n 1)"
+      if [ -z "$MASTER" ]; then
+        log "No master found - This instance ($HOSTNAME) will be master now"
+      else
+        log "Redis master was found with address $MASTER - Checking host dns entry"
+        test_valid_dns
+        if [ -z "$MASTERENTRY" ]; then
+          log "No valid DNS entry found!"
+          if [ -f "/data/failover_restart" ]; then
+            rm /data/failover_restart
+            log "Forcing failover now"
+            redis-cli -h release-name-redis -p 26379 sentinel failover redisha
+          else
+            log "Waiting for failover before restart"
+            sleep 35
+            touch /data/failover_restart
+          fi
+          log "Restart"
+          exit 1
+        else
+          MASTER=$MASTERENTRY
+          log "$MASTER has valid DNS entry"
+          log "Checking if master is alive"
+          test_master_alive
+          if [ "$?" -eq "1" ]; then
+            if [ -f "/data/failover_restart" ]; then
+              rm /data/failover_restart
+              log "Master is still dead! - forcing failover and retry pod initialization"
+              redis-cli -h release-name-redis -p 26379 sentinel failover redisha
+            else
+              log "Dead master at address $MASTER detected! - waiting for failover"
+              sleep 35
+              touch /data/failover_restart
+            fi
+            log "Restart"
+            exit 1
+          else
+            rm -f /data/failover_restart
+            log "Setting this instance ($HOSTNAME) as replicaof $MASTER"
+            echo "replicaof $MASTER 6379" >>$REDIS_CONFIG
+          fi
+        fi
+      fi
+    }
+
+    log "Creating configuration..."
+    configure_redis_base
+    configure_redis_ext
+    log "Done."
+    rm -f /data/init.log
+---
+# Source: huna/templates/opa-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-huna-opa-config
+  labels:
+    helm.sh/chart: huna-0.0.1
+    app.kubernetes.io/name: huna
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+data:
+  config.yaml: |-
+    discovery:
+      name: discovery
+      prefix: /systems/faea3ba894454bb3a61952b0059d933b
+      service: styra
+    labels:
+      system-id: faea3ba894454bb3a61952b0059d933b
+      system-type: custom
+      app: huna
+      env: ${HUNA_ENVIRONMENT}
+      pod: ${HOSTNAME}
+    services:
+      - credentials:
+          bearer:
+            token: ${STYRA_DAS_TOKEN}
+        name: styra
+        url: https://0e03ik.svc.styra.com/v1
+      - credentials:
+          bearer:
+            token: ${STYRA_DAS_TOKEN}
+        name: styra-bundles
+        url: https://0e03ik.svc.styra.com/v1/bundles
+---
+# Source: huna/templates/ui-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-huna-ui
+  labels:
+    helm.sh/chart: huna-0.0.1
+    app.kubernetes.io/name: huna
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+data:
+  'version.js': 'window.hunaVersion = "0.0.1"; window.hunaEnv = "local"; window.hunaVersionDetails = "Release date: 2023-10-08 01:26:42.690209046 +0300 EEST m=+0.498634067. Versions: huna-ui:0.0.35 huna-gpt:0.0.21"'
+---
+# Source: huna/templates/dex-data-pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: release-name-huna-dex-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+# Source: huna/charts/dex/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+rules:
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources: ["customresourcedefinitions"]
+    verbs: ["list", "create"]
+---
+# Source: huna/charts/dex/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: release-name-dex-cluster
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: release-name-dex
+subjects:
+- kind: ServiceAccount
+  namespace: default
+  name: release-name-dex
+---
+# Source: huna/charts/dex/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+rules:
+  - apiGroups: ["dex.coreos.com"]
+    resources: ["*"]
+    verbs: ["*"]
+---
+# Source: huna/charts/rabbitmq/templates/role.yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: release-name-rabbitmq-endpoint-reader
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+rules:
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get"]
+#  - apiGroups: [""]
+#    resources: ["events"]
+#    verbs: ["create"]
+---
+# Source: huna/charts/dex/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: release-name-dex  
+subjects:
+- kind: ServiceAccount
+  namespace: default
+  name: release-name-dex
+---
+# Source: huna/charts/rabbitmq/templates/rolebinding.yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: release-name-rabbitmq-endpoint-reader
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+subjects:
+  - kind: ServiceAccount
+    name: release-name-rabbitmq
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: release-name-rabbitmq-endpoint-reader
+---
+# Source: huna/charts/dex/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 5556
+      targetPort: http
+      protocol: TCP
+      appProtocol: http
+    - name: telemetry
+      port: 5558
+      targetPort: telemetry
+      protocol: TCP
+      appProtocol: http
+  selector:
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/huna-gpt/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-huna-gpt
+  labels:
+    helm.sh/chart: huna-gpt-0.0.21
+    app.kubernetes.io/name: huna-gpt
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.21"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: huna-gpt
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/huna-ui/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-huna-ui
+  labels:
+    helm.sh/chart: huna-ui-0.0.35
+    app.kubernetes.io/name: huna-ui
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.35"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: huna-ui
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/mongo-express/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-mongo-express
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8081
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/mongodb/templates/service-internal.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-mongodb-internal
+  labels:
+    helm.sh/chart: mongodb-0.5.18
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "6.0.10"
+    app.kubernetes.io/managed-by: Helm
+    service-type: primary-secondary
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - port: 27017
+      targetPort: mongodb
+      protocol: TCP
+      name: mongodb
+  selector:
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+    service-type: primary-secondary
+---
+# Source: huna/charts/mongodb/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-mongodb
+  labels:
+    helm.sh/chart: mongodb-0.5.18
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "6.0.10"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 27017
+      targetPort: mongodb
+      protocol: TCP
+      name: mongodb
+  selector:
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/rabbitmq/templates/service-internal.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-rabbitmq-internal
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - port: 5672
+      targetPort: amqp
+      name: amqp
+    - port: 15672
+      targetPort: mgmt
+      name: mgmt
+    - port: 4369
+      targetPort: epmd
+      name: epmd
+    - port: 25672
+      targetPort: dist
+      name: dist
+  selector:
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/rabbitmq/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-rabbitmq
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+    - port: 5672
+      targetPort: amqp
+      name: amqp
+    - port: 15672
+      targetPort: mgmt
+      name: mgmt
+  selector:
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+  type: ClusterIP
+---
+# Source: huna/charts/redis-commander/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-redis-commander
+  labels:
+    helm.sh/chart: redis-commander-0.1.14
+    app.kubernetes.io/name: redis-commander
+    app.kubernetes.io/instance: release-name
+    app: redis-commander
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: redis-commander
+    app.kubernetes.io/instance: release-name
+    app: redis-commander
+---
+# Source: huna/charts/redis/templates/service-internal.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-redis-headless
+  labels:
+    helm.sh/chart: redis-0.7.2
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "7.2.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - port: 6379
+      targetPort: redis
+      protocol: TCP
+      name: redis
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/redis/templates/services.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-redis
+  labels:
+    helm.sh/chart: redis-0.7.2
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "7.2.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+    - port: 6379
+      targetPort: redis
+      protocol: TCP
+      name: redis
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: release-name
+---
+# Source: huna/charts/dex/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+    
+  
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dex
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      
+        checksum/config: 1c9796762e58b80df40f7be6bff17928e65865206a936442b6d1f9b2ba610af4
+      labels:
+        app.kubernetes.io/name: dex
+        app.kubernetes.io/instance: release-name
+    spec:
+      serviceAccountName: release-name-dex
+      securityContext:
+        {}
+      containers:
+        - name: dex
+          securityContext:
+            {}
+          image: "ghcr.io/dexidp/dex:v2.37.0"
+          imagePullPolicy: IfNotPresent
+          args:
+            - dex
+            - serve
+            - --web-http-addr
+            - 0.0.0.0:5556
+            - --telemetry-addr
+            - 0.0.0.0:5558
+            - /etc/dex/config.yaml
+          env:
+          ports:
+            - name: http
+              containerPort: 5556
+              protocol: TCP
+            - name: telemetry
+              containerPort: 5558
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz/live
+              port: telemetry
+          readinessProbe:
+            httpGet:
+              path: /healthz/ready
+              port: telemetry
+          resources:
+            {}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/dex
+              readOnly: true
+            - mountPath: /data
+              name: dex-data
+      volumes:
+        - name: config
+          secret:
+            secretName: release-name-dex
+        - name: dex-data
+          persistentVolumeClaim:
+            claimName: huna-dex-data
+---
+# Source: huna/charts/huna-gpt/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-huna-gpt
+  labels:
+    helm.sh/chart: huna-gpt-0.0.21
+    app.kubernetes.io/name: huna-gpt
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.21"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: huna-gpt
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app.kubernetes.io/name: huna-gpt
+        app.kubernetes.io/instance: release-name
+        opa: "true"
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      serviceAccountName: release-name-huna-gpt
+      securityContext:
+        {}
+      volumes:
+        []
+      containers:
+        - name: huna-gpt
+          securityContext:
+            {}
+          image: "ghcr.io/mars-office/huna-gpt:v0.0.21"
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            []
+          env:
+            - name: NODE_ENV
+              value: local
+            - name: OTEL_TRACES_EXPORTER
+              value: none
+            - name: OTEL_METRICS_EXPORTER
+              value: none
+            - name: OTEL_LOGS_EXPORTER
+              value: none
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: ""
+            - name: OTEL_SERVICE_NAME
+              value: huna-gpt
+            - name: OTEL_PROPAGATORS
+              value: b3,b3multi
+            - name: OTEL_SDK_DISABLED
+              value: "true"
+            - name: OTEL_NODE_RESOURCE_DETECTORS
+              value: env,host,os
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mongodbPassword
+                  name: huna
+          volumeMounts:
+            []
+          ports:
+            - name: http
+              containerPort: 3001
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api/gpt/health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /api/gpt/health
+              port: http
+          resources:
+            {}
+---
+# Source: huna/charts/huna-ui/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-huna-ui
+  labels:
+    helm.sh/chart: huna-ui-0.0.35
+    app.kubernetes.io/name: huna-ui
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.35"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: huna-ui
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app.kubernetes.io/name: huna-ui
+        app.kubernetes.io/instance: release-name
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      serviceAccountName: release-name-huna-ui
+      securityContext:
+        {}
+      volumes:
+        - configMap:
+            name: huna-ui
+          name: huna-ui-configmap-volume
+      containers:
+        - name: huna-ui
+          securityContext:
+            {}
+          image: "ghcr.io/mars-office/huna-ui:v0.0.35"
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            []
+          env:
+            []
+          volumeMounts:
+            - mountPath: /srv/assets/config
+              name: huna-ui-configmap-volume
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {}
+---
+# Source: huna/charts/mongo-express/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-mongo-express
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mongo-express
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mongo-express
+        app.kubernetes.io/instance: release-name
+      annotations:
+        checksum/secret: c3bee1feab97aa748de6cfb4e3923c77b4655f9a816c5b4a0c2bf28b2a593831
+        linkerd.io/inject: enabled
+    spec:
+      
+      serviceAccountName: release-name-mongo-express
+      securityContext:
+        {}
+      containers:
+        - name: mongo-express
+          securityContext:
+            {}
+          image: docker.io/mongo-express:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ME_CONFIG_MONGODB_SERVER
+              value: "huna-mongodb"
+            - name: ME_CONFIG_MONGODB_PORT
+              value: "27017"
+            - name: ME_CONFIG_MONGODB_ENABLE_ADMIN
+              value: "true"
+            - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+              value: "admin"
+            - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-mongo-express
+                  key: mongodb-admin-password
+            - name: ME_CONFIG_SITE_BASEURL
+              value: "/"
+            - name: ME_CONFIG_SITE_COOKIESECRET
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-mongo-express
+                  key: site-cookie-secret
+            - name: ME_CONFIG_SITE_SESSIONSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: release-name-mongo-express
+                  key: site-session-secret
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            {}
+---
+# Source: huna/charts/redis-commander/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-redis-commander
+  labels:
+    helm.sh/chart: redis-commander-0.1.14
+    app.kubernetes.io/name: redis-commander
+    app.kubernetes.io/instance: release-name
+    app: redis-commander
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis-commander
+      app.kubernetes.io/instance: release-name
+      app: redis-commander
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app.kubernetes.io/name: redis-commander
+        app.kubernetes.io/instance: release-name
+        app: redis-commander
+    spec:
+      serviceAccountName: default
+      automountServiceAccountToken: true
+      securityContext:
+        {}
+      containers:
+        - name: redis-commander
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+          image: visol/redis-commander:0.8.0
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          env:
+          - name: REDIS_HOST
+            value: huna-redis
+          - name: HTTP_USER
+            value: admin
+          - name: K8S_SIGTERM
+            value: "1"
+          livenessProbe:
+            httpGet:
+              path: /favicon.png
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          resources:
+            {}
+---
+# Source: huna/charts/mongodb/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: release-name-mongodb
+  labels:
+    helm.sh/chart: mongodb-0.5.18
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "6.0.10"
+    app.kubernetes.io/managed-by: Helm
+    service-type: primary-secondary
+spec:
+  serviceName: release-name-mongodb-internal
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mongodb
+      app.kubernetes.io/instance: release-name
+      service-type: primary-secondary
+  template:
+    metadata:
+      annotations:
+        checksum/customconfig: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+        checksum/secureconfig: 08b7d75cf80f1bff287cdfe9c55ca14981f0530fcda475cc9197857ad1b7444a
+        checksum/customscripts: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+        checksum/scripts: f183a2691c62a39a67760be4e58640e385cacc7634bf28c06a708834232fcf6f
+        linkerd.io/inject: enabled
+      labels:
+        app.kubernetes.io/name: mongodb
+        app.kubernetes.io/instance: release-name
+        service-type: primary-secondary
+    spec:
+      serviceAccountName: default
+      securityContext:
+        fsGroup: 999
+        supplementalGroups:
+        - 999
+      initContainers:
+        - name: mongodb-init
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 999
+            runAsNonRoot: true
+            runAsUser: 999
+          image: "docker.io/mongo:6.0.10"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /initscripts
+              name: initscripts
+            - mountPath: /extrainitscripts
+              name: extrainitscripts
+            - mountPath: /scripts
+              name: scripts
+            - mountPath: /configs
+              name: configs
+          command: [ "/scripts/init.sh" ]
+      containers:
+        - name: mongodb
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 999
+            runAsNonRoot: true
+            runAsUser: 999
+          image: "docker.io/mongo:6.0.10"
+          imagePullPolicy: IfNotPresent
+          command: [ "/extrainitscripts/extra-init.sh" ]
+          args:
+            - --config
+            - /etc/mongo/custom.conf
+          ports:
+            - name: mongodb
+              containerPort: 27017
+              protocol: TCP
+          startupProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - /extrainitscripts/mongoshell --eval "db.adminCommand('ping')"
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - /extrainitscripts/mongoshell --eval "db.adminCommand('ping')"
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - /extrainitscripts/mongoshell --eval "db.adminCommand('ping')"
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+          envFrom:
+            - secretRef:
+                name: release-name-mongodb
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: extrainitscripts
+              mountPath: /extrainitscripts
+            - name: mongodb-volume
+              mountPath: /data/db
+            - mountPath: /docker-entrypoint-initdb.d
+              name: initscripts
+            - mountPath: /etc/mongo
+              name: configs
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: extrainitscripts
+          emptyDir: {}
+        - name: initscripts
+          emptyDir: {}
+        - name: configs
+          emptyDir: {}
+        - name: keyfile
+          emptyDir: {}
+        - name: scripts
+          configMap:
+            name: release-name-mongodb-scripts
+            defaultMode: 0555
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodb-volume
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+---
+# Source: huna/charts/rabbitmq/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: release-name-rabbitmq
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: rabbitmq
+      app.kubernetes.io/instance: release-name
+  serviceName: release-name-rabbitmq-internal
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        checksum/rabbit-config: 228e04e96a3c47ff5467d68cada7310324f43f70cb134d55fd3910ef8a1b0971
+        checksum/plugins-config: ac2938ad933029dc521e0c33205625010f43ea966f3ac5414a8201461e072f37
+        checksum/scripts: b024b4c2222d3c48c602db582139cdd176d40cfcb05167e15ff70fa815b25aa6
+        linkerd.io/inject: enabled
+      labels:
+        app.kubernetes.io/name: rabbitmq
+        app.kubernetes.io/instance: release-name
+    spec:
+      serviceAccountName: release-name-rabbitmq
+      securityContext:
+        fsGroup: 999
+        supplementalGroups:
+        - 999
+      initContainers:
+        - name: rabbitmq-init
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 999
+            runAsNonRoot: true
+            runAsUser: 999
+          image: "docker.io/busybox:latest"
+          imagePullPolicy: IfNotPresent
+          env:
+          envFrom:
+          volumeMounts:
+            - name: config
+              mountPath: /etc/rabbitmq
+            - name: rabbitconfig
+              mountPath: /temp/rabbitmq
+            - name: rabbitmq-volume
+              mountPath: /var/lib/rabbitmq
+            - name: scripts
+              mountPath: /scripts
+            - name: plugins
+              mountPath: /temp/plugins
+          command: [ "/scripts/init.sh" ]
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: rabbitmq
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 999
+            runAsNonRoot: true
+            runAsUser: 999
+          image: "docker.io/rabbitmq:3.12.4"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: amqp
+              containerPort: 5672
+            - name: mgmt
+              containerPort: 15672
+            - name: epmd
+              containerPort: 4369
+            - name: dist
+              containerPort: 25672
+          startupProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - rabbitmq-diagnostics -q check_running
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - rabbitmq-diagnostics -q check_running
+            initialDelaySeconds: 60
+            timeoutSeconds: 20
+            periodSeconds: 30
+            failureThreshold: 5
+            successThreshold: 1
+          readinessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -ec
+                - rabbitmq-diagnostics -q check_running
+            initialDelaySeconds: 60
+            timeoutSeconds: 20
+            periodSeconds: 30
+            failureThreshold: 5
+            successThreshold: 1
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - bash
+                  - -ec
+                  - /scripts/shutdown.sh
+          env:
+            - name: RABBITMQ_USE_LONGNAME
+              value: "true"
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: RABBITMQ_NODENAME
+              value: rabbit@$(NODE_NAME).release-name-rabbitmq-internal.default.svc.cluster.local
+          envFrom:
+          volumeMounts:
+            - name: logs
+              mountPath: /var/log/rabbitmq
+            - name: tmp
+              mountPath: /tmp
+            - name: rabbitmq-volume
+              mountPath: /var/lib/rabbitmq
+            - name: config
+              mountPath: /etc/rabbitmq
+            - name: scripts
+              mountPath: /scripts
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: config
+          emptyDir: {}
+        - name: rabbitconfig
+          configMap:
+            name: release-name-rabbitmq-config
+        - name: scripts
+          configMap:
+            name: release-name-rabbitmq-scripts
+            defaultMode: 0555
+        - name: plugins
+          configMap:
+            name: release-name-rabbitmq-plugins
+  volumeClaimTemplates:
+    - metadata:
+        name: rabbitmq-volume
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+---
+# Source: huna/charts/redis/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: release-name-redis
+  labels:
+    helm.sh/chart: redis-0.7.2
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "7.2.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  serviceName: release-name-redis-headless
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      annotations:
+        checksum/customconfig: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+        checksum/scripts: a5e6a7aeb882b9dff680e7f4c056ecd7bdf10faf2ce09974f06295e09a9272ab
+        linkerd.io/inject: enabled
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/instance: release-name
+    spec:
+      serviceAccountName: default
+      securityContext:
+        fsGroup: 999
+        supplementalGroups:
+        - 999
+      initContainers:
+        - name: redis-init
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 999
+            runAsNonRoot: true
+            runAsUser: 999
+          image: "docker.io/redis:7.2.1"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+            - name: scripts
+              mountPath: /scripts
+          command: [ "/scripts/init.sh" ]
+      containers:
+        - name: redis-server
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 999
+            runAsNonRoot: true
+            runAsUser: 999
+          image: "docker.io/redis:7.2.1"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
+          startupProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - redis-cli ping
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+            periodSeconds: 10              
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - redis-cli ping
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - redis-cli ping
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+            periodSeconds: 10
+          command:
+            - redis-server
+          args:
+            - /data/conf/redis.conf
+            - --requirepass $(REDISPASSWORD)
+            - --protected-mode yes
+          env:
+            - name: REDISPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: redisPassword
+                  name: huna
+          envFrom:
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+      volumes:
+        - name: scripts
+          configMap:
+            name: release-name-redis-scripts
+            defaultMode: 0555
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+---
+# Source: huna/charts/dex/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-dex
+  labels:
+    helm.sh/chart: dex-0.15.3
+    app.kubernetes.io/name: dex
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "2.37.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: root-ca
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - "dex.local.huna2.com"
+      secretName: dex-ingress-tls
+  rules:
+    - host: "dex.local.huna2.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: release-name-dex
+                port:
+                  number: 5556
+---
+# Source: huna/charts/huna-gpt/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-huna-gpt
+  labels:
+    helm.sh/chart: huna-gpt-0.0.21
+    app.kubernetes.io/name: huna-gpt
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.21"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+    - host: "local.huna2.com"
+      http:
+        paths:
+          - path: /api/gpt
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: release-name-huna-gpt
+                port:
+                  number: 80
+---
+# Source: huna/charts/huna-ui/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-huna-ui
+  labels:
+    helm.sh/chart: huna-ui-0.0.35
+    app.kubernetes.io/name: huna-ui
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "v0.0.35"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: root-ca
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - "local.huna2.com"
+      secretName: huna-ingress-tls
+  rules:
+    - host: "local.huna2.com"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: release-name-huna-ui
+                port:
+                  number: 80
+---
+# Source: huna/charts/mongo-express/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-mongo-express
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: root-ca
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - "mongodb.local.huna2.com"
+      secretName: mongodb-ingress-tls
+  rules:
+    - host: "mongodb.local.huna2.com"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: release-name-mongo-express
+                port:
+                  number: 8081
+---
+# Source: huna/charts/rabbitmq/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-rabbitmq
+  labels:
+    helm.sh/chart: rabbitmq-0.7.4
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "3.12.4"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: root-ca
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - "rabbitmq.local.huna2.com"
+      secretName: rabbitmq-ingress-tls
+  rules:
+    - host: "rabbitmq.local.huna2.com"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: release-name-rabbitmq
+                port:
+                  number: 15672
+---
+# Source: huna/charts/redis-commander/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-redis-commander
+  labels:
+    helm.sh/chart: redis-commander-0.1.14
+    app.kubernetes.io/name: redis-commander
+    app.kubernetes.io/instance: release-name
+    app: redis-commander
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/cluster-issuer: root-ca
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - "redis.local.huna2.com"
+      secretName: redis-ingress-tls
+  rules:
+    - host: "redis.local.huna2.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: release-name-redis-commander
+                port:
+                  number: 80
+---
+# Source: huna/templates/gk-opa-policy.yaml
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: opa-sidecar-container-policy
+spec:
+  applyTo:
+  - groups: [""]
+    kinds: ["Pod"]
+    versions: ["v1"]
+  match:
+    labelSelector:
+      matchLabels:
+        opa: "true"
+    scope: Namespaced
+    namespaces: [ default ]
+    kinds:
+    - apiGroups: ["*"]
+      kinds: ["Pod"]
+  location: "spec.containers[name:opa]"
+  parameters:
+    assign:
+      value:
+        name: "opa"
+        imagePullPolicy: Always
+        image: openpolicyagent/opa:latest-static
+        args:
+          - "run"
+          - "--addr=0.0.0.0:8181"
+          - "--ignore=.*"
+          - "--server"
+          - "--config-file=/config/config.yaml"
+        env:
+          - name: STYRA_DAS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: release-name-huna-opa-secret
+                key: styraDasToken
+          - name: HUNA_ENVIRONMENT
+            value: local
+        ports:
+          - name: opahttp
+            containerPort: 8181
+        volumeMounts:
+          - mountPath: /config
+            name: opa-config
+            readOnly: true
+        livenessProbe:
+          httpGet:
+            scheme: HTTP              # assumes OPA listens on localhost:8181
+            port: 8181
+          initialDelaySeconds: 30      # tune these periods for your environment
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /health?bundle=true  # Include bundle activation in readiness
+            scheme: HTTP
+            port: 8181
+          initialDelaySeconds: 30
+          periodSeconds: 15
+---
+# Source: huna/templates/gk-opa-policy.yaml
+apiVersion: mutations.gatekeeper.sh/v1
+kind: ModifySet
+metadata:
+  name: opa-sidecar-volume-policy
+spec:
+  applyTo:
+  - groups: [""]
+    kinds: ["Pod"]
+    versions: ["v1"]
+  match:
+    labelSelector:
+      matchLabels:
+        opa: "true"
+    scope: Namespaced
+    namespaces: [ default ]
+    kinds:
+    - apiGroups: ["*"]
+      kinds: ["Pod"]
+  location: "spec.volumes"
+  parameters:
+    values:
+      fromList:
+        - name: opa-config
+          configMap:
+            name: release-name-huna-opa-config
+# ---
+# apiVersion: mutations.gatekeeper.sh/v1
+# kind: ModifySet
+# metadata:
+#   name: opa-sidecar-local-dns-policy
+# spec:
+#   applyTo:
+#   - groups: [""]
+#     kinds: ["Pod"]
+#     versions: ["v1"]
+#   match:
+#     labelSelector:
+#       matchLabels:
+#         opa: "true"
+#     scope: Namespaced
+#     namespaces: [ default ]
+#     kinds:
+#     - apiGroups: ["*"]
+#       kinds: ["Pod"]
+#   location: "spec.hostAliases"
+#   parameters:
+#     values:
+#       fromList:
+#         - ip: "10.42.0.1"
+#           hostnames:
+#             - "dex.local.huna2.com"
+---
+# Source: huna/charts/mongo-express/templates/tests/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: release-name-mongo-express-tests
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: tests
+  annotations:
+    helm.sh/hook: test
+data:
+  test_all.py: |
+    import requests
+
+
+    def test_service_connection():
+        url = "http://release-name-mongo-express:8081/"
+
+        response = requests.get(url)
+
+        assert response.status_code == 200
+---
+# Source: huna/charts/mongo-express/templates/tests/pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: release-name-mongo-express-tests
+  labels:
+    helm.sh/chart: mongo-express-5.2.0
+    app.kubernetes.io/name: mongo-express
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "0.54.0"
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: tests
+  annotations:
+    helm.sh/hook: test
+spec:
+  
+  containers:
+    - name: tests
+      image: ghcr.io/cowboysysop/pytest:1.0.35
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: tests
+          mountPath: /tests
+          readOnly: true
+      workingDir: /tests
+  restartPolicy: Never
+  volumes:
+    - name: tests
+      configMap:
+        name: release-name-mongo-express-tests
+---
+# Source: huna/charts/redis-commander/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "release-name-redis-commander-test-connection"
+  labels:
+    helm.sh/chart: redis-commander-0.1.14
+    app.kubernetes.io/name: redis-commander
+    app.kubernetes.io/instance: release-name
+    app: redis-commander
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: "docker.io/busybox:1-musl"
+      imagePullPolicy: IfNotPresent
+      command: ['wget']
+      args: ['release-name-redis-commander:80']
+  restartPolicy: Never
