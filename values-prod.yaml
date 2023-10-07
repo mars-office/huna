@@ -154,8 +154,9 @@ huna-gpt:
       value: 'b3,b3multi'
     - name: OTEL_SDK_DISABLED
       value: 'false'
-    - name: OTEL_LOG_LEVEL
-      value: 'info'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+
   ingress:
     hosts:
       - host: huna2.com
