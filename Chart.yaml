@@ -26,18 +26,9 @@ dependencies:
   - name: mongodb
     version: "0.5.18"
     repository: "https://groundhog2k.github.io/helm-charts/"
-  - name: redis
-    version: "0.7.2"
-    repository: "https://groundhog2k.github.io/helm-charts/"
-  - name: rabbitmq
-    version: "0.7.4"
-    repository: "https://groundhog2k.github.io/helm-charts/"
   - name: mongo-express
     version: "5.2.0"
     repository: "https://cowboysysop.github.io/charts/"
-  - name: redis-commander
-    version: "0.1.14"
-    repository: "https://kfirfer.github.io/charts/"
   - name: dex
     version: "0.15.3"
     repository: "https://charts.dexidp.io"
