@@ -36,7 +36,6 @@ dex:
       - id: ui
         redirectURIs:
           - 'https://dev.huna2.com/'
-          - 'https://dev.huna2.com/api/gpt/swagger/oauth2-callback.html'
         name: 'UI'
         public: true
     connectors:
