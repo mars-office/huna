@@ -24,10 +24,10 @@ dependencies:
     version: "0.1.0"
     repository: "https://colearendt.github.io/helm"
   - name: mongodb
-    version: "0.5.18"
+    version: "0.6.0"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: mongo-express
-    version: "5.2.0"
+    version: "6.0.0"
     repository: "https://cowboysysop.github.io/charts/"
   - name: dex
     version: "0.15.3"
