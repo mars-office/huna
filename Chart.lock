@@ -1,0 +1,21 @@
+dependencies:
+- name: regcred
+  repository: https://colearendt.github.io/helm
+  version: 0.1.0
+- name: mongodb
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.6.0
+- name: mongo-express
+  repository: https://cowboysysop.github.io/charts/
+  version: 6.0.0
+- name: dex
+  repository: https://charts.dexidp.io
+  version: 0.15.3
+- name: huna-ui
+  repository: oci://ghcr.io/mars-office
+  version: 0.0.43
+- name: huna-gpt
+  repository: oci://ghcr.io/mars-office
+  version: 0.0.28
+digest: sha256:367168d098ee3865da1cddd3506de7d799453add8ac8b7a598807b9720a8aee2
+generated: "2023-10-27T18:52:40.736544826+03:00"
