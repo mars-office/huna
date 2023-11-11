@@ -50,6 +50,9 @@ mongo-express:
 
   
 dex:
+  rbac:
+    create: false
+    createClusterScoped: false
   persistence:
     size: 1Gi
   volumes:
