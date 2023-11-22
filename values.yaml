@@ -19,8 +19,6 @@ mongodb:
 
 
 mongo-express:
-  image:
-    tag: "latest"
   siteCookieSecret: ''
   siteSessionSecret: ''
   mongodbServer: 'huna-mongodb'
