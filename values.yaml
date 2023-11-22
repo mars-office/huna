@@ -97,6 +97,9 @@ dex:
 
 
 huna-ui:
+  envFrom:
+    - configMapRef:
+        name: huna-ui-env
   volumes:
     - configMap:
         name: huna-ui
