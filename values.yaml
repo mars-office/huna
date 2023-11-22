@@ -97,16 +97,13 @@ dex:
 
 
 huna-ui:
-  envFrom:
-    - configMapRef:
-        name: huna-ui-env
-  volumes:
-    - configMap:
-        name: huna-ui
-      name: huna-ui-configmap-volume
-  volumeMounts:
-    - mountPath: /srv/assets/config
-      name: huna-ui-configmap-volume
+  env:
+    - name: HUNA_VERSION
+      value: '{{ .Chart.Version }}'
+    - name: HUNA_ENV
+      value: '{{ .Values.environment }}'
+    - name: HUNA_VERSION_DETAILS
+      value: '{{ now }}; {{ (include "dependenciesToString" .Values.dependencies) | trim }}'
   imagePullSecrets:
     - name: regcred
   podAnnotations:
