@@ -97,13 +97,9 @@ dex:
 
 
 huna-ui:
-  env:
-    - name: HUNA_VERSION
-      value: '{{ .Chart.Version }}'
-    - name: HUNA_ENV
-      value: '{{ .Values.environment }}'
-    - name: HUNA_VERSION_DETAILS
-      value: '{{ now }}; {{ (include "dependenciesToString" .Values.dependencies) | trim }}'
+  envFrom:
+    - configMapRef:
+        name: huna-ui-env
   imagePullSecrets:
     - name: regcred
   podAnnotations:
