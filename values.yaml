@@ -61,6 +61,8 @@ dex:
     - mountPath: "/data"
       name: dex-data
   config:
+    expiry:
+      idTokens: "15m"
     issuer: "https://dex.local.huna2.com"
     web:
       allowedOrigins: ['*']
