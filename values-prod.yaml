@@ -88,6 +88,9 @@ dex:
 
 
 huna-ui:
+  env:
+    - name: NODE_ENV
+      value: prod
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -104,7 +107,7 @@ huna-ui:
 huna-parkinglots:
   env:
     - name: NODE_ENV
-      value: production
+      value: prod
     - name: OTEL_TRACES_EXPORTER
       value: 'otlp'
     - name: OTEL_METRICS_EXPORTER
@@ -129,6 +132,93 @@ huna-parkinglots:
       - host: huna2.com
         paths:
           - path: /api/parkinglots
+            pathType: ImplementationSpecific
+
+
+huna-users:
+  env:
+    - name: NODE_ENV
+      value: prod
+    - name: OTEL_TRACES_EXPORTER
+      value: 'otlp'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'otlp'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: 'http://collector.linkerd-jaeger:4318'
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-users'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'false'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+    - name: MONGODB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mongodbPassword
+  ingress:
+    hosts:
+      - host: huna2.com
+        paths:
+          - path: /api/users
+            pathType: ImplementationSpecific
+
+
+huna-ota:
+  env:
+    - name: NODE_ENV
+      value: prod
+    - name: OTEL_TRACES_EXPORTER
+      value: 'otlp'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'otlp'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: 'http://collector.linkerd-jaeger:4318'
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-ota'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'false'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+  ingress:
+    hosts:
+      - host: huna2.com
+        paths:
+          - path: /api/ota
+            pathType: ImplementationSpecific
+
+huna-detection:
+  env:
+    - name: NODE_ENV
+      value: prod
+    - name: OTEL_TRACES_EXPORTER
+      value: 'otlp'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'otlp'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: 'http://collector.linkerd-jaeger:4318'
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-detection'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'false'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+    - name: MONGODB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mongodbPassword
+  ingress:
+    hosts:
+      - host: huna2.com
+        paths:
+          - path: /api/detection
             pathType: ImplementationSpecific
 
 opa:

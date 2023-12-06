@@ -102,6 +102,9 @@ huna-ui:
   envFrom:
     - configMapRef:
         name: huna-ui-env
+  env:
+    - name: NODE_ENV
+      value: local
   imagePullSecrets:
     - name: regcred
   podAnnotations:
@@ -165,6 +168,150 @@ huna-parkinglots:
         paths:
           - path: /api/parkinglots
             pathType: ImplementationSpecific
+
+
+huna-users:
+  env:
+    - name: NODE_ENV
+      value: local
+    - name: OTEL_TRACES_EXPORTER
+      value: 'none'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'none'
+    - name: OTEL_LOGS_EXPORTER
+      value: 'none'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: ''
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-users'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'true'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+    - name: MONGODB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mongodbPassword
+  imagePullSecrets:
+    - name: regcred
+  podAnnotations:
+    linkerd.io/inject: enabled
+  podLabels:
+    opa: "true"
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: local.huna2.com
+        paths:
+          - path: /api/users
+            pathType: ImplementationSpecific
+
+huna-ota:
+  volumes:
+    - name: ota-data
+      readOnly: true
+      persistentVolumeClaim:
+        claimName: huna-ota
+  volumeMounts:
+    - mountPath: "/firmware"
+      name: ota-data
+  env:
+    - name: NODE_ENV
+      value: local
+    - name: OTEL_TRACES_EXPORTER
+      value: 'none'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'none'
+    - name: OTEL_LOGS_EXPORTER
+      value: 'none'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: ''
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-ota'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'true'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+  imagePullSecrets:
+    - name: regcred
+  podAnnotations:
+    linkerd.io/inject: enabled
+  podLabels:
+    opa: "true"
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: local.huna2.com
+        paths:
+          - path: /api/ota
+            pathType: ImplementationSpecific
+
+huna-detection:
+  env:
+    - name: NODE_ENV
+      value: local
+    - name: OTEL_TRACES_EXPORTER
+      value: 'none'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'none'
+    - name: OTEL_LOGS_EXPORTER
+      value: 'none'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: ''
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-detection'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'true'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+    - name: MONGODB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mongodbPassword
+  imagePullSecrets:
+    - name: regcred
+  podAnnotations:
+    linkerd.io/inject: enabled
+  podLabels:
+    opa: "true"
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: local.huna2.com
+        paths:
+          - path: /api/detection
+            pathType: ImplementationSpecific
+
+huna-iot:
+  imagePullSecrets:
+    - name: regcred
+  volumes:
+    - name: ota-data
+      persistentVolumeClaim:
+        claimName: huna-ota
+  volumeMounts:
+    - mountPath: "/firmware"
+      name: ota-data
 
 opa:
   styraDasToken: ''
