@@ -128,7 +128,7 @@ huna-parkinglots:
     hosts:
       - host: huna2.com
         paths:
-          - path: /api/gpt
+          - path: /api/parkinglots
             pathType: ImplementationSpecific
 
 opa:

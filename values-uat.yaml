@@ -130,7 +130,7 @@ huna-parkinglots:
     hosts:
       - host: uat.huna2.com
         paths:
-          - path: /api/gpt
+          - path: /api/parkinglots
             pathType: ImplementationSpecific
 
 opa:
