@@ -213,15 +213,19 @@ huna-users:
           - path: /api/users
             pathType: ImplementationSpecific
 
+ota:
+  persistence:
+    size: 512Mi
+
 huna-ota:
   volumes:
     - name: ota-data
-      readOnly: true
       persistentVolumeClaim:
         claimName: huna-ota
   volumeMounts:
     - mountPath: "/firmware"
       name: ota-data
+      readOnly: true
   env:
     - name: NODE_ENV
       value: local
