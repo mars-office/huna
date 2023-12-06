@@ -88,8 +88,6 @@ dex:
 
 huna-ui:
   env:
-    - name: NODE_ENV
-      value: dev
     - name: HUNA_ENV
       value: dev
   ingress:

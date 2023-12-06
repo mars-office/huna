@@ -100,8 +100,6 @@ dex:
 
 huna-ui:
   env:
-    - name: NODE_ENV
-      value: local
     - name: HUNA_ENV
       value: local
   imagePullSecrets:
