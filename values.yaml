@@ -99,9 +99,6 @@ dex:
 
 
 huna-ui:
-  env:
-    - name: HUNA_ENV
-      value: local
   imagePullSecrets:
     - name: regcred
   podAnnotations:

@@ -88,9 +88,6 @@ dex:
 
 
 huna-ui:
-  env:
-    - name: HUNA_ENV
-      value: prod
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
