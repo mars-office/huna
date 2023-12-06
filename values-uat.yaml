@@ -103,7 +103,7 @@ huna-ui:
         hosts:
           - uat.huna2.com
 
-huna-gpt:
+huna-parkinglots:
   env:
     - name: NODE_ENV
       value: uat
@@ -114,7 +114,7 @@ huna-gpt:
     - name: OTEL_EXPORTER_OTLP_ENDPOINT
       value: 'http://collector.linkerd-jaeger:4318'
     - name: OTEL_SERVICE_NAME
-      value: 'huna-gpt'
+      value: 'huna-parkinglots'
     - name: OTEL_PROPAGATORS
       value: 'b3,b3multi'
     - name: OTEL_SDK_DISABLED
