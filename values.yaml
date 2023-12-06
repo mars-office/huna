@@ -99,11 +99,10 @@ dex:
 
 
 huna-ui:
-  envFrom:
-    - configMapRef:
-        name: huna-ui-env
   env:
     - name: NODE_ENV
+      value: local
+    - name: HUNA_ENV
       value: local
   imagePullSecrets:
     - name: regcred

@@ -90,6 +90,8 @@ huna-ui:
   env:
     - name: NODE_ENV
       value: dev
+    - name: HUNA_ENV
+      value: dev
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod

@@ -60,18 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-Convert the dependencies array into a comma-separated string of "name: version" pairs.
-Usage: {{ dependenciesToString .Values.dependencies }}
-*/}}
-{{- define "dependenciesToString" -}}
-  {{- $dependencies := . -}}
-  {{- $result := "" -}}
-  {{- range $index, $dependency := $dependencies }}
-    {{- if hasPrefix "huna-" $dependency.name }}
-      {{- if ne $index 0 -}}{{" "}}{{ end }}{{ $dependency.name }}{{":"}}{{ $dependency.version }}
-    {{- end }}
-  {{- end }}
-  {{- $result }}
-{{- end }}
