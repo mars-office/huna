@@ -27,3 +27,4 @@ data:
             token: ${STYRA_DAS_TOKEN}
         name: styra-bundles
         url: https://0e03ik.svc.styra.com/v1/bundles
+        
