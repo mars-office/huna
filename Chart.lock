@@ -28,6 +28,6 @@ dependencies:
   version: 0.0.9
 - name: huna-ota
   repository: oci://ghcr.io/mars-office
-  version: 0.0.9
-digest: sha256:313c26f6383a9cfd3e2cc692e9a3bacf7e762550857146838ee70e2784175d70
-generated: "2023-12-07T22:36:43.466730844Z"
+  version: 0.0.10
+digest: sha256:7f702d2076d75005dc66508d6eed302f5292a387cadf3c968d75307033c2a7ad
+generated: "2023-12-07T22:38:02.055701467Z"
