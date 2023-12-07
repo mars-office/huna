@@ -105,6 +105,16 @@ huna-ui:
 
 huna-parkinglots:
   env:
+    - name: IOT_CA_CRT
+      valueFrom:
+        secretKeyRef:
+          name: huna-iot-ca
+          key: 'tls.crt'
+    - name: IOT_CA_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna-iot-ca
+          key: 'tls.key'
     - name: NODE_ENV
       value: uat
     - name: OTEL_TRACES_EXPORTER

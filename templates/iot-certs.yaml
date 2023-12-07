@@ -1,0 +1,29 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: iot-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: iot-ca
+spec:
+  isCA: true
+  duration: 438290h # 50y
+  renewBefore: 360h # 15d
+  commonName: huna-iot-ca
+  subject:
+    organizations:
+      - Huna
+    organizationalUnits:
+      - IOT
+  secretName: huna-iot-ca
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: iot-issuer
+    kind: Issuer
+    group: cert-manager.io
