@@ -134,6 +134,8 @@ huna-parkinglots:
           key: 'tls.key'
     - name: NODE_ENV
       value: local
+    - name: HUNA_SERVER_HOSTNAME
+      value: 'local.huna2.com'
     - name: OTEL_TRACES_EXPORTER
       value: 'none'
     - name: OTEL_METRICS_EXPORTER

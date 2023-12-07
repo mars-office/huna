@@ -113,6 +113,8 @@ huna-parkinglots:
         secretKeyRef:
           name: huna-iot-ca
           key: 'tls.key'
+    - name: HUNA_SERVER_HOSTNAME
+      value: 'huna2.com'
     - name: NODE_ENV
       value: prod
     - name: OTEL_TRACES_EXPORTER
