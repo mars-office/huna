@@ -8,10 +8,10 @@ data:
   config.yaml: |-
     discovery:
       name: discovery
-      prefix: /systems/faea3ba894454bb3a61952b0059d933b
+      prefix: /systems/ef5707857ccf4affa5380e5abc8e551c
       service: styra
     labels:
-      system-id: faea3ba894454bb3a61952b0059d933b
+      system-id: ef5707857ccf4affa5380e5abc8e551c
       system-type: custom
       app: huna
       env: ${HUNA_ENVIRONMENT}
