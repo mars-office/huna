@@ -106,12 +106,12 @@ huna-parkinglots:
     - name: IOT_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca
+          name: huna-iot-ca-secret
           key: 'tls.crt'
     - name: IOT_CA_KEY
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca
+          name: huna-iot-ca-secret
           key: 'tls.key'
     - name: HUNA_SERVER_HOSTNAME
       value: 'huna2.com'
