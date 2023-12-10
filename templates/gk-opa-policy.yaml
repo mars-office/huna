@@ -47,6 +47,7 @@ spec:
               secretKeyRef:
                 name: huna-iot-ca-issuer-secret
                 key: 'tls.key'
+                
         ports:
           - name: opahttp
             containerPort: 8181
