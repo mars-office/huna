@@ -263,7 +263,9 @@ huna-ota:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: root-ca
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/service-upstream: "true"
+      nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-iot-ca-issuer-secret"
+      nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+      nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
       nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
     hosts:
       - host: ota.local.huna2.com
