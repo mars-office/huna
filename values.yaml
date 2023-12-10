@@ -125,12 +125,12 @@ huna-parkinglots:
     - name: IOT_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca-secret
+          name: huna-iot-ca-issuer-secret
           key: 'tls.crt'
     - name: IOT_CA_KEY
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca-secret
+          name: huna-iot-ca-issuer-secret
           key: 'tls.key'
     - name: NODE_ENV
       value: local
@@ -265,7 +265,7 @@ huna-ota:
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
       nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
-      nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-iot-ca-secret"
+      nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-iot-ca-issuer-secret"
       nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
       nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
     hosts:

@@ -19,11 +19,11 @@ spec:
       - Huna
     organizationalUnits:
       - IOT
-  secretName: huna-iot-ca-secret
+  secretName: huna-iot-ca-issuer-secret
   privateKey:
     algorithm: RSA
     encoding: PKCS1
-    size: 2048
+    size: 3072
   issuerRef:
     name: iot-issuer
     kind: Issuer
