@@ -37,6 +37,16 @@ spec:
                 key: styraDasToken
           - name: HUNA_ENVIRONMENT
             value: {{ .Values.environment }}
+          - name: IOT_CA_CRT
+            valueFrom:
+              secretKeyRef:
+                name: huna-iot-ca-issuer-secret
+                key: 'tls.crt'
+          - name: IOT_CA_KEY
+            valueFrom:
+              secretKeyRef:
+                name: huna-iot-ca-issuer-secret
+                key: 'tls.key'
         ports:
           - name: opahttp
             containerPort: 8181
@@ -83,29 +93,3 @@ spec:
         - name: opa-config
           configMap:
             name: {{ include "huna.fullname" . }}-opa-config
-# ---
-# apiVersion: mutations.gatekeeper.sh/v1
-# kind: ModifySet
-# metadata:
-#   name: opa-sidecar-local-dns-policy
-# spec:
-#   applyTo:
-#   - groups: [""]
-#     kinds: ["Pod"]
-#     versions: ["v1"]
-#   match:
-#     labelSelector:
-#       matchLabels:
-#         opa: "true"
-#     scope: Namespaced
-#     namespaces: [ {{ .Release.Namespace }} ]
-#     kinds:
-#     - apiGroups: ["*"]
-#       kinds: ["Pod"]
-#   location: "spec.hostAliases"
-#   parameters:
-#     values:
-#       fromList:
-#         - ip: "10.42.0.1"
-#           hostnames:
-#             - "dex.local.huna2.com"
