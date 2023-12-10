@@ -195,11 +195,17 @@ huna-ota:
     - name: OTEL_NODE_RESOURCE_DETECTORS
       value: 'env,host,os'
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-      - host: uat.huna2.com
+      - host: ota.uat.huna2.com
         paths:
-          - path: /api/ota
+          - path: /
             pathType: ImplementationSpecific
+    tls:
+      - secretName: huna-ota-ingress-tls
+        hosts:
+          - ota.uat.huna2.com
 
 huna-detection:
   env:
