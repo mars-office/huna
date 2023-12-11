@@ -1,14 +1,46 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: iot-issuer
+  name: huna-issuer
 spec:
   selfSigned: {}
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: iot-ca
+  name: huna-iot-interimca-cert
+spec:
+  isCA: true
+  duration: 438290h # 50y
+  renewBefore: 360h # 15d
+  commonName: huna-iot-interimca
+  subject:
+    organizations:
+      - Huna
+    organizationalUnits:
+      - IOT
+  secretName: huna-iot-interimca-secret
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 3072
+  issuerRef:
+    name: huna-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: huna-iot-interimca-issuer
+spec:
+  ca:
+    secretName: huna-iot-interimca-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: huna-iot-ca-cert
 spec:
   isCA: true
   duration: 438290h # 50y
@@ -18,13 +50,13 @@ spec:
     organizations:
       - Huna
     organizationalUnits:
-      - IOT
-  secretName: huna-iot-ca-issuer-secret
+      - '{{ .Values.iotCa.ou }}'
+  secretName: huna-iot-ca-secret
   privateKey:
     algorithm: RSA
     encoding: PKCS1
     size: 3072
   issuerRef:
-    name: iot-issuer
+    name: huna-iot-interimca-issuer
     kind: Issuer
     group: cert-manager.io

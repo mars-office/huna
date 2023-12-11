@@ -108,15 +108,13 @@ huna-parkinglots:
     - name: IOT_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca-issuer-secret
+          name: huna-iot-ca-secret
           key: 'tls.crt'
     - name: IOT_CA_KEY
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca-issuer-secret
+          name: huna-iot-ca-secret
           key: 'tls.key'
-    - name: HUNA_SERVER_HOSTNAME
-      value: 'uat.huna2.com'
     - name: NODE_ENV
       value: uat
     - name: OTEL_TRACES_EXPORTER
@@ -239,3 +237,6 @@ huna-detection:
 
 opa:
   styraDasToken: '${STYRA_DAS_TOKEN}'
+
+iotCa:
+  ou: uat.huna2.com

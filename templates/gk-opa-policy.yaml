@@ -40,13 +40,13 @@ spec:
           - name: IOT_CA_CRT
             valueFrom:
               secretKeyRef:
-                name: huna-iot-ca-issuer-secret
+                name: huna-iot-ca-secret
                 key: 'tls.crt'
-          - name: IOT_CA_KEY
+          - name: IOT_INTERIMCA_CRT
             valueFrom:
               secretKeyRef:
-                name: huna-iot-ca-issuer-secret
-                key: 'tls.key'
+                name: huna-iot-interimca-secret
+                key: 'tls.crt'
                 
         ports:
           - name: opahttp
