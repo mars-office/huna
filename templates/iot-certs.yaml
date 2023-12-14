@@ -48,6 +48,9 @@ spec:
   commonName: '{{ .Values.emqx.hostname }}'
   dnsNames:
     - '{{ .Values.emqx.hostname }}'
+    - 'huna-emqx'
+    - 'huna-emqx.huna'
+    - 'huna-emqx.huna.svc.cluster.local'
   subject:
     organizations:
       - Huna
