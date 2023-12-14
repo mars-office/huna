@@ -109,11 +109,15 @@ emqx:
   emqxConfig:
     EMQX_DASHBOARD__DEFAULT_USERNAME: "admin"
     EMQX_DASHBOARD__DEFAULT_PASSWORD: ""
+    EMQX_LISTENERS__TCP__DEFAULT__ENABLE: "false"
+    EMQX_LISTENERS__WSS__DEFAULT__ENABLE: "false"
+    EMQX_LISTENERS__WS__DEFAULT__ENABLE: "false"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__VERIFY: "verify_peer"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__FAIL_IF_NO_PEER_CERT: "true"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CACERTFILE: "/tmp/ssl/ca.crt"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: "/tmp/ssl/tls.crt"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: "/tmp/ssl/tls.key"
+    EMQX_MQTT__PEER_CERT_AS_USERNAME: "cn"
   ssl:
     enabled: true
     useExisting: true
@@ -122,7 +126,7 @@ emqx:
     linkerd.io/inject: enabled
   persistence:
     enabled: true
-    size: 1Gi
+    size: 5Gi
   ingress:
     dashboard:
       enabled: true

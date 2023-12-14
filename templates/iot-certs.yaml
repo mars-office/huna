@@ -62,3 +62,30 @@ spec:
     name: huna-iot-ca-issuer
     kind: Issuer
     group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: huna-iot-mqtt-client-cert
+spec:
+  isCA: false
+  duration: 168h 
+  renewBefore: 6h
+  commonName: 'huna-mqtt-client'
+  subject:
+    organizations:
+      - Huna
+    organizationalUnits:
+      - 'EMQX'
+  secretName: huna-iot-mqtt-client-cert-secret
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 3072
+  issuerRef:
+    name: huna-iot-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
