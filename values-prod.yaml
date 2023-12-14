@@ -87,6 +87,22 @@ dex:
           - dex.huna2.com
 
 
+emqx:
+  emqxConfig:
+    EMQX_DASHBOARD__DEFAULT_PASSWORD: '${EMQX_PASSWORD}'
+  ingress:
+    dashboard:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - emqx-admin.huna2.com
+      tls:
+        - secretName: emqx-dashboard-ingress-tls
+          hosts:
+            - emqx-admin.huna2.com
+
+
+
 huna-ui:
   ingress:
     annotations:

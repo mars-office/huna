@@ -32,11 +32,11 @@ dependencies:
   - name: dex
     version: "0.15.3"
     repository: "https://charts.dexidp.io"
-  # - name: emqx
-  #   version: "5.3.2"
-  #   repository: "https://repos.emqx.io/charts"
+  - name: emqx
+    version: "5.3.2"
+    repository: "https://repos.emqx.io/charts"
   - name: huna-ui
-    version: "0.0.156"
+    version: "0.0.157"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-parkinglots
     version: "0.0.75"
