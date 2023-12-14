@@ -28,3 +28,37 @@ spec:
     name: huna-issuer
     kind: Issuer
     group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: huna-iot-ca-issuer
+spec:
+  ca:
+    secretName: huna-iot-ca-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: huna-iot-mqtt-server-cert
+spec:
+  isCA: false
+  duration: 168h 
+  renewBefore: 6h
+  commonName: '{{ .Values.emqx.hostname }}'
+  dnsNames:
+    - '{{ .Values.emqx.hostname }}'
+  subject:
+    organizations:
+      - Huna
+    organizationalUnits:
+      - 'EMQX'
+  secretName: huna-iot-mqtt-server-cert-secret
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 3072
+  issuerRef:
+    name: huna-iot-ca-issuer
+    kind: Issuer
+    group: cert-manager.io

@@ -97,6 +97,36 @@ dex:
         hosts:
           - dex.local.huna2.com
 
+emqx:
+  hostname: emqx.local.huna2.com
+  replicaCount: 1
+  emqxConfig:
+    EMQX_DASHBOARD__DEFAULT_USERNAME: "admin"
+    EMQX_DASHBOARD__DEFAULT_PASSWORD: ""
+    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__VERIFY: "verify_peer"
+    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__FAIL_IF_NO_PEER_CERT: "true"
+  ssl:
+    enabled: true
+    useExisting: true
+    existingName: huna-iot-mqtt-server-cert-secret
+  persistence:
+    enabled: true
+    size: 1Gi
+  ingress:
+    dashboard:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: root-ca
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/service-upstream: "true"
+      hosts:
+        - emqx-admin.local.huna2.com
+      tls:
+        - secretName: emqx-dashboard-ingress-tls
+          hosts:
+            - emqx-admin.local.huna2.com
+
 huna-ui:
   imagePullSecrets:
     - name: regcred
