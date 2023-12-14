@@ -30,4 +30,4 @@ dependencies:
   repository: oci://ghcr.io/mars-office
   version: 0.0.17
 digest: sha256:b53c30230243ead5ba71da89a832fa42e6d08c29381255a30ddd9028485ae370
-generated: "2023-12-13T21:32:58.659139041Z"
+generated: "2023-12-14T11:24:08.616659258+02:00"
