@@ -100,6 +100,9 @@ emqx:
         - secretName: emqx-dashboard-ingress-tls
           hosts:
             - emqx-admin.huna2.com
+    # mqtt:
+    #   hosts:
+    #     - emqx.huna2.com
 
 
 
