@@ -61,6 +61,12 @@ dex:
     - mountPath: "/data"
       name: dex-data
   config:
+    staticClients:
+      - id: ui
+        redirectURIs:
+          - 'https://local.huna2.com/'
+        name: 'UI'
+        public: true
     expiry:
       idTokens: "15m"
     issuer: "https://dex.local.huna2.com"
@@ -105,10 +111,15 @@ emqx:
     EMQX_DASHBOARD__DEFAULT_PASSWORD: ""
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__VERIFY: "verify_peer"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__FAIL_IF_NO_PEER_CERT: "true"
+    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CACERTFILE: "/tmp/ssl/ca.crt"
+    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: "/tmp/ssl/tls.crt"
+    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: "/tmp/ssl/tls.key"
   ssl:
     enabled: true
     useExisting: true
     existingName: huna-iot-mqtt-server-cert-secret
+  podAnnotations:
+    linkerd.io/inject: enabled
   persistence:
     enabled: true
     size: 1Gi
