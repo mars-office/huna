@@ -167,11 +167,6 @@ huna-ui:
 
 huna-parkinglots:
   env:
-    - name: LETSENCRYPT_CA
-      valueFrom:
-        secretKeyRef:
-          name: huna
-          key: 'LETSENCRYPT_CA'
     - name: IOT_CA_CRT
       valueFrom:
         secretKeyRef:
@@ -287,6 +282,7 @@ ota:
     size: 512Mi
 
 huna-ota:
+  hostname: ota.local.huna2.com
   volumes:
     - name: ota-data
       persistentVolumeClaim:
@@ -324,7 +320,6 @@ huna-ota:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: nginx
-      cert-manager.io/cluster-issuer: root-ca
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-iot-ca-secret"
       nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
@@ -336,11 +331,12 @@ huna-ota:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: huna-ota-ingress-tls
+      - secretName: huna-iot-ota-server-cert-secret
         hosts:
           - ota.local.huna2.com
 
 huna-detection:
+  hostname: detection.local.huna2.com
   env:
     - name: NODE_ENV
       value: local
@@ -376,12 +372,19 @@ huna-detection:
     annotations:
       kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/service-upstream: "true"
+      nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-iot-ca-secret"
+      nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+      nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
+      nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
     hosts:
-      - host: local.huna2.com
+      - host: detection.local.huna2.com
         paths:
-          - path: /api/detection
+          - path: /
             pathType: ImplementationSpecific
+    tls:
+      - secretName: huna-iot-detection-server-cert-secret
+        hosts:
+          - detection.local.huna2.com
 
 huna-iot:
   imagePullSecrets:

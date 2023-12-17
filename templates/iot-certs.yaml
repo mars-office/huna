@@ -92,3 +92,61 @@ spec:
     name: huna-iot-ca-issuer
     kind: Issuer
     group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: huna-iot-ota-server-cert
+spec:
+  isCA: false
+  duration: 168h 
+  renewBefore: 6h
+  commonName: '{{ .Values.emqx.hostname }}'
+  dnsNames:
+    - '{{ .Values.huna-ota.hostname }}'
+    - 'huna-ota'
+    - 'huna-ota.huna'
+    - 'huna-ota.huna.svc.cluster.local'
+  subject:
+    organizations:
+      - Huna
+    organizationalUnits:
+      - 'OTA'
+  secretName: huna-iot-ota-server-cert-secret
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 3072
+  issuerRef:
+    name: huna-iot-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: huna-iot-detection-server-cert
+spec:
+  isCA: false
+  duration: 168h 
+  renewBefore: 6h
+  commonName: '{{ .Values.emqx.hostname }}'
+  dnsNames:
+    - '{{ .Values.huna-detection.hostname }}'
+    - 'huna-detection'
+    - 'huna-detection.huna'
+    - 'huna-detection.huna.svc.cluster.local'
+  subject:
+    organizations:
+      - Huna
+    organizationalUnits:
+      - 'Detection'
+  secretName: huna-iot-detection-server-cert-secret
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 3072
+  issuerRef:
+    name: huna-iot-ca-issuer
+    kind: Issuer
+    group: cert-manager.io

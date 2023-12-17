@@ -1,5 +1,4 @@
 environment: prod
-letsencryptCa: "${LETSENCRYPT_CA}"
 
 regcred:
   registryCredentials:
@@ -205,6 +204,7 @@ huna-users:
 
 
 huna-ota:
+  hostname: ota.huna2.com
   env:
     - name: NODE_ENV
       value: prod
@@ -223,19 +223,18 @@ huna-ota:
     - name: OTEL_NODE_RESOURCE_DETECTORS
       value: 'env,host,os'
   ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
       - host: ota.huna2.com
         paths:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: huna-ota-ingress-tls
+      - secretName: huna-iot-ota-server-cert-secret
         hosts:
           - ota.huna2.com
 
 huna-detection:
+  hostname: detection.huna2.com
   env:
     - name: NODE_ENV
       value: prod
@@ -260,10 +259,14 @@ huna-detection:
           key: mongodbPassword
   ingress:
     hosts:
-      - host: huna2.com
+      - host: detection.huna2.com
         paths:
-          - path: /api/detection
+          - path: /
             pathType: ImplementationSpecific
+    tls:
+      - secretName: huna-iot-detection-server-cert-secret
+        hosts:
+          - detection.huna2.com
 
 opa:
   styraDasToken: '${STYRA_DAS_TOKEN}'
