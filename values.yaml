@@ -1,4 +1,5 @@
 environment: local
+letsencryptCa: ""
 
 regcred:
   nameOverride: 'regcred'
@@ -166,6 +167,11 @@ huna-ui:
 
 huna-parkinglots:
   env:
+    - name: LETSENCRYPT_CA
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: 'LETSENCRYPT_CA'
     - name: IOT_CA_CRT
       valueFrom:
         secretKeyRef:

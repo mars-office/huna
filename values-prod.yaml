@@ -1,4 +1,5 @@
 environment: prod
+letsencryptCa: "${LETSENCRYPT_CA}"
 
 regcred:
   registryCredentials:
