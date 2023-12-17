@@ -36,7 +36,7 @@ dependencies:
     version: "5.3.2"
     repository: "https://repos.emqx.io/charts"
   - name: huna-ui
-    version: "0.0.161"
+    version: "0.0.162"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-parkinglots
     version: "0.0.81"
