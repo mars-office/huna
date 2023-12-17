@@ -103,7 +103,7 @@ spec:
   renewBefore: 6h
   commonName: '{{ .Values.emqx.hostname }}'
   dnsNames:
-    - '{{ .Values.huna-ota.hostname }}'
+    - '{{ .Values.ota.hostname }}'
     - 'huna-ota'
     - 'huna-ota.huna'
     - 'huna-ota.huna.svc.cluster.local'
@@ -132,7 +132,7 @@ spec:
   renewBefore: 6h
   commonName: '{{ .Values.emqx.hostname }}'
   dnsNames:
-    - '{{ .Values.huna-detection.hostname }}'
+    - '{{ .Values.detection.hostname }}'
     - 'huna-detection'
     - 'huna-detection.huna'
     - 'huna-detection.huna.svc.cluster.local'

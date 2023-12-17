@@ -278,11 +278,14 @@ huna-users:
             pathType: ImplementationSpecific
 
 ota:
+  hostname: ota.local.huna2.com
   persistence:
     size: 512Mi
 
+detection:
+  hostname: detection.local.huna2.com
+
 huna-ota:
-  hostname: ota.local.huna2.com
   volumes:
     - name: ota-data
       persistentVolumeClaim:
@@ -336,7 +339,6 @@ huna-ota:
           - ota.local.huna2.com
 
 huna-detection:
-  hostname: detection.local.huna2.com
   env:
     - name: NODE_ENV
       value: local

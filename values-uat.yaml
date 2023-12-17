@@ -203,8 +203,12 @@ huna-users:
             pathType: ImplementationSpecific
 
 
-huna-ota:
+ota:
   hostname: ota.uat.huna2.com
+detection:
+  hostname: detection.uat.huna2.com
+
+huna-ota:
   env:
     - name: NODE_ENV
       value: uat
@@ -234,7 +238,6 @@ huna-ota:
           - ota.uat.huna2.com
 
 huna-detection:
-  hostname: detection.uat.huna2.com
   env:
     - name: NODE_ENV
       value: uat

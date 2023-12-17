@@ -200,9 +200,12 @@ huna-users:
           - path: /api/users
             pathType: ImplementationSpecific
 
+ota:
+  hostname: ota.dev.huna2.com
+detection:
+  hostname: detection.dev.huna2.com
 
 huna-ota:
-  hostname: ota.dev.huna2.com
   env:
     - name: NODE_ENV
       value: dev
@@ -232,7 +235,6 @@ huna-ota:
           - ota.dev.huna2.com
 
 huna-detection:
-  hostname: detection.dev.huna2.com
   env:
     - name: NODE_ENV
       value: dev
