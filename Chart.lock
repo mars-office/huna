@@ -25,12 +25,12 @@ dependencies:
   version: 0.0.10
 - name: huna-iot
   repository: oci://ghcr.io/mars-office
-  version: 0.0.1
+  version: 0.2.0
 - name: huna-detection
   repository: oci://ghcr.io/mars-office
   version: 0.0.10
 - name: huna-ota
   repository: oci://ghcr.io/mars-office
   version: 0.0.17
-digest: sha256:09177fa0a9954d7148b09b4759ef8aeb08a672e71947114346db991db90dcab9
-generated: "2023-12-17T17:12:25.648501202Z"
+digest: sha256:1271d25ea3ee1c17ad6abfeace136a7002e3a0798fce09d7c1df9ced26acfd1f
+generated: "2023-12-17T17:52:47.357769058Z"
