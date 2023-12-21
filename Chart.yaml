@@ -39,7 +39,7 @@ dependencies:
     version: "0.0.164"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-parkinglots
-    version: "0.0.86"
+    version: "0.0.87"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-users
     version: "0.0.10"
