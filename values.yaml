@@ -70,6 +70,11 @@ dex:
         public: true
     expiry:
       idTokens: "15m"
+      refreshTokens:
+        disableRotation: true
+        reuseInterval: "3s"
+        validIfNotUsedFor: "2160h" # 90 days
+        absoluteLifetime: "3960h" # 165 days
     issuer: "https://dex.local.huna2.com"
     web:
       allowedOrigins: ['*']
