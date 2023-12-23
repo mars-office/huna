@@ -36,16 +36,16 @@ dependencies:
     version: "5.3.2"
     repository: "https://repos.emqx.io/charts"
   - name: huna-ui
-    version: "0.0.169"
+    version: "0.0.170"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-parkinglots
-    version: "0.0.88"
+    version: "0.0.89"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-users
     version: "0.0.10"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-iot
-    version: "0.3.2"
+    version: "0.3.3"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-detection
     version: "0.0.10"
