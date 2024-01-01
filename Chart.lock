@@ -4,16 +4,16 @@ dependencies:
   version: 0.1.0
 - name: mongodb
   repository: https://groundhog2k.github.io/helm-charts/
-  version: 0.6.0
+  version: 0.6.2
 - name: mongo-express
   repository: https://cowboysysop.github.io/charts/
-  version: 6.0.0
+  version: 6.1.0
 - name: dex
   repository: https://charts.dexidp.io
   version: 0.15.3
 - name: emqx
   repository: https://repos.emqx.io/charts
-  version: 5.3.2
+  version: 5.4.0
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
   version: 0.0.174
@@ -32,5 +32,5 @@ dependencies:
 - name: huna-ota
   repository: oci://ghcr.io/mars-office
   version: 0.0.22
-digest: sha256:ac88ed5596eae53f9abedc4cabc6ae5eebdbb4b66640a8bb243bd313724f2769
-generated: "2024-01-01T19:37:59.046873533Z"
+digest: sha256:9861b20e03a48d9b8c0d9ce453fc2b0c88941806f34054b04f5f2948e15e945c
+generated: "2024-01-01T21:40:39.501798531+02:00"
