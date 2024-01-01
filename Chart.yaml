@@ -48,7 +48,7 @@ dependencies:
     version: "0.3.5"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-detection
-    version: "0.0.10"
+    version: "0.0.17"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-ota
     version: "0.0.17"
