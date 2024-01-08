@@ -12,22 +12,6 @@ mongodb:
   storage:
     requestedSize: 10Gi
 
-mongo-express:
-  mongodbAdminPassword: '${MONGODB_PASSWORD}'
-  basicAuthPassword: '${MONGO_EXPRESS_PASSWORD}'
-  siteCookieSecret: '${MONGO_EXPRESS_SECRET}'
-  siteSessionSecret: '${MONGO_EXPRESS_SECRET}'
-  ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts:
-      - host: mongodb.huna2.com
-        paths:
-          - '/'
-    tls:
-      - secretName: mongodb-ingress-tls
-        hosts:
-          - mongodb.huna2.com
 
 dex:
   config:

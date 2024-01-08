@@ -26,9 +26,6 @@ dependencies:
   - name: mongodb
     version: "0.6.2"
     repository: "https://groundhog2k.github.io/helm-charts/"
-  - name: mongo-express
-    version: "6.1.0"
-    repository: "https://cowboysysop.github.io/charts/"
   - name: dex
     version: "0.15.3"
     repository: "https://charts.dexidp.io"
