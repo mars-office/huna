@@ -43,6 +43,7 @@ dex:
       refreshTokens:
         disableRotation: true
         validIfNotUsedFor: "2160h" # 90 days
+        reuseInterval: "2160h"
     issuer: "https://dex.local.huna2.com"
     web:
       allowedOrigins: ['*']
