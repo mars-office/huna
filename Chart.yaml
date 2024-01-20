@@ -39,7 +39,7 @@ dependencies:
     version: "0.0.99"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-users
-    version: "0.0.19"
+    version: "0.0.25"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-iot
     version: "0.3.6"
