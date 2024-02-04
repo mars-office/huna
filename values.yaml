@@ -93,6 +93,10 @@ emqx:
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: "/tmp/ssl/tls.crt"
     EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: "/tmp/ssl/tls.key"
     EMQX_MQTT__PEER_CERT_AS_USERNAME: "cn"
+    EMQX_AUTHORIZATION__SOURCES__HTTP_POST__TYPE: "http"
+    EMQX_AUTHORIZATION__SOURCES__HTTP_POST__ENABLE: "true"
+    EMQX_AUTHORIZATION__SOURCES__HTTP_POST__URL: "http://localhost:8181/v1/data/com/huna/authz/allow"
+    EMQX_AUTHORIZATION__SOURCES__HTTP_POST__BODY: '{"hau": 123}'
   ssl:
     enabled: true
     useExisting: true
