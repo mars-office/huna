@@ -96,7 +96,7 @@ emqx:
     EMQX_AUTHORIZATION__SOURCES__HTTP_POST__TYPE: "http"
     EMQX_AUTHORIZATION__SOURCES__HTTP_POST__ENABLE: "true"
     EMQX_AUTHORIZATION__SOURCES__HTTP_POST__URL: "http://localhost:8181/v1/data/com/huna/authz/allow"
-    EMQX_AUTHORIZATION__SOURCES__HTTP_POST__BODY: '{"hau": 123}'
+
   ssl:
     enabled: true
     useExisting: true
