@@ -11,6 +11,7 @@ spec:
     labelSelector:
       matchLabels:
         opa: "true"
+    name: "emqx-*"
     scope: Namespaced
     namespaces: [ {{ .Release.Namespace }} ]
     kinds:
