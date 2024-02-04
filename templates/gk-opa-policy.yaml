@@ -1,7 +1,7 @@
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
 metadata:
-  name: opa-sidecar-container-policy
+  name: opa-sidecar-container-policy-label
 spec:
   applyTo:
   - groups: [""]
@@ -11,7 +11,70 @@ spec:
     labelSelector:
       matchLabels:
         opa: "true"
-    name: "emqx-*"
+    scope: Namespaced
+    namespaces: [ {{ .Release.Namespace }} ]
+    kinds:
+    - apiGroups: ["*"]
+      kinds: ["Pod"]
+  location: "spec.containers[name:opa]"
+  parameters:
+    assign:
+      value:
+        name: "opa"
+        imagePullPolicy: Always
+        image: openpolicyagent/opa:latest-static
+        args:
+          - "run"
+          - "--addr=0.0.0.0:8181"
+          - "--ignore=.*"
+          - "--server"
+          - "--config-file=/config/config.yaml"
+        env:
+          - name: STYRA_DAS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "huna.fullname" . }}-opa-secret
+                key: styraDasToken
+          - name: HUNA_ENVIRONMENT
+            value: {{ .Values.environment }}
+          - name: IOT_CA_CRT
+            valueFrom:
+              secretKeyRef:
+                name: huna-iot-ca-secret
+                key: 'tls.crt'
+                
+        ports:
+          - name: opahttp
+            containerPort: 8181
+        volumeMounts:
+          - mountPath: /config
+            name: opa-config
+            readOnly: true
+        livenessProbe:
+          httpGet:
+            scheme: HTTP              # assumes OPA listens on localhost:8181
+            port: 8181
+          initialDelaySeconds: 30      # tune these periods for your environment
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /health?bundle=true  # Include bundle activation in readiness
+            scheme: HTTP
+            port: 8181
+          initialDelaySeconds: 30
+          periodSeconds: 15
+---
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: opa-sidecar-container-policy-emqx
+spec:
+  applyTo:
+  - groups: [""]
+    kinds: ["Pod"]
+    versions: ["v1"]
+  match:
+    name: "huna-emqx-*"
     scope: Namespaced
     namespaces: [ {{ .Release.Namespace }} ]
     kinds:
@@ -68,7 +131,7 @@ spec:
 apiVersion: mutations.gatekeeper.sh/v1
 kind: ModifySet
 metadata:
-  name: opa-sidecar-volume-policy
+  name: opa-sidecar-volume-policy-label
 spec:
   applyTo:
   - groups: [""]
@@ -78,6 +141,30 @@ spec:
     labelSelector:
       matchLabels:
         opa: "true"
+    scope: Namespaced
+    namespaces: [ {{ .Release.Namespace }} ]
+    kinds:
+    - apiGroups: ["*"]
+      kinds: ["Pod"]
+  location: "spec.volumes"
+  parameters:
+    values:
+      fromList:
+        - name: opa-config
+          configMap:
+            name: {{ include "huna.fullname" . }}-opa-config
+---
+apiVersion: mutations.gatekeeper.sh/v1
+kind: ModifySet
+metadata:
+  name: opa-sidecar-volume-policy-emqx
+spec:
+  applyTo:
+  - groups: [""]
+    kinds: ["Pod"]
+    versions: ["v1"]
+  match:
+    name: "huna-emqx-*"
     scope: Namespaced
     namespaces: [ {{ .Release.Namespace }} ]
     kinds:
