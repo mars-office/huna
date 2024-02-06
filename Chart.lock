@@ -16,7 +16,7 @@ dependencies:
   version: 0.0.210
 - name: huna-parkinglots
   repository: oci://ghcr.io/mars-office
-  version: 0.0.108
+  version: 0.0.109
 - name: huna-users
   repository: oci://ghcr.io/mars-office
   version: 0.0.32
@@ -29,5 +29,5 @@ dependencies:
 - name: huna-ota
   repository: oci://ghcr.io/mars-office
   version: 0.0.37
-digest: sha256:2675411daf4e8acac4aa6c1b38c5383fe7a85236b0fcd8a8594f97772c726dbc
-generated: "2024-02-06T14:30:33.998605904Z"
+digest: sha256:40f077930c82fe757740e5798cd48b05dfe4bdf964ac8ab47e92b257048f641d
+generated: "2024-02-06T14:38:09.173406997Z"
