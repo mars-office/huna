@@ -1,46 +1,39 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
-metadata:
-  name: huna-issuer
-spec:
-  selfSigned: {}
----
-apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: huna-iot-ca-cert
+  name: huna-intermediate-ca
 spec:
   isCA: true
   duration: 438290h # 50y
   renewBefore: 360h # 15d
-  commonName: huna-iot-ca
+  commonName: huna-intermediate-ca
   subject:
     organizations:
       - Huna
     organizationalUnits:
       - '{{ .Values.iotCa.ou }}'
-  secretName: huna-iot-ca-secret
+  secretName: huna-intermediate-ca-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS1
+    encoding: PKCS8
     size: 3072
   issuerRef:
-    name: huna-issuer
-    kind: Issuer
+    name: root-ca
+    kind: ClusterIssuer
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: huna-iot-ca-issuer
+  name: huna-intermediate-ca-issuer
 spec:
   ca:
-    secretName: huna-iot-ca-secret
+    secretName: huna-intermediate-ca-secret
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: huna-iot-mqtt-server-cert
+  name: huna-mqtt-server-cert
 spec:
   isCA: false
   duration: 168h 
@@ -56,20 +49,20 @@ spec:
       - Huna
     organizationalUnits:
       - 'EMQX'
-  secretName: huna-iot-mqtt-server-cert-secret
+  secretName: huna-mqtt-server-cert-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS1
+    encoding: PKCS8
     size: 3072
   issuerRef:
-    name: huna-iot-ca-issuer
+    name: huna-intermediate-ca-issuer
     kind: Issuer
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: huna-iot-mqtt-client-cert
+  name: huna-mqtt-client-cert
 spec:
   isCA: false
   duration: 168h 
@@ -80,23 +73,23 @@ spec:
       - Huna
     organizationalUnits:
       - 'EMQX'
-  secretName: huna-iot-mqtt-client-cert-secret
+  secretName: huna-mqtt-client-cert-secret
   usages:
     - server auth
     - client auth
   privateKey:
     algorithm: RSA
-    encoding: PKCS1
+    encoding: PKCS8
     size: 3072
   issuerRef:
-    name: huna-iot-ca-issuer
+    name: huna-intermediate-ca-issuer
     kind: Issuer
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: huna-iot-ota-server-cert
+  name: huna-ota-server-cert
 spec:
   isCA: false
   duration: 168h 
@@ -112,20 +105,20 @@ spec:
       - Huna
     organizationalUnits:
       - 'OTA'
-  secretName: huna-iot-ota-server-cert-secret
+  secretName: huna-ota-server-cert-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS1
+    encoding: PKCS8
     size: 3072
   issuerRef:
-    name: huna-iot-ca-issuer
+    name: huna-intermediate-ca-issuer
     kind: Issuer
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: huna-iot-detection-server-cert
+  name: huna-detection-server-cert
 spec:
   isCA: false
   duration: 168h 
@@ -141,12 +134,12 @@ spec:
       - Huna
     organizationalUnits:
       - 'Detection'
-  secretName: huna-iot-detection-server-cert-secret
+  secretName: huna-detection-server-cert-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS1
+    encoding: PKCS8
     size: 3072
   issuerRef:
-    name: huna-iot-ca-issuer
+    name: huna-intermediate-ca-issuer
     kind: Issuer
     group: cert-manager.io

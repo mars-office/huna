@@ -103,27 +103,32 @@ huna-parkinglots:
     - name: IOT_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca-secret
+          name: huna-intermediate-ca-secret
           key: 'tls.crt'
+    - name: ROOT_CA_CRT
+      valueFrom:
+        secretKeyRef:
+          name: huna-intermediate-ca-secret
+          key: 'ca.crt'
     - name: IOT_CA_KEY
       valueFrom:
         secretKeyRef:
-          name: huna-iot-ca-secret
+          name: huna-intermediate-ca-secret
           key: 'tls.key'
     - name: EMQX_CLIENT_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-iot-mqtt-client-cert-secret
+          name: huna-mqtt-client-cert-secret
           key: 'tls.crt'
     - name: EMQX_CLIENT_KEY
       valueFrom:
         secretKeyRef:
-          name: huna-iot-mqtt-client-cert-secret
+          name: huna-mqtt-client-cert-secret
           key: 'tls.key'
     - name: EMQX_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-iot-mqtt-client-cert-secret
+          name: huna-mqtt-client-cert-secret
           key: 'ca.crt'
     - name: NODE_ENV
       value: dev
@@ -213,7 +218,7 @@ huna-ota:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: huna-iot-ota-server-cert-secret
+      - secretName: huna-ota-server-cert-secret
         hosts:
           - ota.dev.huna2.com
 
@@ -247,7 +252,7 @@ huna-detection:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: huna-iot-detection-server-cert-secret
+      - secretName: huna-detection-server-cert-secret
         hosts:
           - detection.dev.huna2.com
 

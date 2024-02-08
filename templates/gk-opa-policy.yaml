@@ -40,9 +40,13 @@ spec:
           - name: IOT_CA_CRT
             valueFrom:
               secretKeyRef:
-                name: huna-iot-ca-secret
+                name: huna-intermediate-ca-secret
                 key: 'tls.crt'
-                
+          - name: ROOT_CA_CRT
+            valueFrom:
+              secretKeyRef:
+                name: huna-intermediate-ca-secret
+                key: 'ca.crt'
         ports:
           - name: opahttp
             containerPort: 8181
@@ -104,9 +108,13 @@ spec:
           - name: IOT_CA_CRT
             valueFrom:
               secretKeyRef:
-                name: huna-iot-ca-secret
+                name: huna-intermediate-ca-secret
                 key: 'tls.crt'
-                
+          - name: ROOT_CA_CRT
+            valueFrom:
+              secretKeyRef:
+                name: huna-intermediate-ca-secret
+                key: 'ca.crt'
         ports:
           - name: opahttp
             containerPort: 8181
