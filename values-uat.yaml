@@ -60,6 +60,7 @@ dex:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/issuer: null
     hosts: 
       - host: dex.uat.huna2.com
         paths:
@@ -78,6 +79,7 @@ emqx:
     dashboard:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/issuer: null
       hosts:
         - emqx-admin.uat.huna2.com
       tls:
@@ -89,6 +91,7 @@ huna-ui:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/issuer: null
     hosts:
       - host: uat.huna2.com
         paths:
