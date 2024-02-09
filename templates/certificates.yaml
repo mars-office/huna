@@ -15,7 +15,6 @@ spec:
   secretName: huna-intermediate-ca-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS8
     size: 3072
   issuerRef:
     name: root-ca
@@ -52,7 +51,6 @@ spec:
   secretName: huna-mqtt-server-cert-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS8
     size: 3072
   issuerRef:
     name: huna-intermediate-ca-issuer
@@ -79,7 +77,6 @@ spec:
     - client auth
   privateKey:
     algorithm: RSA
-    encoding: PKCS8
     size: 3072
   issuerRef:
     name: huna-intermediate-ca-issuer
@@ -108,7 +105,6 @@ spec:
   secretName: huna-ota-server-cert-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS8
     size: 3072
   issuerRef:
     name: huna-intermediate-ca-issuer
@@ -137,7 +133,6 @@ spec:
   secretName: huna-detection-server-cert-secret
   privateKey:
     algorithm: RSA
-    encoding: PKCS8
     size: 3072
   issuerRef:
     name: huna-intermediate-ca-issuer
