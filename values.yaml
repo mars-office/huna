@@ -126,6 +126,8 @@ redis:
   useDeploymentWhenNonHA: false
   podAnnotations:
     linkerd.io/inject: enabled
+  storage:
+    requestedSize: 1Gi
 
 redis-commander:
   redis:
@@ -154,7 +156,7 @@ redis-commander:
         hosts:
           - redis-commander.local.huna2.com
 
-          
+
 huna-ui:
   imagePullSecrets:
     - name: regcred
