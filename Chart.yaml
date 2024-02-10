@@ -26,6 +26,12 @@ dependencies:
   - name: mongodb
     version: "0.6.3"
     repository: "https://groundhog2k.github.io/helm-charts/"
+  - name: redis
+    version: "0.7.10"
+    repository: "https://groundhog2k.github.io/helm-charts/"
+  - name: redis-commander
+    version: "0.1.15"
+    repository: "https://kfirfer.github.io/charts/"
   - name: dex
     version: "0.16.0"
     repository: "https://charts.dexidp.io"

@@ -87,6 +87,29 @@ emqx:
           hosts:
             - emqx-admin.uat.huna2.com
 
+redis:
+  redisConfig: |
+    requirepass ${REDIS_PASSWORD}
+
+redis-commander:
+  redis:
+    password: '${REDIS_PASSWORD}'
+  httpAuth:
+    password: '${REDIS_ADMIN_PASSWORD}'
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/issuer: null
+    hosts: 
+      - host: redis-commander.uat.huna2.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: redis-commander-ingress-tls
+        hosts:
+          - redis-commander.uat.huna2.com
+
 huna-ui:
   ingress:
     annotations:
