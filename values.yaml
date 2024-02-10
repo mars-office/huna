@@ -121,6 +121,7 @@ emqx:
 
 
 redis:
+  password: ''
   redisConfig: |
     requirepass
   useDeploymentWhenNonHA: false

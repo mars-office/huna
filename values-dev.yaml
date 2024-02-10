@@ -87,6 +87,7 @@ emqx:
             - emqx-admin.dev.huna2.com
 
 redis:
+  password: '${REDIS_PASSWORD}'
   redisConfig: |
     requirepass ${REDIS_PASSWORD}
 
