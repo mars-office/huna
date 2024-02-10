@@ -155,8 +155,8 @@ huna-parkinglots:
     - name: EMQX_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-intermediate-ca-secret
-          key: 'tls.crt'
+          name: huna-mqtt-client-cert-secret
+          key: 'ca.crt'
     - name: NODE_ENV
       value: uat
     - name: OTEL_TRACES_EXPORTER
@@ -231,8 +231,8 @@ huna-signalr:
     - name: EMQX_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-intermediate-ca-secret
-          key: 'tls.crt'
+          name: huna-mqtt-client-cert-secret
+          key: 'ca.crt'
     - name: ASPNETCORE_ENVIRONMENT
       value: Staging
     - name: OTEL_TRACES_EXPORTER

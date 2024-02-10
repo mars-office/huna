@@ -156,8 +156,8 @@ huna-parkinglots:
     - name: EMQX_CA_CRT
       valueFrom:
         secretKeyRef:
-          name: huna-intermediate-ca-secret
-          key: 'tls.crt'
+          name: huna-mqtt-client-cert-secret
+          key: 'ca.crt'
     - name: NODE_ENV
       value: prod
     - name: OTEL_TRACES_EXPORTER
