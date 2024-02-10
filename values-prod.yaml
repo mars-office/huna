@@ -64,8 +64,7 @@ dex:
     hosts: 
       - host: dex.huna2.com
         paths:
-          - path: /
-            pathType: Prefix
+          - '/'
     tls:
       - secretName: dex-ingress-tls
         hosts:

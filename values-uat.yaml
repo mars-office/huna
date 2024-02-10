@@ -103,8 +103,7 @@ redis-commander:
     hosts: 
       - host: redis-commander.uat.huna2.com
         paths:
-          - path: /
-            pathType: Prefix
+          - '/'
     tls:
       - secretName: redis-commander-ingress-tls
         hosts:
