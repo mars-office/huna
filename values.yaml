@@ -296,6 +296,64 @@ huna-users:
           - path: /api/users
             pathType: ImplementationSpecific
 
+huna-signalr:
+  env:
+    - name: EMQX_CLIENT_CRT
+      valueFrom:
+        secretKeyRef:
+          name: huna-mqtt-client-cert-secret
+          key: 'tls.crt'
+    - name: EMQX_CLIENT_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna-mqtt-client-cert-secret
+          key: 'tls.key'
+    - name: EMQX_CA_CRT
+      valueFrom:
+        secretKeyRef:
+          name: huna-mqtt-client-cert-secret
+          key: 'ca.crt'
+    - name: ASPNETCORE_ENVIRONMENT
+      value: Development
+    - name: OTEL_TRACES_EXPORTER
+      value: 'none'
+    - name: OTEL_METRICS_EXPORTER
+      value: 'none'
+    - name: OTEL_LOGS_EXPORTER
+      value: 'none'
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: ''
+    - name: OTEL_SERVICE_NAME
+      value: 'huna-signalr'
+    - name: OTEL_PROPAGATORS
+      value: 'b3,b3multi'
+    - name: OTEL_SDK_DISABLED
+      value: 'true'
+    - name: OTEL_NODE_RESOURCE_DETECTORS
+      value: 'env,host,os'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: redisPassword
+  imagePullSecrets:
+    - name: regcred
+  podAnnotations:
+    linkerd.io/inject: enabled
+  podLabels:
+    opa: "true"
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: local.huna2.com
+        paths:
+          - path: /api/signalr
+            pathType: ImplementationSpecific
+
 ota:
   hostname: ota.local.huna2.com
   persistence:

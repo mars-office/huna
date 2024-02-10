@@ -56,3 +56,6 @@ dependencies:
   - name: huna-ota
     version: "0.0.37"
     repository: "oci://ghcr.io/mars-office"
+  - name: huna-signalr
+    version: "0.0.8"
+    repository: "oci://ghcr.io/mars-office"
