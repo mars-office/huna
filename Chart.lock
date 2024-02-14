@@ -37,6 +37,6 @@ dependencies:
   version: 0.0.37
 - name: huna-signalr
   repository: oci://ghcr.io/mars-office
-  version: 0.0.31
-digest: sha256:b1bbf333e49d34d90248891af5c970e7b565ee2defe89a397bdeeb2b24bdc89a
-generated: "2024-02-13T21:35:26.672261Z"
+  version: 0.0.32
+digest: sha256:473ba19aaeab2bb15660ce9c500abfb734d61fcaed6312c3293d269ce33d48e0
+generated: "2024-02-14T22:13:29.805553008Z"
