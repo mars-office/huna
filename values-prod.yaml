@@ -298,6 +298,21 @@ huna-ota:
 
 huna-detection:
   env:
+    - name: EMQX_CLIENT_CRT
+      valueFrom:
+        secretKeyRef:
+          name: huna-mqtt-client-cert-secret
+          key: 'tls.crt'
+    - name: EMQX_CLIENT_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna-mqtt-client-cert-secret
+          key: 'tls.key'
+    - name: EMQX_CA_CRT
+      valueFrom:
+        secretKeyRef:
+          name: huna-mqtt-client-cert-secret
+          key: 'ca.crt'
     - name: NODE_ENV
       value: prod
     - name: OTEL_TRACES_EXPORTER
