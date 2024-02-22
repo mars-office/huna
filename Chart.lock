@@ -31,12 +31,12 @@ dependencies:
   version: 0.3.6
 - name: huna-detection
   repository: oci://ghcr.io/mars-office
-  version: 0.0.46
+  version: 0.0.47
 - name: huna-ota
   repository: oci://ghcr.io/mars-office
   version: 0.0.37
 - name: huna-signalr
   repository: oci://ghcr.io/mars-office
   version: 0.0.42
-digest: sha256:b4066d7faab65dabdc855a4c98821ff93343baf0fa08684768817cfb1b920a67
-generated: "2024-02-22T19:51:02.548001174Z"
+digest: sha256:d39fdcbb254bfe8e41771a5c5f36a21754f9001173a4b521238f517ad90ae56f
+generated: "2024-02-22T20:04:29.692898329Z"
