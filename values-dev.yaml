@@ -294,6 +294,7 @@ huna-ota:
           - ota.dev.huna2.com
 
 huna-detection:
+  roboflowApiToken: '${ROBOFLOW_API_TOKEN}'
   env:
     - name: EMQX_CLIENT_CRT
       valueFrom:
@@ -331,6 +332,11 @@ huna-detection:
         secretKeyRef:
           name: huna
           key: mongodbPassword
+    - name: ROBOFLOW_API_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: roboflowApiToken
   ingress:
     hosts:
       - host: detection.dev.huna2.com
