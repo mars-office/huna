@@ -2,6 +2,8 @@ apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
 metadata:
   name: opa-sidecar-container-policy-label
+  annotations:
+    helm.sh/hook: "pre-install"
 spec:
   applyTo:
   - groups: [""]
@@ -72,6 +74,8 @@ apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
 metadata:
   name: opa-sidecar-container-policy-emqx
+  annotations:
+    helm.sh/hook: "pre-install"
 spec:
   applyTo:
   - groups: [""]
@@ -140,6 +144,8 @@ apiVersion: mutations.gatekeeper.sh/v1
 kind: ModifySet
 metadata:
   name: opa-sidecar-volume-policy-label
+  annotations:
+    helm.sh/hook: "pre-install"
 spec:
   applyTo:
   - groups: [""]
@@ -166,6 +172,8 @@ apiVersion: mutations.gatekeeper.sh/v1
 kind: ModifySet
 metadata:
   name: opa-sidecar-volume-policy-emqx
+  annotations:
+    helm.sh/hook: "pre-install"
 spec:
   applyTo:
   - groups: [""]
