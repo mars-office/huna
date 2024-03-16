@@ -3,9 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ include "huna.fullname" . }}-dex-data
 spec:
+  persistentVolumeReclaimPolicy: Retain
   accessModes:
     - ReadWriteOnce
-  volumeName: {{ include "huna.fullname" . }}-dex-data
-  resources:
-    requests:
-      storage: {{ .Values.dex.persistence.size }}
+  capacity:
+    storage: {{ .Values.dex.persistence.size }}
