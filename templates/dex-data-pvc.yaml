@@ -3,8 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ include "huna.fullname" . }}-dex-data
   annotations:
-    helm.sh/hook: "pre-install"
+    helm.sh/resource-policy: keep
 spec:
+  persistentVolumeReclaimPolicy: Retain
   accessModes:
     - ReadWriteOnce
   resources:
