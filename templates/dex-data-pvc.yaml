@@ -5,7 +5,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  volumeName: {{ include "huna.fullname" . }}-dex-data
   resources:
     requests:
       storage: {{ .Values.dex.persistence.size }}
