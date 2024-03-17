@@ -4,7 +4,7 @@ dependencies:
   version: 0.1.0
 - name: mongodb
   repository: https://groundhog2k.github.io/helm-charts/
-  version: 0.6.4
+  version: 0.6.3
 - name: redis
   repository: https://groundhog2k.github.io/helm-charts/
   version: 0.7.10
@@ -35,5 +35,5 @@ dependencies:
 - name: huna-signalr
   repository: oci://ghcr.io/mars-office
   version: 0.0.43
-digest: sha256:5cbe50a44485a53a3a85001d7e8f20521adf5a6934151efdec002612ecafdfcd
-generated: "2024-03-14T19:07:31.961530341+02:00"
+digest: sha256:74c31433d0c843c2eefcefd3847526604856ab2fa51c7903724b2c8208148949
+generated: "2024-03-17T09:49:05.655422769+02:00"

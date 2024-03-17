@@ -24,7 +24,7 @@ dependencies:
     version: "0.1.0"
     repository: "https://colearendt.github.io/helm"
   - name: mongodb
-    version: "0.6.4"
+    version: "0.6.3"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: redis
     version: "0.7.10"
