@@ -24,16 +24,16 @@ dependencies:
     version: "0.1.0"
     repository: "https://colearendt.github.io/helm"
   - name: mongodb
-    version: "0.6.3"
+    version: "0.6.4"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: redis
     version: "0.7.10"
     repository: "https://groundhog2k.github.io/helm-charts/"
   - name: dex
-    version: "0.16.0"
+    version: "0.17.1"
     repository: "https://charts.dexidp.io"
   - name: emqx
-    version: "5.5.1"
+    version: "5.6.0"
     repository: "https://repos.emqx.io/charts"
   - name: huna-ui
     version: "0.0.230"
