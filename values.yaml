@@ -63,9 +63,9 @@ dex:
 
   ingress:
     enabled: true
+    className: nginx
     annotations:
       cert-manager.io/issuer: huna-intermediate-ca-issuer
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts: 
@@ -108,9 +108,9 @@ emqx:
   ingress:
     dashboard:
       enabled: true
+      ingressClassName: nginx
       annotations:
         cert-manager.io/issuer: huna-intermediate-ca-issuer
-        kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/service-upstream: "true"
       hosts:
@@ -138,9 +138,9 @@ huna-ui:
     linkerd.io/inject: enabled
   ingress:
     enabled: true
+    className: nginx
     annotations:
       cert-manager.io/issuer: huna-intermediate-ca-issuer
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
@@ -216,8 +216,8 @@ huna-parkinglots:
     opa: "true"
   ingress:
     enabled: true
+    className: nginx
     annotations:
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
@@ -260,8 +260,8 @@ huna-users:
     opa: "true"
   ingress:
     enabled: true
+    className: nginx
     annotations:
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
@@ -318,8 +318,8 @@ huna-signalr:
     opa: "true"
   ingress:
     enabled: true
+    className: nginx
     annotations:
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/affinity: "cookie"
       nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
       nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
@@ -376,8 +376,8 @@ huna-ota:
     opa: "true"
   ingress:
     enabled: true
+    className: nginx
     annotations:
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-intermediate-ca-secret"
       nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
@@ -447,8 +447,8 @@ huna-detection:
     opa: "true"
   ingress:
     enabled: true
+    className: nginx
     annotations:
-      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-intermediate-ca-secret"
       nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
