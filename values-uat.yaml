@@ -76,6 +76,28 @@ redis:
   redisConfig: |
     requirepass ${REDIS_PASSWORD}
 
+rabbitmq:
+  env:
+    - name: RABBITMQ_DEFAULT_USER
+      value: admin
+    - name: RABBITMQ_DEFAULT_PASS
+      value: '${RABBITMQ_PASSWORD}'
+    - name: ERLANG_COOKIE
+      value: '${RABBITMQ_ERLANG_COOKIE}'
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/issuer: null
+    hosts: 
+      - host: rabbitmq.uat.huna2.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: rabbitmq-ingress-tls
+        hosts:
+          - rabbitmq.uat.huna2.com
+
 huna-ui:
   ingress:
     annotations:
