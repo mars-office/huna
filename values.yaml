@@ -29,6 +29,10 @@ rabbitmq:
       value: ''
     - name: ERLANG_COOKIE
       value: ''
+  annotations:
+    cert-manager.io/cluster-issuer: root-ca
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/service-upstream: "true"
   ingress:
     enabled: true
     className: nginx

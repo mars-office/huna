@@ -21,6 +21,10 @@ rabbitmq:
       value: '${RABBITMQ_PASSWORD}'
     - name: ERLANG_COOKIE
       value: '${RABBITMQ_ERLANG_COOKIE}'
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/issuer: null
+
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod

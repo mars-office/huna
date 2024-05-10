@@ -77,6 +77,9 @@ redis:
     requirepass ${REDIS_PASSWORD}
 
 rabbitmq:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/issuer: null
   env:
     - name: RABBITMQ_DEFAULT_USER
       value: admin
