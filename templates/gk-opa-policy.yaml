@@ -39,16 +39,6 @@ spec:
                 key: styraDasToken
           - name: HUNA_ENVIRONMENT
             value: {{ .Values.environment }}
-          - name: IOT_CA_CRT
-            valueFrom:
-              secretKeyRef:
-                name: huna-intermediate-ca-secret
-                key: 'tls.crt'
-          - name: ROOT_CA_CRT
-            valueFrom:
-              secretKeyRef:
-                name: huna-intermediate-ca-secret
-                key: 'ca.crt'
         ports:
           - name: opahttp
             containerPort: 8181
@@ -109,16 +99,6 @@ spec:
                 key: styraDasToken
           - name: HUNA_ENVIRONMENT
             value: {{ .Values.environment }}
-          - name: IOT_CA_CRT
-            valueFrom:
-              secretKeyRef:
-                name: huna-intermediate-ca-secret
-                key: 'tls.crt'
-          - name: ROOT_CA_CRT
-            valueFrom:
-              secretKeyRef:
-                name: huna-intermediate-ca-secret
-                key: 'ca.crt'
         ports:
           - name: opahttp
             containerPort: 8181

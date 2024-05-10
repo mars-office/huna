@@ -1,5 +1,4 @@
 environment: local
-letsencryptCa: ""
 
 regcred:
   nameOverride: 'regcred'
@@ -65,7 +64,7 @@ dex:
     enabled: true
     className: nginx
     annotations:
-      cert-manager.io/issuer: huna-intermediate-ca-issuer
+      cert-manager.io/cluster-issuer: root-ca
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts: 
@@ -88,18 +87,8 @@ emqx:
     EMQX_OPENTELEMETRY__TRACES__ENABLE: "true"
     EMQX_OPENTELEMETRY__EXPORTER__ENDPOINT: "http://collector.linkerd-jaeger:4317"
     EMQX_LISTENERS__WS__DEFAULT__ENABLE: "false"
-    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__VERIFY: "verify_peer"
-    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__FAIL_IF_NO_PEER_CERT: "true"
-    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CACERTFILE: "/tmp/ssl/ca.crt"
-    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: "/tmp/ssl/tls.crt"
-    EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: "/tmp/ssl/tls.key"
-    EMQX_MQTT__PEER_CERT_AS_USERNAME: "cn"
     EMQX_AUTHORIZATION__SOURCES: "[ { enable = true url = \\\"http://localhost:8181/v1/data/com/huna/authz/allow?input=%7B%22type%22%3A%22mqtt%22%2C%22username%22%3A%22${username}%22%2C%22action%22%3A%22${action}%22%2C%22topic%22%3A%22${topic}%22%2C%22peerhost%22%3A%22${peerhost}%22%7D\\\" type = http method = \\\"get\\\" } ]"
 
-  ssl:
-    enabled: true
-    useExisting: true
-    existingName: huna-mqtt-server-cert-secret
   podAnnotations:
     linkerd.io/inject: enabled
   persistence:
@@ -110,7 +99,7 @@ emqx:
       enabled: true
       ingressClassName: nginx
       annotations:
-        cert-manager.io/issuer: huna-intermediate-ca-issuer
+        cert-manager.io/cluster-issuer: root-ca
         nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/service-upstream: "true"
       hosts:
@@ -140,7 +129,7 @@ huna-ui:
     enabled: true
     className: nginx
     annotations:
-      cert-manager.io/issuer: huna-intermediate-ca-issuer
+      cert-manager.io/cluster-issuer: root-ca
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
@@ -152,80 +141,6 @@ huna-ui:
       - secretName: huna-ingress-tls
         hosts:
           - local.huna2.com
-
-huna-parkinglots:
-  env:
-    - name: IOT_CA_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-intermediate-ca-secret
-          key: 'tls.crt'
-    - name: ROOT_CA_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-intermediate-ca-secret
-          key: 'ca.crt'
-    - name: IOT_CA_KEY
-      valueFrom:
-        secretKeyRef:
-          name: huna-intermediate-ca-secret
-          key: 'tls.key'
-    - name: EMQX_CLIENT_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'tls.crt'
-    - name: EMQX_CLIENT_KEY
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'tls.key'
-    - name: EMQX_CA_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'ca.crt'
-    - name: NODE_ENV
-      value: local
-    - name: OTEL_TRACES_EXPORTER
-      value: 'none'
-    - name: OTEL_METRICS_EXPORTER
-      value: 'none'
-    - name: OTEL_LOGS_EXPORTER
-      value: 'none'
-    - name: OTEL_EXPORTER_OTLP_ENDPOINT
-      value: ''
-    - name: OTEL_SERVICE_NAME
-      value: 'huna-parkinglots'
-    - name: OTEL_PROPAGATORS
-      value: 'b3,b3multi'
-    - name: OTEL_SDK_DISABLED
-      value: 'true'
-    - name: OTEL_NODE_RESOURCE_DETECTORS
-      value: 'env,host,os'
-    - name: MONGODB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: huna
-          key: mongodbPassword
-  imagePullSecrets:
-    - name: regcred
-  podAnnotations:
-    linkerd.io/inject: enabled
-  podLabels:
-    opa: "true"
-  ingress:
-    enabled: true
-    className: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/service-upstream: "true"
-    hosts:
-      - host: local.huna2.com
-        paths:
-          - path: /api/parkinglots
-            pathType: ImplementationSpecific
-
 
 huna-users:
   env:
@@ -272,21 +187,6 @@ huna-users:
 
 huna-signalr:
   env:
-    - name: EMQX_CLIENT_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'tls.crt'
-    - name: EMQX_CLIENT_KEY
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'tls.key'
-    - name: EMQX_CA_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'ca.crt'
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
     - name: OTEL_TRACES_EXPORTER
@@ -332,151 +232,6 @@ huna-signalr:
           - path: /api/signalr
             pathType: ImplementationSpecific
 
-ota:
-  hostname: ota.local.huna2.com
-  persistence:
-    size: 512Mi
-
-detection:
-  hostname: detection.local.huna2.com
-
-huna-ota:
-  volumes:
-    - name: ota-data
-      persistentVolumeClaim:
-        claimName: huna-ota
-  volumeMounts:
-    - mountPath: "/firmware"
-      name: ota-data
-      readOnly: true
-  env:
-    - name: NODE_ENV
-      value: local
-    - name: OTEL_TRACES_EXPORTER
-      value: 'none'
-    - name: OTEL_METRICS_EXPORTER
-      value: 'none'
-    - name: OTEL_LOGS_EXPORTER
-      value: 'none'
-    - name: OTEL_EXPORTER_OTLP_ENDPOINT
-      value: ''
-    - name: OTEL_SERVICE_NAME
-      value: 'huna-ota'
-    - name: OTEL_PROPAGATORS
-      value: 'b3,b3multi'
-    - name: OTEL_SDK_DISABLED
-      value: 'true'
-    - name: OTEL_NODE_RESOURCE_DETECTORS
-      value: 'env,host,os'
-  imagePullSecrets:
-    - name: regcred
-  podAnnotations:
-    linkerd.io/inject: enabled
-  podLabels:
-    opa: "true"
-  ingress:
-    enabled: true
-    className: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-intermediate-ca-secret"
-      nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
-      nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
-      nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
-    hosts:
-      - host: ota.local.huna2.com
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: huna-ota-server-cert-secret
-        hosts:
-          - ota.local.huna2.com
-
-huna-detection:
-  roboflowApiToken: ''
-  env:
-    - name: EMQX_CLIENT_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'tls.crt'
-    - name: EMQX_CLIENT_KEY
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'tls.key'
-    - name: EMQX_CA_CRT
-      valueFrom:
-        secretKeyRef:
-          name: huna-mqtt-client-cert-secret
-          key: 'ca.crt'
-    - name: NODE_ENV
-      value: local
-    - name: OTEL_TRACES_EXPORTER
-      value: 'none'
-    - name: OTEL_METRICS_EXPORTER
-      value: 'none'
-    - name: OTEL_LOGS_EXPORTER
-      value: 'none'
-    - name: OTEL_EXPORTER_OTLP_ENDPOINT
-      value: ''
-    - name: OTEL_SERVICE_NAME
-      value: 'huna-detection'
-    - name: OTEL_PROPAGATORS
-      value: 'b3,b3multi'
-    - name: OTEL_SDK_DISABLED
-      value: 'true'
-    - name: OTEL_NODE_RESOURCE_DETECTORS
-      value: 'env,host,os'
-    - name: MONGODB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: huna
-          key: mongodbPassword
-    - name: ROBOFLOW_API_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: huna
-          key: roboflowApiToken
-  imagePullSecrets:
-    - name: regcred
-  podAnnotations:
-    linkerd.io/inject: enabled
-  podLabels:
-    opa: "true"
-  ingress:
-    enabled: true
-    className: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/auth-tls-secret: "huna/huna-intermediate-ca-secret"
-      nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
-      nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
-      nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
-    hosts:
-      - host: detection.local.huna2.com
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: huna-detection-server-cert-secret
-        hosts:
-          - detection.local.huna2.com
-
-huna-iot:
-  imagePullSecrets:
-    - name: regcred
-  volumes:
-    - name: ota-data
-      persistentVolumeClaim:
-        claimName: huna-ota
-  volumeMounts:
-    - mountPath: "/firmware"
-      name: ota-data
 
 opa:
   styraDasToken: ''
-
-iotCa:
-  ou: local.huna2.com

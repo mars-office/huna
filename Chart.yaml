@@ -38,20 +38,8 @@ dependencies:
   - name: huna-ui
     version: "0.0.231"
     repository: "oci://ghcr.io/mars-office"
-  - name: huna-parkinglots
-    version: "0.0.118"
-    repository: "oci://ghcr.io/mars-office"
   - name: huna-users
     version: "0.0.40"
-    repository: "oci://ghcr.io/mars-office"
-  - name: huna-iot
-    version: "0.3.6"
-    repository: "oci://ghcr.io/mars-office"
-  - name: huna-detection
-    version: "0.0.51"
-    repository: "oci://ghcr.io/mars-office"
-  - name: huna-ota
-    version: "0.0.45"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-signalr
     version: "0.0.46"
