@@ -77,38 +77,6 @@ dex:
         hosts:
           - dex.local.huna2.com
 
-emqx:
-  hostname: emqx.local.huna2.com
-  replicaCount: 1
-  emqxConfig:
-    EMQX_DASHBOARD__DEFAULT_USERNAME: "admin"
-    EMQX_DASHBOARD__DEFAULT_PASSWORD: ""
-    EMQX_LISTENERS__WSS__DEFAULT__ENABLE: "false"
-    EMQX_OPENTELEMETRY__TRACES__ENABLE: "true"
-    EMQX_OPENTELEMETRY__EXPORTER__ENDPOINT: "http://collector.linkerd-jaeger:4317"
-    EMQX_LISTENERS__WS__DEFAULT__ENABLE: "false"
-    EMQX_AUTHORIZATION__SOURCES: "[ { enable = true url = \\\"http://localhost:8181/v1/data/com/huna/authz/allow?input=%7B%22type%22%3A%22mqtt%22%2C%22username%22%3A%22${username}%22%2C%22action%22%3A%22${action}%22%2C%22topic%22%3A%22${topic}%22%2C%22peerhost%22%3A%22${peerhost}%22%7D\\\" type = http method = \\\"get\\\" } ]"
-
-  podAnnotations:
-    linkerd.io/inject: enabled
-  persistence:
-    enabled: true
-    size: 5Gi
-  ingress:
-    dashboard:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-        cert-manager.io/cluster-issuer: root-ca
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
-        nginx.ingress.kubernetes.io/service-upstream: "true"
-      hosts:
-        - emqx-admin.local.huna2.com
-      tls:
-        - secretName: emqx-dashboard-ingress-tls
-          hosts:
-            - emqx-admin.local.huna2.com
-
 
 redis:
   password: ''

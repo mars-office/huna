@@ -11,9 +11,6 @@ dependencies:
 - name: dex
   repository: https://charts.dexidp.io
   version: 0.17.1
-- name: emqx
-  repository: https://repos.emqx.io/charts
-  version: 5.6.0
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
   version: 0.0.234
@@ -23,5 +20,5 @@ dependencies:
 - name: huna-signalr
   repository: oci://ghcr.io/mars-office
   version: 0.0.47
-digest: sha256:353e2f9c15ed44ed44887a7f4899cbeed1c61127d57349ee80b465282201e16f
-generated: "2024-05-10T13:57:10.030332117Z"
+digest: sha256:baf6b71fdb57e78d803d15bc6a384f14807700f2f7fc5db4ea7d60952ae495a6
+generated: "2024-05-10T17:42:03.6216774+03:00"
