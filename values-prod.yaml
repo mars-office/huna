@@ -60,7 +60,7 @@ dex:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
-      cert-manager.io/issuer: null
+      
     hosts: 
       - host: dex.huna2.com
         paths:
@@ -77,9 +77,6 @@ redis:
     requirepass ${REDIS_PASSWORD}
 
 rabbitmq:
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    cert-manager.io/issuer: null
   env:
     - name: RABBITMQ_DEFAULT_USER
       value: admin
@@ -90,7 +87,6 @@ rabbitmq:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
-      cert-manager.io/issuer: null
     hosts: 
       - host: rabbitmq.huna2.com
         paths:
@@ -105,7 +101,7 @@ huna-ui:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
-      cert-manager.io/issuer: null
+      
     hosts:
       - host: huna2.com
         paths:
