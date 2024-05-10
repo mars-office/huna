@@ -36,7 +36,7 @@ dependencies:
     version: "5.6.0"
     repository: "https://repos.emqx.io/charts"
   - name: huna-ui
-    version: "0.0.231"
+    version: "0.0.234"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-users
     version: "0.0.40"
