@@ -14,6 +14,7 @@ mongodb:
 
 
 rabbitmq:
+  password: '${RABBITMQ_PASSWORD}'
   env:
     - name: RABBITMQ_DEFAULT_USER
       value: admin
@@ -165,6 +166,11 @@ huna-signalr:
         secretKeyRef:
           name: huna
           key: redisPassword
+    - name: RABBITMQ_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: rabbitmqPassword
   ingress:
     hosts:
       - host: dev.huna2.com

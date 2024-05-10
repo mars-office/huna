@@ -18,6 +18,7 @@ mongodb:
     rootPassword: ''
 
 rabbitmq:
+  password: ''
   podAnnotations:
     linkerd.io/inject: enabled
   storage:
@@ -207,6 +208,11 @@ huna-signalr:
         secretKeyRef:
           name: huna
           key: redisPassword
+    - name: RABBITMQ_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: rabbitmqPassword
   imagePullSecrets:
     - name: regcred
   podAnnotations:
