@@ -98,6 +98,9 @@ redis:
   redisConfig: |
     requirepass ${REDIS_PASSWORD}
 
+redisinsightbasicauthsecret:
+  password: '${REDISINSIGHT_PASSWORD}'
+
 redisinsight:
   ingress:
     annotations:
