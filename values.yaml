@@ -30,22 +30,6 @@ rabbitmq:
       value: ''
     - name: ERLANG_COOKIE
       value: ''
-  ingress:
-    enabled: true
-    className: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: root-ca
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/service-upstream: "true"
-    hosts: 
-      - host: rabbitmq.local.huna2.com
-        paths:
-          - path: /
-            pathType: Prefix
-    tls:
-      - secretName: rabbitmq-ingress-tls
-        hosts:
-          - rabbitmq.local.huna2.com
   
 dex:
   rbac:
@@ -117,32 +101,6 @@ redis:
     linkerd.io/inject: enabled
   storage:
     requestedSize: 1Gi
-
-redisinsight:
-  password: ''
-  image:
-    versionOverride: latest
-  podAnnotations:
-    linkerd.io/inject: enabled
-  ingress:
-    enabled: true
-    className: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: root-ca
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/service-upstream: "true"
-      nginx.ingress.kubernetes.io/auth-type: basic
-      nginx.ingress.kubernetes.io/auth-secret: huna-redisinsight-basic-auth-secret
-      nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
-    hosts:
-      - host: redis.local.huna2.com
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: redisinsight-tls
-        hosts:
-          - redis.local.huna2.com
 
 huna-ui:
   imagePullSecrets:

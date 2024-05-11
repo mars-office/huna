@@ -22,18 +22,6 @@ rabbitmq:
       value: '${RABBITMQ_PASSWORD}'
     - name: ERLANG_COOKIE
       value: '${RABBITMQ_ERLANG_COOKIE}'
-  ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts: 
-      - host: rabbitmq.dev.huna2.com
-        paths:
-          - path: /
-            pathType: Prefix
-    tls:
-      - secretName: rabbitmq-ingress-tls
-        hosts:
-          - rabbitmq.dev.huna2.com
 
 dex:
   config:
@@ -98,21 +86,6 @@ redis:
   redisConfig: |
     requirepass ${REDIS_PASSWORD}
 
-
-redisinsight:
-  password: '${REDISINSIGHT_PASSWORD}'
-  ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts:
-      - host: redis.dev.huna2.com
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: redisinsight-tls
-        hosts:
-          - redis.dev.huna2.com
 
 
 huna-ui:
