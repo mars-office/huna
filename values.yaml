@@ -118,6 +118,28 @@ redis:
   storage:
     requestedSize: 1Gi
 
+redisinsight:
+  image:
+    versionOverride: latest
+  podAnnotations:
+    linkerd.io/inject: enabled
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: root-ca
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: redis.local.huna2.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: redisinsight-tls
+        hosts:
+          - redis.local.huna2.com
+
 huna-ui:
   imagePullSecrets:
     - name: regcred

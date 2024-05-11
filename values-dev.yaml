@@ -98,6 +98,21 @@ redis:
   redisConfig: |
     requirepass ${REDIS_PASSWORD}
 
+redisinsight:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: redis.dev.huna2.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: redisinsight-tls
+        hosts:
+          - redis.dev.huna2.com
+
+
 huna-ui:
   ingress:
     annotations:

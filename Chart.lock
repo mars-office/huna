@@ -11,6 +11,9 @@ dependencies:
 - name: redis
   repository: https://groundhog2k.github.io/helm-charts/
   version: 0.7.10
+- name: redisinsight
+  repository: https://raw.githubusercontent.com/hansehe/redisinsight-helm/master/helm/charts
+  version: 0.1.0
 - name: dex
   repository: https://charts.dexidp.io
   version: 0.17.1
@@ -23,5 +26,5 @@ dependencies:
 - name: huna-signalr
   repository: oci://ghcr.io/mars-office
   version: 0.0.51
-digest: sha256:9b3ec2034c042638d6d0b0bd1dc44ae0006a09c0bbc1643951e99f7e174d975c
-generated: "2024-05-10T21:01:12.526071846Z"
+digest: sha256:a395c596de2a6c5d4ddf662675843648a652d6d8cdb6e17fe50ed722b90831a1
+generated: "2024-05-11T09:50:43.0131662+03:00"
