@@ -47,3 +47,6 @@ dependencies:
   - name: huna-signalr
     version: "0.0.53"
     repository: "oci://ghcr.io/mars-office"
+  - name: huna-notifications
+    version: "0.0.1"
+    repository: "oci://ghcr.io/mars-office"
