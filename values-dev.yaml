@@ -224,6 +224,11 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: mongodbPassword
+    - name: RABBITMQ_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: rabbitmqPassword
   ingress:
     hosts:
       - host: dev.huna2.com

@@ -291,6 +291,11 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: mongodbPassword
+    - name: RABBITMQ_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: rabbitmqPassword
   imagePullSecrets:
     - name: regcred
   podAnnotations:
