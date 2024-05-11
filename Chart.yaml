@@ -32,10 +32,6 @@ dependencies:
   - name: redis
     version: "0.7.10"
     repository: "https://groundhog2k.github.io/helm-charts/"
-  - name: basic-auth-secret
-    alias: redisinsightbasicauthsecret
-    version: "1.0.0"
-    repository: "https://helm.sikalabs.io"
   - name: redisinsight
     version: "0.1.0"
     repository: "https://raw.githubusercontent.com/hansehe/redisinsight-helm/master/helm/charts"

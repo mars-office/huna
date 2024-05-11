@@ -118,11 +118,8 @@ redis:
   storage:
     requestedSize: 1Gi
 
-redisinsightbasicauthsecret:
-  user: admin
-  password: ''
-
 redisinsight:
+  password: ''
   image:
     versionOverride: latest
   podAnnotations:
@@ -135,7 +132,7 @@ redisinsight:
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
       nginx.ingress.kubernetes.io/auth-type: basic
-      nginx.ingress.kubernetes.io/auth-secret: redisinsight-basic-auth-secret
+      nginx.ingress.kubernetes.io/auth-secret: huna-redisinsight-basic-auth-secret
       nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
     hosts:
       - host: redis.local.huna2.com
