@@ -121,11 +121,6 @@ huna-users:
       value: 'false'
     - name: OTEL_NODE_RESOURCE_DETECTORS
       value: 'env,host,os'
-    - name: MONGODB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: huna
-          key: mongodbPassword
   ingress:
     hosts:
       - host: huna2.com
