@@ -50,15 +50,15 @@ spec:
           httpGet:
             scheme: HTTP              # assumes OPA listens on localhost:8181
             port: 8181
-          initialDelaySeconds: 30      # tune these periods for your environment
-          periodSeconds: 15
+          initialDelaySeconds: 5      # tune these periods for your environment
+          periodSeconds: 30
         readinessProbe:
           httpGet:
-            path: /health?bundle=true  # Include bundle activation in readiness
+            path: /health
             scheme: HTTP
             port: 8181
-          initialDelaySeconds: 30
-          periodSeconds: 15
+          initialDelaySeconds: 5
+          periodSeconds: 30
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: ModifySet
