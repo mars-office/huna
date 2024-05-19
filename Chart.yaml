@@ -45,5 +45,5 @@ dependencies:
     version: "0.0.58"
     repository: "oci://ghcr.io/mars-office"
   - name: huna-notifications
-    version: "0.0.36"
+    version: "0.0.40"
     repository: "oci://ghcr.io/mars-office"
