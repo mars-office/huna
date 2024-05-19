@@ -221,6 +221,7 @@ opa:
 mail:
   mailjetApiKey: ''
   mailjetSecretKey: ''
+  fromEmail: ''
 
 push:
   privateVapidKey: ''
@@ -282,6 +283,11 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: mailjetSecretKey
+    - name: FROM_EMAIL
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: fromEmail
   imagePullSecrets:
     - name: regcred
   podAnnotations:

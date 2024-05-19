@@ -171,6 +171,7 @@ opa:
 mail:
   mailjetApiKey: '${MAILJET_API_KEY}'
   mailjetSecretKey: '${MAILJET_SECRET_KEY}'
+  fromEmail: '${FROM_EMAIL}'
 
 push:
   privateVapidKey: '${PRIVATE_VAPID_KEY}'
@@ -230,6 +231,11 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: mailjetSecretKey
+    - name: FROM_EMAIL
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: fromEmail
   ingress:
     hosts:
       - host: uat.huna2.com
