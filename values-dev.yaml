@@ -237,6 +237,8 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: fromEmail
+    - name: UI_URL
+      value: 'https://dev.huna2.com'
   ingress:
     hosts:
       - host: dev.huna2.com

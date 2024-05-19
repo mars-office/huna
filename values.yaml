@@ -288,6 +288,8 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: fromEmail
+    - name: UI_URL
+      value: 'https://local.huna2.com'
   imagePullSecrets:
     - name: regcred
   podAnnotations:
