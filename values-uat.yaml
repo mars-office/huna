@@ -168,6 +168,10 @@ huna-signalr:
 opa:
   styraDasToken: '${STYRA_DAS_TOKEN}'
 
+mail:
+  mailjetApiKey: '${MAILJET_API_KEY}'
+  mailjetSecretKey: '${MAILJET_SECRET_KEY}'
+
 push:
   privateVapidKey: '${PRIVATE_VAPID_KEY}'
   publicVapidKey: '${PUBLIC_VAPID_KEY}'
@@ -216,6 +220,16 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: vapidEmail
+    - name: MAILJET_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mailjetApiKey
+    - name: MAILJET_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: mailjetSecretKey
   ingress:
     hosts:
       - host: uat.huna2.com
