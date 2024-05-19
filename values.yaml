@@ -218,6 +218,10 @@ huna-signalr:
 opa:
   styraDasToken: ''
 
+push:
+  privateVapidKey: ''
+  publicVapidKey: ''
+  vapidEmail: ''
 
 huna-notifications:
   env:
@@ -249,6 +253,21 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: rabbitmqPassword
+    - name: PUBLIC_VAPID_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: publicVapidKey
+    - name: PRIVATE_VAPID_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: privateVapidKey
+    - name: VAPID_EMAIL
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: vapidEmail
   imagePullSecrets:
     - name: regcred
   podAnnotations:

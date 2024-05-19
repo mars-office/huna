@@ -169,6 +169,11 @@ opa:
 
 
 
+push:
+  privateVapidKey: '${PRIVATE_VAPID_KEY}'
+  publicVapidKey: '${PUBLIC_VAPID_KEY}'
+  vapidEmail: '${VAPID_EMAIL}'
+
 huna-notifications:
   env:
     - name: NODE_ENV
@@ -197,6 +202,21 @@ huna-notifications:
         secretKeyRef:
           name: huna
           key: rabbitmqPassword
+    - name: PUBLIC_VAPID_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: publicVapidKey
+    - name: PRIVATE_VAPID_KEY
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: privateVapidKey
+    - name: VAPID_EMAIL
+      valueFrom:
+        secretKeyRef:
+          name: huna
+          key: vapidEmail
   ingress:
     hosts:
       - host: dev.huna2.com
