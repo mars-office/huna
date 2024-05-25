@@ -25,6 +25,6 @@ dependencies:
   version: 0.0.60
 - name: huna-notifications
   repository: oci://ghcr.io/mars-office
-  version: 0.0.64
-digest: sha256:fe73caacb43a1debf084a831be04ba020e5d6841b55442a6fc14ccbc96e5770e
-generated: "2024-05-25T16:11:23.317201371Z"
+  version: 0.0.65
+digest: sha256:c5d0098c64612821bc096971cef8b687d1d9dfd7b9cd3496a45354c40516fe97
+generated: "2024-05-25T16:28:52.293088549Z"
