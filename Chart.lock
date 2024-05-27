@@ -16,7 +16,7 @@ dependencies:
   version: 0.17.1
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
-  version: 0.0.282
+  version: 0.0.283
 - name: huna-users
   repository: oci://ghcr.io/mars-office
   version: 0.0.48
@@ -26,5 +26,5 @@ dependencies:
 - name: huna-notifications
   repository: oci://ghcr.io/mars-office
   version: 0.0.65
-digest: sha256:08a3fd5ce01f09da1725db6267122cb065c158e891a76af6f61d7bedcca29d13
-generated: "2024-05-27T11:09:22.578645281Z"
+digest: sha256:bbee3e912e8dd30c5969032feb6091a853fc341d7d9bde3220979ff672bb7077
+generated: "2024-05-27T13:42:37.330040893Z"
