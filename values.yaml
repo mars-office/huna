@@ -42,12 +42,12 @@ idp:
   persistence:
     size: 1Gi
   volumes:
-    - name: dex-data
+    - name: idp-data
       persistentVolumeClaim:
-        claimName: huna-dex-data
+        claimName: huna-idp-data
   volumeMounts:
     - mountPath: "/data"
-      name: dex-data
+      name: idp-data
   config:
     staticClients:
       - id: ui
