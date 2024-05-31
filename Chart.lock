@@ -11,9 +11,9 @@ dependencies:
 - name: redis
   repository: https://groundhog2k.github.io/helm-charts/
   version: 1.2.1
-- name: dex
-  repository: https://charts.dexidp.io
-  version: 0.17.1
+- name: casdoor-helm-charts
+  repository: oci://registry-1.docker.io/casbin
+  version: v1.623.0
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
   version: 0.0.296
@@ -26,5 +26,5 @@ dependencies:
 - name: huna-notifications
   repository: oci://ghcr.io/mars-office
   version: 0.0.68
-digest: sha256:87de29d12c3f3e879c270b4d9f3ad916cab066b9033726a1fd17271f99d7055d
-generated: "2024-05-31T13:07:04.047139+03:00"
+digest: sha256:5a4de0ad10302fa066b9b52bad5cccbf3d9dcc33f076974872e347afc9c84ca2
+generated: "2024-06-01T00:49:33.812779+03:00"

@@ -32,10 +32,10 @@ dependencies:
   - name: redis
     version: "1.2.1"
     repository: "https://groundhog2k.github.io/helm-charts/"
-  - name: dex
-    version: "0.17.1"
-    repository: "https://charts.dexidp.io"
-    alias: "idp"
+  - name: casdoor-helm-charts
+    version: "v1.623.0"
+    alias: idp
+    repository: "oci://registry-1.docker.io/casbin"
   - name: huna-ui
     version: "0.0.296"
     repository: "oci://ghcr.io/mars-office"

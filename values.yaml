@@ -32,52 +32,37 @@ rabbitmq:
       value: ''
   
 idp:
+  extraVolumeMounts:
+    - mountPath: /init_data.json
+      name: casdoor-init-data-volume
+      subPath: init_data.json
+  extraVolumes:
+    - configMap:
+        name: huna-casdoor-init-data
+      name: casdoor-init-data-volume
   service:
-    ports:
-      http:
-        port: 80
-  rbac:
-    create: false
-    createClusterScoped: false
-  persistence:
-    size: 1Gi
-  volumes:
-    - name: idp-data
-      persistentVolumeClaim:
-        claimName: huna-idp-data
-  volumeMounts:
-    - mountPath: "/data"
-      name: idp-data
-  config:
-    staticClients:
-      - id: ui
-        redirectURIs:
-          - 'https://local.huna2.com/'
-        name: 'UI'
-        public: true
-    expiry:
-      idTokens: "15m"
-      refreshTokens:
-        disableRotation: true
-        validIfNotUsedFor: "2160h" # 90 days
-        reuseInterval: "2160h"
-    issuer: "https://idp.local.huna2.com"
-    web:
-      allowedOrigins: ['*']
-    storage:
-      type: sqlite3
-      config:
-        file: /data/dex.db
-    enablePasswordDB: false
-    oauth2:
-      skipApprovalScreen: true
-    frontend:
-      issuer: huna2
-      theme: dark
-      alwaysShowLoginScreen: false
+    port: 80
+  config: |
+    appname = casdoor
+    httpport = 80
+    runmode = prod
+    SessionOn = true
+    copyrequestbody = true
+    driverName = sqlite
+    dataSourceName = file:casdoor.db?cache=shared
+    dbName = casdoor
+    redisEndpoint = huna-redis,9,
+    defaultStorageProvider =
+    isCloudIntranet = false
+    authState = "casdoor"
+    socks5Proxy = ""
+    verificationCodeTimeout = 10
+    initScore = 0
+    logPostOnly = true
+    origin = idp.local.huna2.com
+    enableGzip = true
   podAnnotations:
     linkerd.io/inject: enabled
-
   ingress:
     enabled: true
     className: nginx
