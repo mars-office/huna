@@ -3,7 +3,7 @@ name: 'Manual Deploy'
 run-name: '${{ github.event.inputs.operation}} ${{ github.event.inputs.env}} - ${{ github.event.inputs.version}} - ${{ github.workflow }}'
 
 concurrency:
-  group: ${{ github.workflow }}
+  group: huna-deploy
   cancel-in-progress: false
 
 on:
