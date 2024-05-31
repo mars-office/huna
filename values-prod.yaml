@@ -13,7 +13,7 @@ mongodb:
     requestedSize: 10Gi
 
 
-dex:
+idp:
   config:
     issuer: "https://idp.huna2.com"
     staticClients:

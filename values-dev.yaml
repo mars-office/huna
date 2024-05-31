@@ -23,7 +23,7 @@ rabbitmq:
     - name: ERLANG_COOKIE
       value: '${RABBITMQ_ERLANG_COOKIE}'
 
-dex:
+idp:
   config:
     issuer: "https://idp.dev.huna2.com"
     staticClients:

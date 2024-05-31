@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "huna.fullname" . }}-dex-data
+  name: {{ include "huna.fullname" . }}-idp-data
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.dex.persistence.size }}
+      storage: {{ .Values.idp.persistence.size }}

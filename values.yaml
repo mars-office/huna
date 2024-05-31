@@ -31,8 +31,7 @@ rabbitmq:
     - name: ERLANG_COOKIE
       value: ''
   
-dex:
-  fullnameOverride: "idp"
+idp:
   service:
     ports:
       http:
