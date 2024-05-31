@@ -25,7 +25,7 @@ rabbitmq:
 
 dex:
   config:
-    issuer: "https://dex.dev.huna2.com"
+    issuer: "https://idp.dev.huna2.com"
     staticClients:
       - id: ui
         redirectURIs:
@@ -39,21 +39,21 @@ dex:
         config:
           clientID: '${GOOGLE_CLIENT_ID}'
           clientSecret: '${GOOGLE_CLIENT_SECRET}'
-          redirectURI: https://dex.dev.huna2.com/callback
+          redirectURI: https://idp.dev.huna2.com/callback
       - type: microsoft
         id: microsoft
         name: Microsoft
         config:
           clientID: '${MICROSOFT_CLIENT_ID}'
           clientSecret: '${MICROSOFT_CLIENT_SECRET}'
-          redirectURI: https://dex.dev.huna2.com/callback
+          redirectURI: https://idp.dev.huna2.com/callback
       - type: oauth
         id: facebook 
         name: Facebook
         config:
           clientID: '${FACEBOOK_CLIENT_ID}'
           clientSecret: '${FACEBOOK_CLIENT_SECRET}'
-          redirectURI: https://dex.dev.huna2.com/callback
+          redirectURI: https://idp.dev.huna2.com/callback
           tokenURL: https://graph.facebook.com/v16.0/oauth/access_token
           authorizationURL: https://facebook.com/dialog/oauth
           userInfoURL: https://graph.facebook.com/v16.0/me?fields=id,name,email
@@ -72,14 +72,14 @@ dex:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       
     hosts:
-      - host: dex.dev.huna2.com
+      - host: idp.dev.huna2.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: dex-ingress-tls
         hosts:
-          - dex.dev.huna2.com
+          - idp.dev.huna2.com
 
 redis:
   password: '${REDIS_PASSWORD}'

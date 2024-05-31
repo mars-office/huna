@@ -57,7 +57,7 @@ dex:
         disableRotation: true
         validIfNotUsedFor: "2160h" # 90 days
         reuseInterval: "2160h"
-    issuer: "https://dex.local.huna2.com"
+    issuer: "https://idp.local.huna2.com"
     web:
       allowedOrigins: ['*']
     storage:
@@ -82,14 +82,14 @@ dex:
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts: 
-      - host: dex.local.huna2.com
+      - host: idp.local.huna2.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: dex-ingress-tls
         hosts:
-          - dex.local.huna2.com
+          - idp.local.huna2.com
 
 
 redis:
