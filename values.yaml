@@ -32,6 +32,11 @@ rabbitmq:
       value: ''
   
 dex:
+  fullnameOverride: "idp"
+  service:
+    ports:
+      http:
+        port: 80
   rbac:
     create: false
     createClusterScoped: false
