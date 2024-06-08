@@ -23,39 +23,41 @@ idp:
         name: 'UI'
         public: true
     connectors:
-      - type: google
+      - type: oidc
         id: google
         name: Google
         config:
           clientID: '${GOOGLE_CLIENT_ID}'
           clientSecret: '${GOOGLE_CLIENT_SECRET}'
           redirectURI: https://idp.huna2.com/callback
-      - type: microsoft
+          issuer: https://accounts.google.com
+          insecureSkipEmailVerified: true
+          # userIDKey: iat
+      - type: oidc
         id: microsoft
         name: Microsoft
         config:
           clientID: '${MICROSOFT_CLIENT_ID}'
           clientSecret: '${MICROSOFT_CLIENT_SECRET}'
           redirectURI: https://idp.huna2.com/callback
-      - type: oauth
+          issuer: https://login.microsoftonline.com/d5a7513b-1b0e-4e07-b3da-b918811316bd/v2.0
+          # userIDKey: iat
+          insecureSkipEmailVerified: true
+      - type: oidc
         id: facebook 
         name: Facebook
         config:
           clientID: '${FACEBOOK_CLIENT_ID}'
           clientSecret: '${FACEBOOK_CLIENT_SECRET}'
           redirectURI: https://idp.huna2.com/callback
-          tokenURL: https://graph.facebook.com/v16.0/oauth/access_token
-          authorizationURL: https://facebook.com/dialog/oauth
-          userInfoURL: https://graph.facebook.com/v16.0/me?fields=id,name,email
+          issuer: https://www.facebook.com
+          # userIDKey: iat
+          providerDiscoveryOverrides:
+            tokenUrl: https://graph.facebook.com/v11.0/oauth/access_token
           scopes:
             - public_profile
             - email
-          claimMapping:
-            userNameKey: 'name'
-            # preferredUsernameKey: ''
-            # groupsKey: ''
-            emailKey: 'email'
-            # emailVerifiedKey: ''
+          insecureSkipEmailVerified: true
 
   ingress:
     annotations:
