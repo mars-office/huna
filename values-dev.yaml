@@ -25,6 +25,8 @@ rabbitmq:
 
 idp:
   config:
+    logger:
+      level: debug
     issuer: "https://idp.dev.huna2.com"
     staticClients:
       - id: ui
