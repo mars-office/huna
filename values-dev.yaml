@@ -49,7 +49,7 @@ idp:
           clientID: '${MICROSOFT_CLIENT_ID}'
           clientSecret: '${MICROSOFT_CLIENT_SECRET}'
           redirectURI: https://idp.dev.huna2.com/callback
-          issuer: https://login.microsoftonline.com/common
+          issuer: https://login.microsoftonline.com/d5a7513b-1b0e-4e07-b3da-b918811316bd/v2.0
           userIDKey: nonce
       - type: oidc
         id: facebook 
