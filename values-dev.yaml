@@ -61,6 +61,8 @@ idp:
           redirectURI: https://idp.dev.huna2.com/callback
           issuer: https://www.facebook.com
           # userIDKey: iat
+          providerDiscoveryOverrides:
+            tokenUrl: https://graph.facebook.com/v11.0/oauth/access_token
 
   ingress:
     annotations:
