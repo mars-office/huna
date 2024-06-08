@@ -41,6 +41,7 @@ idp:
           clientSecret: '${GOOGLE_CLIENT_SECRET}'
           redirectURI: https://idp.dev.huna2.com/callback
           issuer: https://accounts.google.com
+          insecureSkipEmailVerified: true
           # userIDKey: iat
       - type: oidc
         id: microsoft
@@ -66,6 +67,7 @@ idp:
           scopes:
             - public_profile
             - email
+          insecureSkipEmailVerified: true
 
   ingress:
     annotations:
