@@ -63,6 +63,9 @@ idp:
           # userIDKey: iat
           providerDiscoveryOverrides:
             tokenUrl: https://graph.facebook.com/v11.0/oauth/access_token
+          scopes:
+            - public_profile
+            - email
 
   ingress:
     annotations:
