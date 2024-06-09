@@ -60,6 +60,9 @@ idp:
       signingKeys: "10080m"
       refreshTokens:
         validIfNotUsedFor: "2160h" # 90 days
+        reuseInterval: "2160h"
+        disableRotation: true
+
     issuer: "https://idp.local.huna2.com"
     web:
       allowedOrigins: ['*']
