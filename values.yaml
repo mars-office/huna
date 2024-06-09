@@ -57,10 +57,9 @@ idp:
         public: true
     expiry:
       idTokens: "15m"
+      signingKeys: "10080m"
       refreshTokens:
-        disableRotation: true
         validIfNotUsedFor: "2160h" # 90 days
-        reuseInterval: "2160h"
     issuer: "https://idp.local.huna2.com"
     web:
       allowedOrigins: ['*']
