@@ -105,31 +105,6 @@ huna-ui:
         hosts:
           - dev.huna2.com
 
-huna-users:
-  env:
-    - name: NODE_ENV
-      value: dev
-    - name: OTEL_TRACES_EXPORTER
-      value: 'otlp'
-    - name: OTEL_METRICS_EXPORTER
-      value: 'otlp'
-    - name: OTEL_EXPORTER_OTLP_ENDPOINT
-      value: 'http://collector.linkerd-jaeger:4318'
-    - name: OTEL_SERVICE_NAME
-      value: 'huna-users'
-    - name: OTEL_PROPAGATORS
-      value: 'b3,b3multi'
-    - name: OTEL_SDK_DISABLED
-      value: 'false'
-    - name: OTEL_NODE_RESOURCE_DETECTORS
-      value: 'env,host,os'
-  ingress:
-    hosts:
-      - host: dev.huna2.com
-        paths:
-          - path: /api/users
-            pathType: ImplementationSpecific
-
 huna-signalr:
   env:
     - name: ASPNETCORE_ENVIRONMENT

@@ -39,9 +39,6 @@ dependencies:
   - name: huna-ui
     version: "0.0.299"
     repository: "oci://ghcr.io/mars-office"
-  - name: huna-users
-    version: "0.0.48"
-    repository: "oci://ghcr.io/mars-office"
   - name: huna-signalr
     version: "0.0.60"
     repository: "oci://ghcr.io/mars-office"
