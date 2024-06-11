@@ -5,7 +5,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/service-upstream: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /v1/data/com/huna/authz/user
+    nginx.ingress.kubernetes.io/rewrite-target: /v1/data/com/huna/authz
 spec:
   ingressClassName: nginx
   rules:
@@ -13,7 +13,7 @@ spec:
   - host: {{ (index . 0).host }}
     http:
       paths:
-      - path: /api/opa/v1/data/com/huna/authz/user
+      - path: /api/opa/v1/data/com/huna/authz
         pathType: ImplementationSpecific
         backend:
           service:
