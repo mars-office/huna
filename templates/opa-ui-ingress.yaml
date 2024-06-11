@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/service-upstream: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /v1/data/com/huna/authz/user
 spec:
-  className: nginx
+  ingressClassName: nginx
   rules:
   {{- with index .Values "huna-ui" "ingress" "hosts" }}
   - host: {{ (index . 0).host }}
