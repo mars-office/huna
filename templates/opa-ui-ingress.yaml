@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: huna-opa-ui
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /v1/data/com/huna/authz/user
+spec:
+  className: nginx
+  rules:
+  {{- with index .Values "huna-ui" "ingress" "hosts" }}
+  - host: {{ (index . 0).host }}
+    http:
+      paths:
+      - path: /api/opa/v1/data/com/huna/authz/user
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: huna-opa-ui
+            port:
+              number: 8181
+  {{- end }}
