@@ -16,12 +16,12 @@ dependencies:
   version: 0.18.0
 - name: huna-ui
   repository: oci://ghcr.io/mars-office
-  version: 0.0.306
+  version: 0.0.307
 - name: huna-signalr
   repository: oci://ghcr.io/mars-office
   version: 0.0.60
 - name: huna-notifications
   repository: oci://ghcr.io/mars-office
   version: 0.0.74
-digest: sha256:f8174519d25426610838589694ab1e9d69e21c2b40d96f3ae2e5da65f7d90335
-generated: "2024-06-12T15:31:55.734767541Z"
+digest: sha256:d4e4b62bd2934b3cd12fc0d4f196a258f95ce3e61393b6e7833a72269879e58c
+generated: "2024-06-12T15:40:23.871289002Z"
